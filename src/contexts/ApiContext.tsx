@@ -41,6 +41,8 @@ export interface UserProviderData {
   handleGetInstruments: () => void;
   handleGetUserById: () => void;
   handleGetUserInstruments: () => void;
+  handleDeleteInstrument: (data: Instrument) => void;
+  handleEditInstrument: () => void;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -49,6 +51,7 @@ export const UserContext = createContext<UserProviderData>(
 
 export const UserProvider = ({ children }: UserProps) => {
   const navigate = useNavigate();
+  const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
@@ -143,6 +146,25 @@ export const UserProvider = ({ children }: UserProps) => {
       });
   };
 
+  const handleDeleteInstrument = (instrument: Instrument) => {
+    const token = localStorage.getItem("@token");
+
+    api
+      .delete(`userInstrument/${instrument.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log("instrumento deletado");
+      });
+  };
+  const handleEditInstrument = (data) => {
+    const token = localStorage.getItem("@token");
+    api
+      .patch(`userInstrument/${instrument.id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {});
+  };
   return (
     <UserContext.Provider
       value={{
@@ -154,6 +176,8 @@ export const UserProvider = ({ children }: UserProps) => {
         handleGetInstruments,
         handleGetUserById,
         handleGetUserInstruments,
+        handleDeleteInstrument,
+        handleEditInstrument,
       }}
     >
       {children}
