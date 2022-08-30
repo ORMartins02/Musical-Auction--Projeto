@@ -1,6 +1,6 @@
 import { GiMagnifyingGlass } from "react-icons/gi";
 
-export function Nav() {
+export const Nav = () => {
   return (
     <nav>
       <form action="">
@@ -11,4 +11,4 @@ export function Nav() {
       </form>
     </nav>
   );
-}
+};

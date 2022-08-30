@@ -1,4 +1,4 @@
-export function Ul(){
+export const Ul = () =>{
     return(
         <>
         </>

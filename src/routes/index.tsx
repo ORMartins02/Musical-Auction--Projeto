@@ -1,11 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 
-export function MyRoutes() {
+export const MyRoutes = () => {
   return (
     <Routes>
       <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
-}
-
+};

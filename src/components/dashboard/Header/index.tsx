@@ -1,7 +1,7 @@
 import { BiMap } from "react-icons/bi";
 import { ImExit } from "react-icons/im";
 
-export function Header() {
+export const Header = () => {
   return (
     <header>
       <div>
@@ -20,5 +20,4 @@ export function Header() {
       </button>
     </header>
   );
-}
-
+};

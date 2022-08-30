@@ -1,10 +1,10 @@
 import { Ul } from "../Ul";
 import { Nav } from "../Nav";
-export function Main() {
+export const Main = () => {
   return (
     <main>
       <Nav />
       <Ul />
     </main>
   );
-}
+};
