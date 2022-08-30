@@ -1,46 +1,119 @@
-# Getting Started with Create React App
+base_URL: https://musical-auction.herokuapp.com/ 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Cadastro
 
-In the project directory, you can run:
+POST /register <br/>
+POST /signup <br/>
+POST /users
 
-### `npm start`
+Qualquer um desses 3 endpoints irá cadastrar o usuário na lista de "Users", sendo que os campos obrigatórios são os de email e password.
+Você pode ficar a vontade para adicionar qualquer outra propriedade no corpo do cadastro dos usuários.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Request:
+{
+"email": "joaozin@mail.com",
+"password": "123456",
+"name": "John",
+"age": 24,
+"id": 10
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Response:
+{
+"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW96aW5AbWFpbC5jb20iLCJpYXQiOjE2NjE4MDY2MzUsImV4cCI6MTY2MTgxMDIzNSwic3ViIjoiMTAifQ.NgclJfaYtpaeum6qVRolbjbA4_K23y0uKOLKYyLEaYo",
+"user": {
+"email": "joaozin@mail.com",
+"name": "John",
+"age": 24,
+"id": 10
+}
+}
 
-### `npm test`
+### Login
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+POST /login <br/>
+POST /signin
 
-### `npm run build`
+Qualquer um desses 2 endpoints pode ser usado para realizar login com um dos usuários cadastrados na lista de "Users"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Request:
+{
+"email": "joaozin@mail.com",
+"password": "123456"
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Response:
+{
+"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW96aW5AbWFpbC5jb20iLCJpYXQiOjE2NjE4MDY2NzQsImV4cCI6MTY2MTgxMDI3NCwic3ViIjoiMTAifQ.SI-3zgn0kdIca0KKeGZTismb9bTE1G-0yKQvu8msenQ",
+"user": {
+"email": "joaozin@mail.com",
+"name": "John",
+"age": 24,
+"id": 10
+}
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Registrar novo instrumento
 
-### `npm run eject`
+POST /userInstrument
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Endpoint para realizar cadastro de um novo instrumento.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Request:
+{
+"title" : "Guitarra",
+"description" : "instrumento de corda",
+"userId" : "10"
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Response:
+{
+"title": "Guitarra",
+"description": "instrumento de corda",
+"userId": "10",
+"id": 4
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Pegar um usuário pelo id
 
-## Learn More
+GET /users/userid
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Endpoint para pegar os dados de um usuário.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Response:
+{
+"email": "joaozin@mail.com",
+"password": "$2a$10$KJ8T9hJXe9fevWTkOJzsVeO4AaVMlGIrg2vXbRSktQimnh2lnt9rW",
+"name": "John",
+"age": 24,
+"id": 10
+}
+
+### Listagem de todos os instrumentos
+
+GET /userInstrument
+
+Endpoint para listar todos os intrumentos dos usuários cadastrados.
+
+Response:
+{
+[{
+"title": "flute",
+"description": "instrumento de sopro",
+"userId": "3",
+"id": 1
+},
+{
+"title": "violin",
+"description": "instrumento de corda",
+"userId": "3",
+"id": 2
+}
+{
+"title": "Guitarra",
+"description": "instrumento de corda",
+"userId": "1",
+"id": 3
+}]
+}
