@@ -94,7 +94,7 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {
         if (response.status === 200) {
           setLogin(response.data.user);
-          window.localStorage.setItem("@token", response.data.token);
+          window.localStorage.setItem("@token", response.data.accessToken);
           window.localStorage.setItem("@userId", response.data.user.id);
           // navigate(`/Dashboard/${response.data.user.id}`);
         }
