@@ -1,23 +1,29 @@
 import { BiMap } from "react-icons/bi";
 import { ImExit } from "react-icons/im";
+import { Container } from "./style";
+import userImg from "../../../img/usuario-teste.svg";
+import { Nav } from "./Nav";
 
 export const Header = () => {
   return (
-    <header>
-      <div>
-        <figure>
-          <img src="" alt="" />
-        </figure>
-        <div>
-          <h2>Nome do usuário</h2>
-          <p>
-            Localização <BiMap />{" "}
-          </p>
+    <Container>
+      <div className="infHeader">
+        <div className="infUser">
+          <figure className="figure">
+            <img src={userImg} alt="" />
+          </figure>
+          <div>
+            <h2 className="userName">Kenzinho Junior</h2>
+            <p className="userLoc">
+              Curitiba - PR <BiMap className="svg" />
+            </p>
+          </div>
         </div>
+        <button className="logout">
+          <ImExit />
+        </button>
       </div>
-      <button>
-        <ImExit />
-      </button>
-    </header>
+      <Nav />
+    </Container>
   );
 };
