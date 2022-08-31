@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode } from "react";
+import { SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
@@ -16,8 +17,8 @@ interface User {
   address: string;
 }
 
-interface UserLogin {
-  login: string;
+export interface UserLogin {
+  email: string;
   password: string;
 }
 
@@ -81,13 +82,13 @@ export const UserProvider = ({ children }: UserProps) => {
       .catch((err) => console.log(err));
   };
 
-  const handleLogin = (data: UserLogin) => {
+  const handleLogin: SubmitHandler<UserLogin> = (data) => {
     api
       .post("login", data)
       .then((response) => {
         if (response.status === 200) {
           setLogin(response.data.user);
-          window.localStorage.setItem("@token", response.data.token);
+          window.localStorage.setItem("@token", response.data.accessToken);
           window.localStorage.setItem("@userId", response.data.user.id);
           // navigate(`/Dashboard/${response.data.user.id}`);
         }
