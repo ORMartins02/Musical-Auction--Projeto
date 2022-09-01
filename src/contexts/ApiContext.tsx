@@ -1,17 +1,18 @@
-import { createContext, useState, ReactNode } from "react";
-import { SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import {createContext, useState, ReactNode} from "react";
+import {SubmitHandler} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 
 interface UserProps {
   children: ReactNode;
 }
 
-interface User {
+export interface User {
   id: string;
   email: string;
   password: string;
   name: string;
+  userImg: string;
   ageOfBirth: string;
   contact: string;
   address: string;
@@ -54,7 +55,7 @@ export const UserContext = createContext<UserProviderData>(
   {} as UserProviderData
 );
 
-export const UserProvider = ({ children }: UserProps) => {
+export const UserProvider = ({children}: UserProps) => {
   const navigate = useNavigate();
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
@@ -66,6 +67,7 @@ export const UserProvider = ({ children }: UserProps) => {
     email,
     password,
     name,
+    userImg,
     ageOfBirth,
     contact,
     address,
@@ -74,16 +76,19 @@ export const UserProvider = ({ children }: UserProps) => {
       email,
       password,
       name,
+      userImg,
       ageOfBirth,
       contact,
       address,
     };
 
+    console.log(newData);
+
     await api
       .post("register", newData)
       .then((response) => {
         if (response.status === 201) {
-          //   return navigate("/");
+          return navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -107,7 +112,7 @@ export const UserProvider = ({ children }: UserProps) => {
     const token = localStorage.getItem("@token");
     api
       .post("userInstrument", data, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {Authorization: `Bearer ${token}`},
       })
       .then((response) => {
         console.log("instrumento criado");
@@ -125,8 +130,8 @@ export const UserProvider = ({ children }: UserProps) => {
     const userId = localStorage.getItem("@userId");
     const token = localStorage.getItem("@token");
     api
-      .get<{ name: string; address: string }>(`users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      .get<{name: string; address: string}>(`users/${userId}`, {
+        headers: {Authorization: `Bearer ${token}`},
       })
       .then((response) => {
         const userData = {
@@ -139,7 +144,7 @@ export const UserProvider = ({ children }: UserProps) => {
   const handleGetUserInstruments = () => {
     const userId = localStorage.getItem("@userId");
     api
-      .get<{ title: string; description: string; minPrice: number }>(
+      .get<{title: string; description: string; minPrice: number}>(
         `userInstrument?userId=${userId}`
       )
       .then((response) => {
@@ -156,7 +161,7 @@ export const UserProvider = ({ children }: UserProps) => {
 
     api
       .delete(`userInstrument/${instrument.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {Authorization: `Bearer ${token}`},
       })
       .then((response) => {
         console.log("instrumento deletado");
@@ -166,7 +171,7 @@ export const UserProvider = ({ children }: UserProps) => {
     const token = localStorage.getItem("@token");
     api
       .patch(`userInstrument/${instrument.id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {Authorization: `Bearer ${token}`},
       })
       .then((response) => {});
   };

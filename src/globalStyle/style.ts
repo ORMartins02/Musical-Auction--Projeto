@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 export default createGlobalStyle`
 
@@ -152,7 +152,6 @@ section {
 body {
   font-family: var(--font-inter);
   line-height: 1;
-  background-color: var(--color-grey-4);
 }
 ol,
 ul {
