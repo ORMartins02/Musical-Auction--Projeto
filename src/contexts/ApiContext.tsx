@@ -39,7 +39,9 @@ export interface UserProviderData {
     name: string;
     age: number;
   };
+  instrument: Instrument;
   instruments: Instrument[];
+  isModalEditOpen: boolean;
   handleRegister: (data: Omit<User, "id">) => void;
   handleLogin: (data: UserLogin) => void;
   handlePostInstrument: (data: Instrument) => void;
@@ -48,6 +50,8 @@ export interface UserProviderData {
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
+  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setInstrument: React.Dispatch<React.SetStateAction<Instrument>>;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -58,6 +62,7 @@ export const UserProvider = ({ children }: UserProps) => {
   const navigate = useNavigate();
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
+  const [isModalEditOpen, setModalEdit] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
   );
@@ -173,6 +178,8 @@ export const UserProvider = ({ children }: UserProps) => {
   return (
     <UserContext.Provider
       value={{
+        instrument,
+        setInstrument,
         instruments,
         login,
         handleRegister,
@@ -183,6 +190,8 @@ export const UserProvider = ({ children }: UserProps) => {
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
+        setModalEdit,
+        isModalEditOpen,
       }}
     >
       {children}
