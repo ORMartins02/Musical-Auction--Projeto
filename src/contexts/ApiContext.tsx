@@ -81,7 +81,6 @@ export const UserProvider = ({ children }: UserProps) => {
       contact,
       address,
     };
-
     await api
       .post("register", newData)
       .then((response) => {
