@@ -185,6 +185,7 @@ export const ContainerLogin = styled.div`
     }
     button {
       margin-top: 40px;
+      width: 180px;
     }
     .p-login {
       display: flex;
