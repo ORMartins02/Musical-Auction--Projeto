@@ -22,7 +22,7 @@ export interface UserLogin {
   password: string;
 }
 
-interface Instrument {
+export interface Instrument {
   title: string;
   description: string;
   category: string;
