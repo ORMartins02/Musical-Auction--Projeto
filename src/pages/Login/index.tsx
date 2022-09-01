@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaLogin } from "../../schema/login";
 import { useContext } from "react";
+import musicalAmarel from "../../img/Amarel1.svg";
 import { UserLogin, UserContext } from "../../contexts/ApiContext";
 import {
   ContainerLogin,
@@ -19,11 +20,11 @@ const Login = () => {
   });
 
   return (
-    <ContainerLoginMain className="container-main">
-      <div className="asd">
+    <ContainerLoginMain>
+      <div className="asdasd">
         <ContainerLoginHeader className="header-login">
-          <div>
-            <img className="header-img1" src="./Amarel1.svg" alt="" />
+          <div className="qwe">
+            <img className="header-img1" src={musicalAmarel} alt="" />
             <p>De músico para músico</p>
           </div>
           <p className="teste">
@@ -62,7 +63,7 @@ const Login = () => {
           <div className="span-register">
             <p>Você ainda não tem uma conta?</p>
           </div>
-          <div>
+          <div className="zxc">
             <div className="div-register">
               <p>Cadastre-se</p>
             </div>

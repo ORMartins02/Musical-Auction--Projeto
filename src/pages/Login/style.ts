@@ -9,18 +9,23 @@ export const ContainerLoginMain = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: rgb(248 249 250 / 91%);
+  .asdasd {
+    display: flex;
+    flex-direction: column;
+  }
   @media (min-width: 767px) {
     justify-content: center;
     align-items: center;
     flex-direction: row;
     height: 100vh;
     width: 100vw;
-  }
-  .asd {
-    display: flex;
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
+    .asdasd {
+      display: flex;
+      flex-direction: row;
+      border-width: 2px;
+      border-style: solid;
+      border-color: black;
+    }
   }
 `;
 
