@@ -81,6 +81,7 @@ export const UserProvider = ({ children }: UserProps) => {
       contact,
       address,
     };
+
     await api
       .post("register", newData)
       .then((response) => {
@@ -90,9 +91,6 @@ export const UserProvider = ({ children }: UserProps) => {
       })
       .catch((err) => console.log(err));
   };
-  // const handleRegister: SubmitHandler<User> = (data: Omit<User, "id">) => {
-  //   console.log(data);
-  // };
 
   const handleLogin: SubmitHandler<UserLogin> = (data) => {
     api
