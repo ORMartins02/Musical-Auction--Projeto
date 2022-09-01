@@ -7,11 +7,12 @@ interface UserProps {
   children: ReactNode;
 }
 
-interface User {
+export interface User {
   id: string;
   email: string;
   password: string;
   name: string;
+  userImg: string;
   ageOfBirth: string;
   contact: string;
   address: string;
@@ -71,6 +72,7 @@ export const UserProvider = ({ children }: UserProps) => {
     email,
     password,
     name,
+    userImg,
     ageOfBirth,
     contact,
     address,
@@ -79,6 +81,7 @@ export const UserProvider = ({ children }: UserProps) => {
       email,
       password,
       name,
+      userImg,
       ageOfBirth,
       contact,
       address,
@@ -88,7 +91,7 @@ export const UserProvider = ({ children }: UserProps) => {
       .post("register", newData)
       .then((response) => {
         if (response.status === 201) {
-          //   return navigate("/");
+          return navigate("/");
         }
       })
       .catch((err) => console.log(err));
