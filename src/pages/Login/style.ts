@@ -63,13 +63,13 @@ export const ContainerLoginHeader = styled.div`
       width: 75%;
       height: 25%;
       display: inherit;
-      margin-bottom: 250px;
+      margin-bottom: 160px;
       border-width: 2px;
       border-style: solid;
       border-color: yellow;
       text-align: center;
-      font-size: 16px;
-      line-height: 25px;
+      font-size: 14px;
+      line-height: 18px;
       border-radius: 12px;
       box-shadow: 3px 4px 5px 0px rgba(117, 109, 109, 0.75);
     }
