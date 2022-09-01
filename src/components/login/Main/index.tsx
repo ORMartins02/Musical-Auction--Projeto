@@ -28,7 +28,7 @@ export const MainLogin = () => {
         <span>{errors.email?.message}</span>
 
         <input
-          type="text"
+          type="password"
           id="password"
           placeholder="Digite a senha"
           {...register("password")}
