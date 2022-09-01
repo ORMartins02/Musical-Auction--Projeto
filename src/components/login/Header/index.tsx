@@ -1,4 +1,4 @@
-import { ContainerLoginHeader } from "../../login/style";
+import { ContainerLoginHeader } from "./style";
 import musicalAmarel from "../../../img/Amarel1.svg";
 
 export const HeaderLogin = () => {

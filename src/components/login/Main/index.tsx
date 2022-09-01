@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaLogin } from "../../../schema/login";
 import { useContext } from "react";
 import { UserLogin, UserContext } from "../../../contexts/ApiContext";
-import { ContainerLogin } from "../style";
+import { ContainerLogin } from "./style";
 export const MainLogin = () => {
   const { handleLogin } = useContext(UserContext);
   const {

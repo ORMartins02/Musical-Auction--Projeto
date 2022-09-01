@@ -1,4 +1,4 @@
-import { ContainerLoginMain } from "../../components/login/style";
+import { ContainerLoginMain } from "../Login/style";
 import { HeaderLogin } from "../../components/login/Header";
 import { MainLogin } from "../../components/login/Main";
 const Login = () => {
