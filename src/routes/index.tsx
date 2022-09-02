@@ -6,7 +6,7 @@ import Login from "../pages/Login/index";
 export const MyRoutes = () => {
   return (
     <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/:id" element={<Dashboard />} />
 
       <Route path="/register" element={<Register />} />
 

@@ -4,6 +4,7 @@ import { schemaLogin } from "../../../schema/login";
 import { useContext } from "react";
 import { UserLogin, UserContext } from "../../../contexts/ApiContext";
 import { ContainerLogin } from "./style";
+import { Link } from "react-router-dom";
 export const MainLogin = () => {
   const { handleLogin } = useContext(UserContext);
   const {
@@ -44,7 +45,7 @@ export const MainLogin = () => {
       </div>
       <div>
         <div className="div-register">
-          <p>Cadastre-se</p>
+          <Link to={"/register"}>Cadastre-se</Link>
         </div>
       </div>
     </ContainerLogin>

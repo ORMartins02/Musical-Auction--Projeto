@@ -4,6 +4,7 @@ import { registerSchema } from "../../../schema/RegisterSchema";
 import { User, UserContext } from "../../../contexts/ApiContext";
 import { useContext } from "react";
 import { ContainerLogin } from "./style";
+import { Link } from "react-router-dom";
 export const Form = () => {
   const { handleRegister } = useContext(UserContext);
   const {
@@ -168,7 +169,7 @@ export const Form = () => {
       </div>
       <div>
         <div className="div-register">
-          <p>Entre</p>
+          <Link to={"/"}>Entre</Link>
         </div>
       </div>
     </ContainerLogin>

@@ -78,12 +78,14 @@ export const ContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    color: yellow;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-right: 26px;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    a {
+      font-size: 16px;
+      color: yellow;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-right: 26px;
+      text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    }
   }
   @media (min-width: 767px) {
     justify-content: center;
