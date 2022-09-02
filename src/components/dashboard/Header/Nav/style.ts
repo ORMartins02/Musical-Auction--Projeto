@@ -41,7 +41,7 @@ export const StNav = styled.nav`
       padding: 15px;
       font-size: 20px;
       color: white;
-      box-shadow: rgba(215, 84, 19, 1) 0.2em 0.2em 0.3em;
+      box-shadow: rgba(61, 61, 61, 1) 0.2em 0.2em 0.3em;
     }
   }
   @media (min-width: 768px) {
