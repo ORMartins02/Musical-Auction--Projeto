@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/ApiContext";
 import { Product } from "./Product";
 import { ListProducts, StyledProductsContainer } from "./style";
+import { v4 as uuid } from "uuid";
 
 export const ProductsContainer = () => {
   const { loading, instruments } = useContext(UserContext);
@@ -18,6 +19,7 @@ export const ProductsContainer = () => {
           {instruments.map((elem) => {
             return (
               <Product
+                key={uuid()}
                 id={elem.id}
                 title={elem.title}
                 description={elem.description}

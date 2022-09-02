@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Instrument, UserContext } from "../../../../contexts/ApiContext";
 import { Button, Li } from "./style";
-import { v4 as uuid } from "uuid";
 
 export const Product = ({
   id,
@@ -13,7 +12,7 @@ export const Product = ({
   const { handleGetInstruments } = useContext(UserContext);
 
   return (
-    <Li key={uuid()}>
+    <Li>
       <figure>
         <img src={img} alt="Imagem do {name}" />
       </figure>

@@ -2,7 +2,7 @@ import { Navigate, Routes, Route } from "react-router-dom";
 import { Register } from "../pages/Register";
 import { Dashboard } from "../pages/Dashboard/index";
 import Login from "../pages/Login/index";
-
+import { ModalTest } from "../pages/Modal";
 export const MyRoutes = () => {
   const token = localStorage.getItem("@token");
   return (
@@ -12,11 +12,12 @@ export const MyRoutes = () => {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/modal" element={<ModalTest />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="*" element={<Navigate to="/dashboard/:id" />} />
-          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       )}
     </>

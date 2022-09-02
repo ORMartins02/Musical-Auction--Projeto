@@ -47,6 +47,10 @@ export interface UserProviderData {
     name: string;
     age: number;
   };
+
+  instrument: Instrument;
+  isModalEditOpen: boolean;
+  isModalAddOpen: boolean;
   loading: boolean;
   instruments: Instrument[];
   setInstruments: Dispatch<SetStateAction<Instrument[]>>;
@@ -58,6 +62,9 @@ export interface UserProviderData {
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
+  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  setInstrument: React.Dispatch<React.SetStateAction<Instrument>>;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -69,6 +76,8 @@ export const UserProvider = ({ children }: UserProps) => {
   const [loading, setLoading] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
+  const [isModalEditOpen, setModalEdit] = useState(false);
+  const [isModalAddOpen, setModalAdd] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
   );
@@ -119,17 +128,15 @@ export const UserProvider = ({ children }: UserProps) => {
       .catch((err) => console.log(err));
   };
 
-  const handleLogin: SubmitHandler<UserLogin> = (data) => {
-    api
+  const handleLogin: SubmitHandler<UserLogin> = async (data) => {
+    await api
       .post("login", data)
       .then((response) => {
-        if (response.status === 200) {
-          setLogin(response.data.user);
-          window.localStorage.setItem("@token", response.data.accessToken);
-          window.localStorage.setItem("@userId", response.data.user.id);
-          // navigate(`/Dashboard/${response.data.user.id}`);
-          window.location.reload();
-        }
+        setLogin(response.data.user);
+        window.localStorage.setItem("@token", response.data.accessToken);
+        window.localStorage.setItem("@userId", response.data.user.id);
+        // navigate(`/Dashboard/${response.data.user.id}`);
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -205,6 +212,10 @@ export const UserProvider = ({ children }: UserProps) => {
   return (
     <UserContext.Provider
       value={{
+        isModalAddOpen,
+        setModalAdd,
+        instrument,
+        setInstrument,
         instruments,
         setInstruments,
         login,
@@ -217,6 +228,8 @@ export const UserProvider = ({ children }: UserProps) => {
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
+        setModalEdit,
+        isModalEditOpen,
       }}
     >
       {children}
