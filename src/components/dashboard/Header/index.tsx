@@ -10,7 +10,8 @@ export const Header = () => {
   const logoutbtn = () => {
     localStorage.removeItem("@token");
     localStorage.removeItem("@userId");
-    navigate("/");
+    // navigate("/");
+    window.location.reload();
   };
 
   return (
