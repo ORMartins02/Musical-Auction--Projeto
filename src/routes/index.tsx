@@ -1,10 +1,24 @@
-import { Routes, Route } from "react-router-dom";
-import { Dashboard } from "../pages/Dashboard";
+import { Navigate, Routes, Route } from "react-router-dom";
+import { Register } from "../pages/Register";
+import { Dashboard } from "../pages/Dashboard/index";
+import Login from "../pages/Login/index";
 
 export const MyRoutes = () => {
+  const token = localStorage.getItem("@token");
   return (
-    <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
+    <>
+      {token === null ? (
+        <Routes>
+          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="*" element={<Navigate to="/dashboard/:id" />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+        </Routes>
+      )}
+    </>
   );
 };
