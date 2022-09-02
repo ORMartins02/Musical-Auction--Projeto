@@ -74,6 +74,16 @@ export const Form = styled.form`
     font-size: 1rem;
     line-height: 1.625rem;
   }
+  textarea {
+    width: 90%;
+    resize: none;
+    height: 5rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    font-family: var(--font-inter);
+  }
   select {
     width: 90%;
     height: 2.8rem;
@@ -90,7 +100,10 @@ export const Form = styled.form`
     font-size: 1rem;
     line-height: 1.625rem;
   }
-
+  span {
+    color: red;
+    width: 90%;
+  }
   div {
     width: 90%;
     display: flex;

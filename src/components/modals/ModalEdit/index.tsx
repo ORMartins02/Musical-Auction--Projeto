@@ -14,7 +14,11 @@ export const ModalEditInstrument = ({
   instrument,
   setModalEdit,
 }: PropsModalEdit) => {
-  const { register, handleSubmit } = useForm<Instrument>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Instrument>({
     resolver: yupResolver(schemaModal),
   });
 
@@ -37,13 +41,14 @@ export const ModalEditInstrument = ({
             type="text"
             {...register("title")}
           />
+          <span>{errors.title?.message}</span>
           <label htmlFor="description">Descreva o instrumento</label>
-          <input
+          <textarea
             placeholder="Insira a descrição"
             id="description"
-            type="text"
             {...register("description")}
-          />
+          ></textarea>
+          <span>{errors.description?.message}</span>
           <label htmlFor="img">Imagem do instrumento</label>
           <input
             placeholder="Insira o link da imagem"
@@ -51,6 +56,7 @@ export const ModalEditInstrument = ({
             type="text"
             {...register("img")}
           />
+          <span>{errors.img?.message}</span>
           <label htmlFor="minPrice">Valor mínimo do lance</label>
           <input
             placeholder="Insira o valor mínimo"
@@ -58,6 +64,7 @@ export const ModalEditInstrument = ({
             type="number"
             {...register("minPrice")}
           />
+          <span>{errors.minPrice?.message}</span>
           <label htmlFor="category">Categoria do instrumento</label>
           <select {...register("category")} id="category">
             <option value="Teclas">Teclas</option>
