@@ -13,7 +13,7 @@ export const Product = ({
   const { handleGetInstruments } = useContext(UserContext);
 
   return (
-    <Li key={uuid()}>
+    <Li key={id}>
       <figure>
         <img src={img} alt="Imagem do {name}" />
       </figure>

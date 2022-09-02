@@ -15,7 +15,7 @@ export const ProductsContainer = () => {
         </>
       ) : (
         <ListProducts>
-          {instruments.map((elem) => {
+          {instruments.map((elem, index) => {
             return (
               <Product
                 id={elem.id}
