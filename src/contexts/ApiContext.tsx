@@ -1,7 +1,14 @@
-import { createContext, useState, ReactNode } from "react";
 import { SubmitHandler } from "react-hook-form";
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import { api } from "../services/api";
 
 interface UserProps {
   children: ReactNode;
@@ -40,9 +47,12 @@ export interface UserProviderData {
     name: string;
     age: number;
   };
+
   instrument: Instrument;
-  instruments: Instrument[];
   isModalEditOpen: boolean;
+  loading: boolean;
+  instruments: Instrument[];
+  setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
   handleLogin: (data: UserLogin) => void;
   handlePostInstrument: (data: Instrument) => void;
@@ -61,12 +71,30 @@ export const UserContext = createContext<UserProviderData>(
 
 export const UserProvider = ({ children }: UserProps) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [isModalEditOpen, setModalEdit] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
   );
+
+  const loadInstruments = async () => {
+    await api
+      .get("/userInstrument")
+      .then((response) => {
+        setInstruments(response.data);
+      })
+      .catch((error) => console.log(error))
+      .finally();
+  };
+
+  useEffect(() => {
+    setLoading(true);
+
+    setLoading(false);
+    loadInstruments();
+  }, []);
 
   const handleRegister = async ({
     email,
@@ -178,13 +206,16 @@ export const UserProvider = ({ children }: UserProps) => {
       })
       .then((response) => {});
   };
+
   return (
     <UserContext.Provider
       value={{
         instrument,
         setInstrument,
         instruments,
+        setInstruments,
         login,
+        loading,
         handleRegister,
         handleLogin,
         handlePostInstrument,

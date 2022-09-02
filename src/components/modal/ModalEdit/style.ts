@@ -16,7 +16,7 @@ export const Container = styled.div`
     min-width: 300px;
     width: 20%;
 
-    background: var(--color-grey-3);
+    background: var(--color-grey-0);
     box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     .containerTitleButton {
@@ -27,14 +27,14 @@ export const Container = styled.div`
       padding: 12px 20px;
       align-items: center;
       height: 50px;
-      background-color: var(--color-grey-2);
+      background-color: var(--color-grey-0);
       .titleTecnology {
         font-style: normal;
         font-weight: 700;
         font-size: 0.875rem;
         line-height: 1.5rem;
 
-        color: var(--color-grey-0);
+        color: var(--color-grey-4);
       }
       .crossButton {
         background-color: transparent;
@@ -54,18 +54,18 @@ export const Form = styled.form`
     width: 90%;
 
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 0.75rem;
-    color: var(--color-grey-0);
+    color: black;
   }
   input {
     width: 90%;
     height: 2.8rem;
     min-height: 1.5rem;
     padding-left: 1rem;
-    color: white;
+    color: black;
 
-    background-color: var(--color-grey-2);
+    background-color: var(--color-grey-0);
     border: 1.2182px solid #343b41;
     border-radius: 4px;
 
@@ -81,7 +81,7 @@ export const Form = styled.form`
     padding-left: 1rem;
 
     color: var(--color-grey-1);
-    background-color: var(--color-grey-2);
+    background-color: var(--color-grey-0);
     border: 1.2182px solid #343b41;
     border-radius: 4px;
 
@@ -97,32 +97,16 @@ export const Form = styled.form`
     justify-content: space-between;
 
     .buttonSave {
-      width: 60%;
+      width: 100%;
       height: 2.8rem;
       min-height: 1.5rem;
 
-      background: var(--color-primary-negative);
+      background: rgba(215, 84, 19, 1);
       color: var(--color-grey-0);
       border: 1.2182px solid #59323f;
       border-radius: 4px;
       &:hover {
-        background-color: var(--color-primary);
-        transition: 0.8s;
-      }
-    }
-
-    .buttonRemove {
-      width: 30%;
-      height: 2.8rem;
-      min-height: 1.5rem;
-
-      background: var(--color-grey-1);
-      color: var(--color-grey-0);
-      border: 1.2182px solid var(--color-grey-1);
-      border-radius: 4px;
-      &:hover {
-        border: var(--color-grey-4);
-        background-color: var(--color-grey-4);
+        background-color: rgba(215, 84, 19, 0.7);
         transition: 0.8s;
       }
     }

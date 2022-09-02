@@ -6,7 +6,7 @@ import { ModalTest } from "../pages/Modal";
 export const MyRoutes = () => {
   return (
     <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/:id" element={<Dashboard />} />
 
       <Route path="/modal" element={<ModalTest />} />
 
