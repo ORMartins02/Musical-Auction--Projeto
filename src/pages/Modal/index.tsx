@@ -1,7 +1,7 @@
 import { ContainerTest } from "./style";
 import { UserContext } from "../../contexts/ApiContext";
 import { useContext, useEffect } from "react";
-import { ModalEditInstrument } from "../../components/modal/ModalEdit";
+import { ModalEditInstrument } from "../../components/modals/ModalEdit";
 export const ModalTest = () => {
   const { isModalEditOpen, setModalEdit, instrument, setInstrument } =
     useContext(UserContext);
