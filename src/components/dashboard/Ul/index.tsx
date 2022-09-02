@@ -1,6 +1,0 @@
-export const Ul = () =>{
-    return(
-        <>
-        </>
-    )
-}

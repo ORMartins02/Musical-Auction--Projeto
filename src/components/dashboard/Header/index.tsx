@@ -4,7 +4,11 @@ import { Container } from "./style";
 import userImg from "../../../img/usuario-teste.svg";
 import { Nav } from "./Nav";
 
+
 export const Header = () => {
+
+
+
   return (
     <Container>
       <div className="infHeader">
