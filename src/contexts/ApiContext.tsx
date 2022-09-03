@@ -1,17 +1,25 @@
-import { createContext, useState, ReactNode } from "react";
 import { SubmitHandler } from "react-hook-form";
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import { api } from "../services/api";
 
 interface UserProps {
   children: ReactNode;
 }
 
-interface User {
+export interface User {
   id: string;
   email: string;
   password: string;
   name: string;
+  userImg: string;
   ageOfBirth: string;
   contact: string;
   address: string;
@@ -22,7 +30,7 @@ export interface UserLogin {
   password: string;
 }
 
-interface Instrument {
+export interface Instrument {
   title: string;
   description: string;
   category: string;
@@ -39,7 +47,9 @@ export interface UserProviderData {
     name: string;
     age: number;
   };
+  loading: boolean;
   instruments: Instrument[];
+  setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
   handleLogin: (data: UserLogin) => void;
   handlePostInstrument: (data: Instrument) => void;
@@ -58,6 +68,7 @@ export const UserContext = createContext<UserProviderData>(
 
 export const UserProvider = ({ children }: UserProps) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [login, setLogin] = useState<UserProviderData["login"]>(
@@ -65,10 +76,28 @@ export const UserProvider = ({ children }: UserProps) => {
   );
   const [userFilt, setUserFilt] = useState<string>("products");
 
+  const loadInstruments = async () => {
+    await api
+      .get("/userInstrument")
+      .then((response) => {
+        setInstruments(response.data);
+      })
+      .catch((error) => console.log(error))
+      .finally();
+  };
+
+  useEffect(() => {
+    setLoading(true);
+
+    setLoading(false);
+    loadInstruments();
+  }, []);
+
   const handleRegister = async ({
     email,
     password,
     name,
+    userImg,
     ageOfBirth,
     contact,
     address,
@@ -77,6 +106,7 @@ export const UserProvider = ({ children }: UserProps) => {
       email,
       password,
       name,
+      userImg,
       ageOfBirth,
       contact,
       address,
@@ -86,7 +116,7 @@ export const UserProvider = ({ children }: UserProps) => {
       .post("register", newData)
       .then((response) => {
         if (response.status === 201) {
-          //   return navigate("/");
+          return navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -101,6 +131,7 @@ export const UserProvider = ({ children }: UserProps) => {
           window.localStorage.setItem("@token", response.data.accessToken);
           window.localStorage.setItem("@userId", response.data.user.id);
           // navigate(`/Dashboard/${response.data.user.id}`);
+          window.location.reload();
         }
       })
       .catch((err) => console.log(err));
@@ -173,11 +204,14 @@ export const UserProvider = ({ children }: UserProps) => {
       })
       .then((response) => {});
   };
+
   return (
     <UserContext.Provider
       value={{
         instruments,
+        setInstruments,
         login,
+        loading,
         handleRegister,
         handleLogin,
         handlePostInstrument,

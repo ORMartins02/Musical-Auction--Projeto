@@ -1,59 +1,8 @@
 import styled from "styled-components";
-import Musical from "../../img/musical.svg";
-
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: rgb(248 249 250 / 91%);
-
-  @media (min-width: 767px) {
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: 100vh;
-    width: 100vw;
-  }
-`;
-
-export const ContainerHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-image: url(${Musical});
-  background-repeat: no-repeat;
-  height: 40vh;
-  width: 100%;
-  background-color: white;
-  position: relative;
-  text-align: center;
-  img {
-    width: 100vw;
-    height: 40vh;
-  }
-  p {
-    margin-top: -40px;
-    bottom: 10px;
-  }
-  @media (min-width: 767px) {
-    width: 30vw;
-    height: 100vh;
-    justify-content: space-between;
-  }
-  img {
-    width: 32vw;
-    height: 42vh;
-  }
-`;
-
-export const ContainerForm = styled.form`
+export const ContainerLogin = styled.div`
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 60vh;
   max-width: 300px;
   margin: auto;
   color: white;
@@ -129,12 +78,14 @@ export const ContainerForm = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    color: yellow;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-right: 26px;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    a {
+      font-size: 16px;
+      color: yellow;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-right: 26px;
+      text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    }
   }
   @media (min-width: 767px) {
     justify-content: center;
@@ -155,7 +106,7 @@ export const ContainerForm = styled.form`
     }
     button {
       margin-top: 40px;
-      width: 180px;
+      width: 90%;
     }
     .p-login {
       display: flex;

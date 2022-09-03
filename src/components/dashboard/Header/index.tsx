@@ -3,8 +3,17 @@ import { ImExit } from "react-icons/im";
 import { Container } from "./style";
 import userImg from "../../../img/usuario-teste.svg";
 import { Nav } from "./Nav";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const logoutbtn = () => {
+    localStorage.removeItem("@token");
+    localStorage.removeItem("@userId");
+    // navigate("/");
+    window.location.reload();
+  };
+
   return (
     <Container>
       <div className="infHeader">
@@ -19,7 +28,7 @@ export const Header = () => {
             </p>
           </div>
         </div>
-        <button className="logout">
+        <button onClick={logoutbtn} className="logout">
           <ImExit />
         </button>
       </div>
