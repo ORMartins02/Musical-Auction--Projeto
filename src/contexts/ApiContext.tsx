@@ -48,6 +48,8 @@ export interface UserProviderData {
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
+  userFilt: string;
+  setUserFilt: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -61,6 +63,7 @@ export const UserProvider = ({ children }: UserProps) => {
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
   );
+  const [userFilt, setUserFilt] = useState<string>("products");
 
   const handleRegister = async ({
     email,
@@ -183,6 +186,8 @@ export const UserProvider = ({ children }: UserProps) => {
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
+        userFilt,
+        setUserFilt,
       }}
     >
       {children}
