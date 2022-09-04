@@ -3,7 +3,6 @@ import { Register } from "../pages/Register";
 import { Dashboard } from "../pages/Dashboard/index";
 import Login from "../pages/Login/index";
 import { User } from "../pages/User";
-
 export const MyRoutes = () => {
   const token = localStorage.getItem("@token");
   return (

@@ -1,6 +1,6 @@
 import musicalAmarel from "../../img/Amarel1.svg";
 import { Form } from "../../components/register/Form";
-import { Container, ContainerHeader } from "./style";
+import { Container } from "./style";
 import { HeaderRegister } from "../../components/register/Header";
 
 export const Register = () => {

@@ -7,12 +7,8 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/ApiContext";
 
 export const Header = () => {
-  const { navigate } = useContext(UserContext);
-  const logoutbtn = () => {
-    localStorage.removeItem("@token");
-    localStorage.removeItem("@userId");
-    window.location.reload();
-  };
+  const { navigate, logoutBtn } = useContext(UserContext);
+  
 
   return (
     <Container>
@@ -30,7 +26,7 @@ export const Header = () => {
             </p>
           </div>
         </div>
-        <button onClick={logoutbtn} className="logout">
+        <button onClick={logoutBtn} className="logout">
           <ImExit />
         </button>
       </div>
