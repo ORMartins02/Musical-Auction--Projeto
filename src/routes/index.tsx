@@ -12,12 +12,12 @@ export const MyRoutes = () => {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/modal" element={<ModalTest />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="*" element={<Navigate to="/dashboard" />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/modal" element={<ModalTest />} />
         </Routes>
       )}
     </>
