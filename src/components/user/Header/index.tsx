@@ -3,6 +3,7 @@ import { ImExit } from "react-icons/im";
 import { Container } from "./style";
 import userImg from "../../../img/usuario-teste.svg";
 export const UserHeader = () => {
+  
   return (
     <Container>
       <div className="infHeader">

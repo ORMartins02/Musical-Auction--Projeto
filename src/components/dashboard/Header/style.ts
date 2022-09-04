@@ -24,6 +24,10 @@ export const Container = styled.header`
     justify-content: space-between;
     align-items: center;
   }
+  .btnHeader{
+    border-radius: 50%;
+    background-color: transparent;
+  }
   .figure {
     img {
       border-radius: 50%;

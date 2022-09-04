@@ -18,9 +18,9 @@ export const MyRoutes = () => {
         <Routes>
           <Route path="*" element={<Navigate to="/dashboard/:id" />} />
           <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       )}
-      <Route path="/user" element={<User />} />
     </>
   );
 };

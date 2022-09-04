@@ -7,7 +7,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
 interface UserProps {
@@ -60,6 +60,7 @@ export interface UserProviderData {
   handleEditInstrument: (data: Instrument) => void;
   userFilt: string;
   setUserFilt: React.Dispatch<React.SetStateAction<string>>;
+  navigate: NavigateFunction;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -75,6 +76,7 @@ export const UserProvider = ({ children }: UserProps) => {
     {} as UserProviderData["login"]
   );
   const [userFilt, setUserFilt] = useState<string>("products");
+  const [user, setUser] = useState();
 
   const loadInstruments = async () => {
     await api
@@ -205,6 +207,7 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {});
   };
 
+
   return (
     <UserContext.Provider
       value={{
@@ -222,6 +225,7 @@ export const UserProvider = ({ children }: UserProps) => {
         handleEditInstrument,
         userFilt,
         setUserFilt,
+        navigate
       }}
     >
       {children}

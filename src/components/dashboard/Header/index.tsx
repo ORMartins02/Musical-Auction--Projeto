@@ -3,14 +3,14 @@ import { ImExit } from "react-icons/im";
 import { Container } from "./style";
 import userImg from "../../../img/usuario-teste.svg";
 import { Nav } from "./Nav";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/ApiContext";
 
 export const Header = () => {
-  const navigate = useNavigate();
+  const { navigate } = useContext(UserContext);
   const logoutbtn = () => {
     localStorage.removeItem("@token");
     localStorage.removeItem("@userId");
-    // navigate("/");
     window.location.reload();
   };
 
@@ -18,9 +18,11 @@ export const Header = () => {
     <Container>
       <div className="infHeader">
         <div className="infUser">
-          <figure className="figure">
-            <img src={userImg} alt="" />
-          </figure>
+          <button className="btnHeader" onClick={()=> navigate("/user")}>
+            <figure className="figure">
+              <img src={userImg} alt="" />
+            </figure>
+          </button>
           <div>
             <h2 className="userName">Kenzinho Junior</h2>
             <p className="userLoc">
