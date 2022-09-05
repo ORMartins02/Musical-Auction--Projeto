@@ -11,11 +11,12 @@ export const UserNav = () => {
     setModalAdd,
     instrument,
     setInstrument,
+    userId
   } = useContext(UserContext);
 
   return (
     <StNav>
-      <button onClick={() => navigate("/dashboard")}>Home</button>
+      <button onClick={() => navigate(`/dashboard/:${userId}`)}>Home</button>
       <button onClick={() => setModalEdit(!isModalEditOpen)}>Editar Perfil</button>
       <button onClick={() => setModalAdd(!isModalAddOpen)} >Cadastrar produto</button>
       <button className="filter" onClick={() => setUserFilt("products")}>

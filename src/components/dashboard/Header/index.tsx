@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/ApiContext";
 
 export const Header = () => {
-  const { navigate, logoutBtn } = useContext(UserContext);
+  const { navigate, logoutBtn} = useContext(UserContext);
   
 
   return (

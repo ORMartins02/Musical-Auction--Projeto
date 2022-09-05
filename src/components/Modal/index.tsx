@@ -3,7 +3,7 @@ import { UserContext } from "../../contexts/ApiContext";
 import { useContext } from "react";
 import { ModalEditInstrument } from "../modals/ModalEdit";
 import { ModalPostInstrument } from "../modals/ModalPostProduct";
-export const ModalTest = ({children}: any) => {
+export const ModalTest = ({children}:any) => {
   const {
     isModalEditOpen,
     setModalEdit,

@@ -44,6 +44,7 @@ export interface Instrument {
 
 export interface UserProviderData {
   login: {
+    userImg: string | undefined;
     name: string;
     age: number;
   };
@@ -55,10 +56,10 @@ export interface UserProviderData {
   instruments: Instrument[];
   setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
-  handleLogin: (data: UserLogin) => void;
+  handleLogin: (data: UserLogin) => Promise<void>;
   handlePostInstrument: (data: Instrument) => void;
   handleGetInstruments: () => void;
-  handleGetUserById: () => void;
+  checkToken: () => void;
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
@@ -69,13 +70,38 @@ export interface UserProviderData {
   setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
   setInstrument: React.Dispatch<React.SetStateAction<Instrument>>;
   logoutBtn: () => void;
+  token: string | null;
+  userId: string | null;
+}
+
+interface IChildrenProps {
+  children: ReactNode;
 }
 
 export const UserContext = createContext<UserProviderData>(
   {} as UserProviderData
 );
 
-export const UserProvider = ({ children }: UserProps) => {
+interface bids {
+  id: string;
+  title: string;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+interface IUser {
+  email: string;
+  name: string;
+  ageOfBirth: string;
+  contact: string;
+  address: string;
+  userImg: string;
+  bids: bids[];
+  id: number;
+}
+
+export const UserProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
@@ -86,7 +112,8 @@ export const UserProvider = ({ children }: UserProps) => {
     {} as UserProviderData["login"]
   );
   const [userFilt, setUserFilt] = useState<string>("products");
-  const [user, setUser] = useState();
+  const token = localStorage.getItem("@token");
+  const userId = localStorage.getItem("@userId");
 
   const loadInstruments = async () => {
     await api
@@ -138,11 +165,10 @@ export const UserProvider = ({ children }: UserProps) => {
     await api
       .post("login", data)
       .then((response) => {
-        setLogin(response.data.user);
         window.localStorage.setItem("@token", response.data.accessToken);
         window.localStorage.setItem("@userId", response.data.user.id);
-        // navigate(`/Dashboard/${response.data.user.id}`);
-        window.location.reload();
+        setLogin(response.data.user);
+        navigate(`/dashboard/:${response.data.user.id}`, { replace: true });
       })
       .catch((err) => console.log(err));
   };
@@ -165,19 +191,18 @@ export const UserProvider = ({ children }: UserProps) => {
     });
   };
 
-  const handleGetUserById = () => {
-    const userId = localStorage.getItem("@userId");
-    const token = localStorage.getItem("@token");
-    api
-      .get<{ name: string; address: string }>(`users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        const userData = {
-          name: response.data.name,
-          address: response.data.address,
-        };
-      });
+  const checkToken = async () => {
+    if (token) {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const  data  = await api.get(`users/${userId}`);
+      if(data.status === 200){
+        setLogin(data.data)
+      }else {
+        navigate("/login");
+      }
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleGetUserInstruments = () => {
@@ -215,9 +240,8 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {});
   };
   const logoutBtn = () => {
-    localStorage.removeItem("@token");
-    localStorage.removeItem("@userId");
-    window.location.reload();
+    localStorage.clear();
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -235,7 +259,7 @@ export const UserProvider = ({ children }: UserProps) => {
         handleLogin,
         handlePostInstrument,
         handleGetInstruments,
-        handleGetUserById,
+        checkToken,
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
@@ -245,6 +269,8 @@ export const UserProvider = ({ children }: UserProps) => {
         setModalEdit,
         isModalEditOpen,
         logoutBtn,
+        token,
+        userId,
       }}
     >
       {children}
