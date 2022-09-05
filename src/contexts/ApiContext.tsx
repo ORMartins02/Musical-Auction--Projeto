@@ -33,6 +33,7 @@ export interface Instrument {
   category: string;
   minPrice: number;
   img: string;
+  minBid: number;
   currentBid?: number;
   bidUserId?: null;
   userId?: number;
@@ -190,9 +191,13 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const handlePostInstrument = (data: Instrument) => {
     const token = localStorage.getItem("@token");
     api
-      .post("userInstrument", data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post(
+        "userInstrument",
+        { ...data, currentBid: 0, userId: userId },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((response) => {
         console.log("instrumento criado");
       })

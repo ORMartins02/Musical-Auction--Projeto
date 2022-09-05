@@ -20,6 +20,7 @@ export const ProductsContainer = () => {
             return (
               <Product
                 key={uuid()}
+                minBid={elem.minBid}
                 id={elem.id}
                 title={elem.title}
                 description={elem.description}
