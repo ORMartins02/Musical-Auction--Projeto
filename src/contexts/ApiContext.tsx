@@ -129,6 +129,23 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     loadInstruments();
   }, []);
 
+  useEffect(() => {
+    const checkToken = async () => {
+      if (token) {
+        api.defaults.headers.common.authorization = `Bearer ${token}`;
+        const data = await api.get(`users/${userId}`);
+        if (data.status === 200) {
+          setLogin(data.data);
+        } else {
+          navigate("/login");
+        }
+      } else {
+        navigate("/login");
+      }
+    };
+    checkToken();
+  }, []);
+
   const handleRegister = async ({
     email,
     password,
@@ -187,24 +204,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       setInstruments(response.data);
     });
   };
-
-  useEffect(() => {
-    const checkToken = async () => {
-      console.log("oi");
-      if (token) {
-        api.defaults.headers.common.authorization = `Bearer ${token}`;
-        const data = await api.get(`users/${userId}`);
-        if (data.status === 200) {
-          setLogin(data.data);
-        } else {
-          navigate("/login");
-        }
-      } else {
-        navigate("/login");
-      }
-    };
-    checkToken();
-  }, []);
 
   const handleGetUserInstruments = () => {
     const userId = localStorage.getItem("@userId");
