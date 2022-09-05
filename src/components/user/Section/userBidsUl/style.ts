@@ -4,7 +4,6 @@ export const StUlBids = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 80%;
   padding: 1rem;
   
   .product {
@@ -61,6 +60,7 @@ export const StUlBids = styled.ul`
     overflow: auto;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 100%;
     width: 80%;
     .product{
       flex-direction: column;

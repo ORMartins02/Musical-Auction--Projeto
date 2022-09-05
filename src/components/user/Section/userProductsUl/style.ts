@@ -4,11 +4,11 @@ export const StUlProd = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 80%;
   padding: 1rem;
+  width: 100vw;
   
   .product {
-    width: 90%;
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;

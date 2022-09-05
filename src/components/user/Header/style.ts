@@ -24,6 +24,8 @@ export const Container = styled.header`
   }
   .figure {
     img {
+      width: 5rem;
+      height: 5rem;
       border-radius: 50%;
       border: 2px solid rgba(215, 84, 19, 1);
     }
