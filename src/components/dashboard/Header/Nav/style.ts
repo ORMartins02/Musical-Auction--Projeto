@@ -10,9 +10,9 @@ export const StNav = styled.nav`
     justify-content: space-between;
     align-items: center;
     height: 2.5rem;
-    border: 2px solid rgba(215, 84, 19, 1);
+    border: 2px solid var(--color-primary);
 
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--color-white);
     border-radius: 4px;
   }
   .input {
@@ -26,7 +26,7 @@ export const StNav = styled.nav`
     width: 10%;
     background-color: transparent;
     border-radius: 25px;
-    color: rgba(215, 84, 19, 1);
+    color: var(--color-primary);
     padding-right: 10px;
   }
   .filter {
@@ -35,13 +35,13 @@ export const StNav = styled.nav`
     button {
       display: flex;
       align-items: center;
-      background-color: rgba(215, 84, 19, 1);
+      background-color: var(--color-primary);
       border-radius: 50%;
       font-weight: 700;
       padding: 15px;
       font-size: 20px;
       color: white;
-      box-shadow: rgba(61, 61, 61, 1) 0.2em 0.2em 0.3em;
+      box-shadow: var(--color-grey-4) 0.2em 0.2em 0.3em;
     }
   }
   @media (min-width: 768px) {

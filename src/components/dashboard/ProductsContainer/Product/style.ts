@@ -9,7 +9,7 @@ export const Li = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--color-grey-0);
   border-radius: 12px;
   margin-left: 30px;
   margin-right: 30px;
@@ -21,7 +21,7 @@ export const Li = styled.li`
   figure {
     width: 95%;
     height: 255px;
-    border: 5px solid rgba(215, 84, 19, 1);
+    border: 5px solid var(--color-primary);
     overflow: hidden;
     border-radius: 12px;
     margin-top: 8px;
@@ -33,7 +33,7 @@ export const Li = styled.li`
     object-fit: cover;
     display: flex;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: var(--color-grey-1);
   }
 
   div {
@@ -82,8 +82,8 @@ export const Button = styled.button`
   height: 2.7rem;
   cursor: pointer;
   font-family: "Inter", sans-serif;
-  background-color: rgba(215, 84, 19, 1);
-  color: #ffffff;
-  border: 1px solid rgba(61, 61, 61, 1);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-grey-4);
   border-radius: 8px;
 `;
