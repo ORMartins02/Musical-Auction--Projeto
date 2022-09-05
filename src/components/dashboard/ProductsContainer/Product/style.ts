@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Li = styled.li`
-  font-family: "Inter", sans-serif;
   min-width: 200px;
   min-height: 150px;
   width: 265px;
@@ -28,9 +27,9 @@ export const Li = styled.li`
   }
 
   img {
-    width: 150%;
+    width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: scale-down;
     display: flex;
     align-items: center;
     background-color: #f5f5f5;
@@ -48,13 +47,27 @@ export const Li = styled.li`
     align-items: flex-start;
   }
 
+  .divPrice {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 14;
+  }
+
+  .divMinPrice .divCurrentBid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .currentBid {
+    color: rgb(168, 0, 0);
+  }
+
   h2 {
     font-weight: 700;
     font-size: 20px;
-    margin-top: -10px;
   }
 
-  span {
+  .description {
     text-align: left;
     width: 100%;
     height: 28px;
@@ -63,10 +76,22 @@ export const Li = styled.li`
     font-size: 12px;
   }
 
+  .pBid {
+    margin-bottom: -14px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 12px;
+  }
+
   p {
+    width: 90%;
     color: black;
     font-weight: 800;
     font-size: 14px;
+    margin: 5px 0px;
+    text-align: left;
   }
 
   @media (max-width: 850px) {

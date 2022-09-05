@@ -9,6 +9,10 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
+import {
+  toastFailBidRegister,
+  toastSuccesBid,
+} from "../components/toasts/toasts";
 
 interface UserProps {
   children: ReactNode;
@@ -36,10 +40,10 @@ export interface Instrument {
   category: string;
   minPrice: number;
   img: string;
-  currentBid?: number;
-  bidUserId?: null;
-  userId?: number;
-  id?: number;
+  currentBid: number;
+  bidUserId: null;
+  userId: number;
+  id: number;
 }
 
 export interface UserProviderData {
@@ -48,12 +52,16 @@ export interface UserProviderData {
     age: number;
   };
   loading: boolean;
+  modalBid: boolean;
+  setModalBid: React.Dispatch<React.SetStateAction<boolean>>;
+  instrument: Instrument;
   instruments: Instrument[];
   setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
   handleLogin: (data: UserLogin) => void;
   handlePostInstrument: (data: Instrument) => void;
-  handleGetInstruments: () => void;
+  handleGetInstrument: (data: number) => void;
+  handleBidInstrument: (data: Instrument) => void;
   handleGetUserById: () => void;
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
@@ -67,6 +75,7 @@ export const UserContext = createContext<UserProviderData>(
 export const UserProvider = ({ children }: UserProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [modalBid, setModalBid] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [login, setLogin] = useState<UserProviderData["login"]>(
@@ -85,9 +94,8 @@ export const UserProvider = ({ children }: UserProps) => {
 
   useEffect(() => {
     setLoading(true);
-
-    setLoading(false);
     loadInstruments();
+    setLoading(false);
   }, []);
 
   const handleRegister = async ({
@@ -146,9 +154,10 @@ export const UserProvider = ({ children }: UserProps) => {
       .catch((err) => console.warn(err));
   };
 
-  const handleGetInstruments = () => {
-    api.get("userInstrument").then((response) => {
-      setInstruments(response.data);
+  const handleGetInstrument = (data: number) => {
+    api.get(`userInstrument/${data}`).then((response) => {
+      setInstrument(response.data);
+      setModalBid(true);
     });
   };
 
@@ -202,21 +211,59 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {});
   };
 
+  const handleBidInstrument = (data: Instrument) => {
+    const token = localStorage.getItem("@token");
+    const userId = localStorage.getItem("@userId");
+    const { title, description, category, minPrice, img, currentBid } =
+      instrument;
+    const newdata = {
+      title: title,
+      description: description,
+      category: category,
+      minPrice: minPrice,
+      currentBid: data.currentBid,
+      bidUserId: userId,
+      img: img,
+    };
+
+    if (data.currentBid < currentBid + 200) {
+      toastFailBidRegister();
+    } else {
+      api
+        .patch(`userInstrument/${instrument.id}`, newdata, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          console.log(response);
+          console.log(newdata);
+          toastSuccesBid();
+          setModalBid(false);
+          loadInstruments();
+        })
+        .catch((response) => console.log(response))
+        .finally();
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
-        instruments,
-        setInstruments,
         login,
         loading,
-        handleRegister,
+        modalBid,
+        instrument,
+        instruments,
         handleLogin,
-        handlePostInstrument,
-        handleGetInstruments,
+        setModalBid,
+        setInstruments,
+        handleRegister,
         handleGetUserById,
-        handleGetUserInstruments,
-        handleDeleteInstrument,
+        handleBidInstrument,
+        handleGetInstrument,
         handleEditInstrument,
+        handlePostInstrument,
+        handleDeleteInstrument,
+        handleGetUserInstruments,
       }}
     >
       {children}
