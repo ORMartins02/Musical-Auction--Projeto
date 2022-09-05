@@ -1,14 +1,9 @@
-import { useContext } from "react"
-import { UserPage } from "../../components/user"
-import { UserContext } from "../../contexts/ApiContext"
-
+import { UserPage } from "../../components/user";
 
 export const User = () => {
-  const {checkToken} = useContext(UserContext)
-  checkToken()
-  return(
+  return (
     <>
-    < UserPage/>
+      <UserPage />
     </>
-  )
-}
+  );
+};

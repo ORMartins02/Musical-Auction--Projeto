@@ -10,10 +10,6 @@ import {
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
-interface UserProps {
-  children: ReactNode;
-}
-
 export interface User {
   id: string;
   email: string;
@@ -23,6 +19,7 @@ export interface User {
   ageOfBirth: string;
   contact: string;
   address: string;
+  bids?: [];
 }
 
 export interface UserLogin {
@@ -59,7 +56,7 @@ export interface UserProviderData {
   handleLogin: (data: UserLogin) => Promise<void>;
   handlePostInstrument: (data: Instrument) => void;
   handleGetInstruments: () => void;
-  checkToken: () => void;
+
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
@@ -74,7 +71,7 @@ export interface UserProviderData {
   userId: string | null;
 }
 
-interface IChildrenProps {
+export interface IChildrenProps {
   children: ReactNode;
 }
 
@@ -82,24 +79,24 @@ export const UserContext = createContext<UserProviderData>(
   {} as UserProviderData
 );
 
-interface bids {
-  id: string;
-  title: string;
-  status: string;
-  created_at: Date;
-  updated_at: Date;
-}
+// interface bids {
+//   id: string;
+//   title: string;
+//   status: string;
+//   created_at: Date;
+//   updated_at: Date;
+// }
 
-interface IUser {
-  email: string;
-  name: string;
-  ageOfBirth: string;
-  contact: string;
-  address: string;
-  userImg: string;
-  bids: bids[];
-  id: number;
-}
+// interface IUser {
+//   email: string;
+//   name: string;
+//   ageOfBirth: string;
+//   contact: string;
+//   address: string;
+//   userImg: string;
+//   bids: bids[];
+//   id: number;
+// }
 
 export const UserProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
@@ -191,19 +188,23 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     });
   };
 
-  const checkToken = async () => {
-    if (token) {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const  data  = await api.get(`users/${userId}`);
-      if(data.status === 200){
-        setLogin(data.data)
-      }else {
+  useEffect(() => {
+    const checkToken = async () => {
+      console.log("oi");
+      if (token) {
+        api.defaults.headers.common.authorization = `Bearer ${token}`;
+        const data = await api.get(`users/${userId}`);
+        if (data.status === 200) {
+          setLogin(data.data);
+        } else {
+          navigate("/login");
+        }
+      } else {
         navigate("/login");
       }
-    } else {
-      navigate("/login");
-    }
-  };
+    };
+    checkToken();
+  }, []);
 
   const handleGetUserInstruments = () => {
     const userId = localStorage.getItem("@userId");
@@ -259,7 +260,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleLogin,
         handlePostInstrument,
         handleGetInstruments,
-        checkToken,
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
