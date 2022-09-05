@@ -11,24 +11,22 @@ export const ProductsContainer = () => {
     <StyledProductsContainer>
       {loading ? (
         <p id="loading">Carregando os melhores instrumentos...</p>
-      ) : instruments.length === 0 ? (
-        <>
-          <h2>Produto não encontrado.</h2>
-        </>
       ) : (
         <ListProducts>
           {instruments.map((elem) => {
             return (
               <Product
+                key={elem.id}
                 id={elem.id}
                 title={elem.title}
                 description={elem.description}
                 category={elem.category}
                 minPrice={elem.minPrice}
                 img={elem.img}
-                currentBid={0}
-                bidUserId={null}
-                userId={0}
+                currentBid={elem.currentBid}
+                bidUserId={elem.bidUserId}
+                userId={elem.userId}
+                minBid={elem.minBid}
               />
             );
           })}

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Li = styled.li`
-  min-width: 200px;
+  min-width: 180px;
   min-height: 150px;
   width: 265px;
-  height: 400px;
+  height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ export const Li = styled.li`
 
   figure {
     width: 95%;
-    height: 255px;
+    height: 230px;
     border: 5px solid rgba(215, 84, 19, 1);
     overflow: hidden;
     border-radius: 12px;
@@ -50,6 +50,8 @@ export const Li = styled.li`
   .divPrice {
     display: flex;
     flex-direction: row;
+    margin-top: -5px;
+    margin-left: -5px;
     margin-bottom: 14;
   }
 
@@ -102,6 +104,7 @@ export const Li = styled.li`
 
 export const Button = styled.button`
   margin-left: 10px;
+  margin-bottom: 6px;
   font-size: 14px;
   width: 90%;
   height: 2.7rem;

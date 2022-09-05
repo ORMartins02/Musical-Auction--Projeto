@@ -44,8 +44,8 @@ export const toastSuccesRegister = () =>
     },
   });
 
-export const toastSuccesTechRegister = () =>
-  toast.success("Tecnologia adicionada com sucesso!", {
+export const toastSuccesInstrumentRegister = () =>
+  toast.success("Instrumento adicionado com sucesso!", {
     duration: 4000,
     position: "top-center",
 
@@ -66,7 +66,7 @@ export const toastSuccesTechRegister = () =>
     },
   });
 
-export const toastSuccesTechRmv = () =>
+export const toastSuccesInstrumentRmv = () =>
   toast.success("Tecnologia removida com sucesso!", {
     duration: 4000,
     position: "top-center",

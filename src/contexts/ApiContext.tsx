@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SubmitHandler } from "react-hook-form";
 import {
   createContext,
@@ -12,6 +13,10 @@ import { api } from "../services/api";
 import {
   toastFailBidRegister,
   toastSuccesBid,
+  toastSuccesLogin,
+  toastSuccesRegister,
+  toastSuccesInstrumentRegister,
+  toastFail,
 } from "../components/toasts/toasts";
 
 interface UserProps {
@@ -34,6 +39,10 @@ export interface UserLogin {
   password: string;
 }
 
+interface currentBid {
+  currentBid: number;
+}
+
 export interface Instrument {
   title: string;
   description: string;
@@ -41,6 +50,7 @@ export interface Instrument {
   minPrice: number;
   img: string;
   currentBid: number;
+  minBid: number;
   bidUserId: null;
   userId: number;
   id: number;
@@ -61,7 +71,7 @@ export interface UserProviderData {
   handleLogin: (data: UserLogin) => void;
   handlePostInstrument: (data: Instrument) => void;
   handleGetInstrument: (data: number) => void;
-  handleBidInstrument: (data: Instrument) => void;
+  handleBidInstrument: (data: currentBid) => void;
   handleGetUserById: () => void;
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
@@ -123,8 +133,12 @@ export const UserProvider = ({ children }: UserProps) => {
         if (response.status === 201) {
           return navigate("/");
         }
+        toastSuccesRegister();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toastSuccesRegister();
+      });
   };
 
   const handleLogin: SubmitHandler<UserLogin> = (data) => {
@@ -137,9 +151,13 @@ export const UserProvider = ({ children }: UserProps) => {
           window.localStorage.setItem("@userId", response.data.user.id);
           // navigate(`/Dashboard/${response.data.user.id}`);
           window.location.reload();
+          toastSuccesLogin();
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toastFail();
+      });
   };
 
   const handlePostInstrument = (data: Instrument) => {
@@ -151,7 +169,10 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {
         console.log("instrumento criado");
       })
-      .catch((err) => console.warn(err));
+      .catch((err) => {
+        console.warn(err);
+        toastFail();
+      });
   };
 
   const handleGetInstrument = (data: number) => {
@@ -211,33 +232,35 @@ export const UserProvider = ({ children }: UserProps) => {
       .then((response) => {});
   };
 
-  const handleBidInstrument = (data: Instrument) => {
+  const handleBidInstrument = (data: currentBid) => {
+    console.log(data);
+
     const token = localStorage.getItem("@token");
     const userId = localStorage.getItem("@userId");
-    const { title, description, category, minPrice, img, currentBid } =
+    const { title, description, category, minPrice, img, minBid, currentBid } =
       instrument;
-    const newdata = {
+    const newData = {
       title: title,
       description: description,
       category: category,
       minPrice: minPrice,
       currentBid: data.currentBid,
+
       bidUserId: userId,
       img: img,
     };
 
-    if (data.currentBid < currentBid + 200) {
+    if (newData.currentBid < currentBid + minBid) {
       toastFailBidRegister();
     } else {
       api
-        .patch(`userInstrument/${instrument.id}`, newdata, {
+        .patch(`userInstrument/${instrument.id}`, newData, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response);
-          console.log(newdata);
           toastSuccesBid();
           setModalBid(false);
+
           loadInstruments();
         })
         .catch((response) => console.log(response))
