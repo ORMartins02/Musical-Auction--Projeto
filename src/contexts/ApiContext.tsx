@@ -36,7 +36,7 @@ export interface Instrument {
   currentBid?: number;
   bidUserId?: null;
   userId?: number;
-  id?: number;
+  id: number;
 }
 
 export interface UserProviderData {
@@ -44,6 +44,7 @@ export interface UserProviderData {
     userImg: string | undefined;
     name: string;
     age: number;
+    bids: Instrument[];
   };
 
   instrument: Instrument;
@@ -56,9 +57,6 @@ export interface UserProviderData {
   handleLogin: (data: UserLogin) => Promise<void>;
   handlePostInstrument: (data: Instrument) => void;
   handleGetInstruments: () => void;
-
-  handleGetUserInstruments: () => void;
-  handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
   userFilt: string;
   setUserFilt: React.Dispatch<React.SetStateAction<string>>;
@@ -69,6 +67,8 @@ export interface UserProviderData {
   logoutBtn: () => void;
   token: string | null;
   userId: string | null;
+  userInst: Instrument[] | undefined;
+  handleDeleteInstrument: (id: number) => void;
 }
 
 export interface IChildrenProps {
@@ -109,6 +109,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     {} as UserProviderData["login"]
   );
   const [userFilt, setUserFilt] = useState<string>("products");
+  const [userInst, setUserInst] = useState<Instrument[]>();
   const token = localStorage.getItem("@token");
   const userId = localStorage.getItem("@userId");
 
@@ -188,11 +189,9 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   };
 
   const handlePostInstrument = (data: Instrument) => {
-    const token = localStorage.getItem("@token");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     api
-      .post("userInstrument", data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post("userInstrument", data)
       .then((response) => {
         console.log("instrumento criado");
       })
@@ -205,34 +204,24 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     });
   };
 
-  const handleGetUserInstruments = () => {
-    const userId = localStorage.getItem("@userId");
-    api
-      .get<{ title: string; description: string; minPrice: number }>(
-        `userInstrument?userId=${userId}`
-      )
-      .then((response) => {
-        const userInstrument = {
-          title: response.data.title,
-          description: response.data.description,
-          minPrice: response.data.minPrice,
-        };
+  useEffect(() => {
+    const handleGetUserInstruments = () => {
+      const userId = localStorage.getItem("@userId");
+      api.get(`userInstrument?userId=${userId}`).then((response) => {
+        setUserInst(response.data);
       });
-  };
+    };
+    handleGetUserInstruments();
+  }, []);
 
-  const handleDeleteInstrument = (instrument: Instrument) => {
-    const token = localStorage.getItem("@token");
-
-    api
-      .delete(`userInstrument/${instrument.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        console.log("instrumento deletado");
-      });
+  const handleDeleteInstrument = (id: number) => {
+    console.log(id);
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    api.delete(`userInstrument/${id}`).then((response) => {
+      console.log(response);
+    });
   };
   const handleEditInstrument = (data: Instrument) => {
-    const token = localStorage.getItem("@token");
     api
       .patch(`userInstrument/${instrument.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -259,7 +248,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleLogin,
         handlePostInstrument,
         handleGetInstruments,
-        handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
         userFilt,
@@ -270,6 +258,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         logoutBtn,
         token,
         userId,
+        userInst,
       }}
     >
       {children}

@@ -20,10 +20,10 @@ export const UserNav = () => {
       <button onClick={() => setModalEdit(!isModalEditOpen)}>Editar Perfil</button>
       <button onClick={() => setModalAdd(!isModalAddOpen)} >Cadastrar produto</button>
       <button className="filter" onClick={() => setUserFilt("products")}>
-        Meus lances
+        Meus produtos
       </button>
       <button className="filter" onClick={() => setUserFilt("bids")}>
-        Meus produtos
+        Meus lances
       </button>
     </StNav>
   );

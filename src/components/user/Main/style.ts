@@ -7,6 +7,7 @@ export const StMain = styled.main`
   background-color: rgba(237, 237, 237, 1);
   @media (min-width: 768px) {
     width: 100vw;
+    height: 100vh;
     flex-direction: row;
     max-height: 85vh;
   }
