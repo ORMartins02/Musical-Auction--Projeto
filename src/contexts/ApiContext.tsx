@@ -261,6 +261,8 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     navigate("/login", { replace: true });
   };
 
+  // Função de dar lance
+
   const handleBidInstrument = (data: currentBid) => {
     console.log(data);
 
