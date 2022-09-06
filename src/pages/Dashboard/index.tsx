@@ -6,7 +6,6 @@ export const Dashboard = () => {
     <>
       <Header />
       <Main />
-      <footer></footer>
     </>
   );
 };

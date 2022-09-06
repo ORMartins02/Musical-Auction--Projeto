@@ -2,6 +2,7 @@ import {createGlobalStyle} from "styled-components";
 
 export default createGlobalStyle`
 
+
 :root{
   /* Primary Palette */
   --color-primary:rgba(215, 84, 19, 1) ;
@@ -26,9 +27,6 @@ export default createGlobalStyle`
   --color-sucess:rgba(63, 232, 100, 1); 
   --color-negative:rgba(232, 63, 91, 1); 
 
-  /* Font */
-  --font-inter:'Inter', sans-serif;
-
   /* Examples */
   /* var(--color-blue) */
   /* var(--font-bangers) */
@@ -41,7 +39,9 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 html,
-body,
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 div,
 span,
 applet,

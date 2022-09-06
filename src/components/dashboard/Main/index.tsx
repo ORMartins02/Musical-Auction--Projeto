@@ -1,9 +1,9 @@
 import { ProductsContainer } from "../ProductsContainer";
-import { Container } from "./style";
+import { ContainerMain } from "./style";
 export const Main = () => {
   return (
-    <Container>
+    <ContainerMain>
       <ProductsContainer />
-    </Container>
+    </ContainerMain>
   );
 };
