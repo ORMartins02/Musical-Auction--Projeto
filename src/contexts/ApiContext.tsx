@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { SubmitHandler } from "react-hook-form";
 import {
@@ -17,6 +18,7 @@ import {
   toastSuccesRegister,
   toastSuccesInstrumentRegister,
   toastFail,
+  toastFailLogin,
 } from "../components/toasts/toasts";
 
 export interface User {
@@ -180,11 +182,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     await api
       .post("login", data)
       .then((response) => {
-        // window.localStorage.setItem("@token", response.data.accessToken);
-        // window.localStorage.setItem("@userId", response.data.user.id);
-        // setLogin(response.data.user);
-
-        // toastSuccesLogin();
         if (response.status === 200) {
           setLogin(response.data.user);
           window.localStorage.setItem("@token", response.data.accessToken);
@@ -195,7 +192,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       })
       .catch((err) => {
         console.log(err);
-        toastFail();
+        toastFailLogin();
       });
   };
 
@@ -265,10 +262,9 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const handleBidInstrument = (data: currentBid) => {
     console.log(data);
 
-    const token = localStorage.getItem("@token");
-    const userId = localStorage.getItem("@userId");
     const { title, description, category, minPrice, img, minBid, currentBid } =
       instrument;
+
     const newData = {
       title: title,
       description: description,
@@ -279,20 +275,22 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       img: img,
     };
 
-    if (newData.currentBid < currentBid + minBid) {
+    if (newData.currentBid <= currentBid + minBid) {
       toastFailBidRegister();
     } else {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
       api
-        .patch(`userInstrument/${instrument.id}`, newData, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .patch(`userInstrument/${instrument.id}`, newData)
+
         .then((response) => {
           toastSuccesBid();
           setModalBid(false);
-
           loadInstruments();
         })
-        .catch((response) => console.log(response))
+        .catch((response) => {
+          console.log(response);
+          toastFail();
+        })
         .finally();
     }
   };
