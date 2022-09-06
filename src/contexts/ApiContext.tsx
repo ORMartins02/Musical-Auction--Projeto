@@ -73,7 +73,6 @@ export interface UserProviderData {
   handlePostInstrument: (data: Instrument) => void;
   handleGetInstrument: (data: number) => void;
   handleBidInstrument: (data: currentBid) => void;
-
   handleGetUserInstruments: () => void;
   handleDeleteInstrument: (data: Instrument) => void;
   handleEditInstrument: (data: Instrument) => void;
