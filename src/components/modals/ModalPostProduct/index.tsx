@@ -55,14 +55,22 @@ export const ModalPostInstrument = ({ setModalAdd }: PropsModalEdit) => {
             {...register("img")}
           />
           <span>{errors.img?.message}</span>
-          <label htmlFor="minPrice">Valor mínimo do lance</label>
+          <label htmlFor="minPrice">Preço mínimo do Instrumento</label>
           <input
-            placeholder="Insira o valor mínimo"
+            placeholder="Insira o preço mínimo"
             id="minPrice"
             type="number"
             {...register("minPrice")}
           />
           <span>{errors.minPrice?.message}</span>
+          <label htmlFor="minBid">Valor mínimo do lance</label>
+          <input
+            placeholder="Insira o valor mínimo"
+            id="minBid"
+            type="number"
+            {...register("minBid")}
+          />
+          <span>{errors.minBid?.message}</span>
           <label htmlFor="category">Categoria do instrumento</label>
           <select {...register("category")} id="category">
             <option value="Teclas">Teclas</option>

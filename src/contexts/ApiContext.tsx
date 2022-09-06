@@ -96,25 +96,6 @@ export const UserContext = createContext<UserProviderData>(
   {} as UserProviderData
 );
 
-// interface bids {
-//   id: string;
-//   title: string;
-//   status: string;
-//   created_at: Date;
-//   updated_at: Date;
-// }
-
-// interface IUser {
-//   email: string;
-//   name: string;
-//   ageOfBirth: string;
-//   contact: string;
-//   address: string;
-//   userImg: string;
-//   bids: bids[];
-//   id: number;
-// }
-
 export const UserProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -220,17 +201,13 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   };
 
   const handlePostInstrument = (data: Instrument) => {
-    const token = localStorage.getItem("@token");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     api
-      .post(
-        "userInstrument",
-        { ...data, currentBid: 0, userId: userId },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .post("userInstrument", { ...data, currentBid: 0, userId: userId })
       .then((response) => {
         console.log("instrumento criado");
+        loadInstruments();
+        setModalAdd(false);
       })
       .catch((err) => {
         console.warn(err);
@@ -297,7 +274,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       category: category,
       minPrice: minPrice,
       currentBid: data.currentBid,
-
       bidUserId: userId,
       img: img,
     };
@@ -334,7 +310,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         modalBid,
         handleLogin,
         handlePostInstrument,
-
         handleGetUserInstruments,
         handleDeleteInstrument,
         handleEditInstrument,
@@ -347,9 +322,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         token,
         userId,
         setModalBid,
-
         handleRegister,
-
         handleBidInstrument,
         handleGetInstrument,
       }}
