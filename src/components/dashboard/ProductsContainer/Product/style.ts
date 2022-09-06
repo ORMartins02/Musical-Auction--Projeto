@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const Li = styled.li`
-  font-family: "Inter", sans-serif;
-  min-width: 200px;
+  min-width: 180px;
   min-height: 150px;
   width: 265px;
-  height: 400px;
+  height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--color-grey-0);
   border-radius: 12px;
   margin-left: 30px;
   margin-right: 30px;
@@ -21,19 +20,19 @@ export const Li = styled.li`
   figure {
     width: 95%;
     height: 255px;
-    border: 5px solid rgba(215, 84, 19, 1);
+    border: 5px solid var(--color-primary);
     overflow: hidden;
     border-radius: 12px;
     margin-top: 8px;
   }
 
   img {
-    width: 150%;
+    width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: scale-down;
     display: flex;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: var(--color-grey-1);
   }
 
   div {
@@ -48,13 +47,29 @@ export const Li = styled.li`
     align-items: flex-start;
   }
 
+  .divPrice {
+    display: flex;
+    flex-direction: row;
+    margin-top: -5px;
+    margin-left: -5px;
+    margin-bottom: 14;
+  }
+
+  .divMinPrice .divCurrentBid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .currentBid {
+    color: rgb(168, 0, 0);
+  }
+
   h2 {
     font-weight: 700;
     font-size: 20px;
-    margin-top: -10px;
   }
 
-  span {
+  .description {
     text-align: left;
     width: 100%;
     height: 28px;
@@ -63,10 +78,22 @@ export const Li = styled.li`
     font-size: 12px;
   }
 
+  .pBid {
+    margin-bottom: -14px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 12px;
+  }
+
   p {
+    width: 90%;
     color: black;
     font-weight: 800;
     font-size: 14px;
+    margin: 5px 0px;
+    text-align: left;
   }
 
   @media (max-width: 850px) {
@@ -77,13 +104,14 @@ export const Li = styled.li`
 
 export const Button = styled.button`
   margin-left: 10px;
+  margin-bottom: 6px;
   font-size: 14px;
   width: 90%;
   height: 2.7rem;
   cursor: pointer;
   font-family: "Inter", sans-serif;
-  background-color: rgba(215, 84, 19, 1);
-  color: #ffffff;
-  border: 1px solid rgba(61, 61, 61, 1);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-grey-4);
   border-radius: 8px;
 `;

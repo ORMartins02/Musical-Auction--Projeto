@@ -19,7 +19,7 @@ export const ContainerLogin = styled.div`
     font-weight: 400;
     font-size: 12.182px;
     line-height: 0px;
-    color: #f8f9fa;
+    color: var(--color-grey-0);
   }
   input {
     padding: 0px 16.2426px;
@@ -27,34 +27,34 @@ export const ContainerLogin = styled.div`
     margin-top: 12px;
     width: 90%;
     height: 35px;
-    color: #868e96;
+    color: var(--color-grey-3);
     background: white;
 
-    border: 1.2182px solid #343b41;
-    border-radius: 16px;
+    border: 1.2182px solid var(--color-grey-5);
+    border-radius: 8px;
   }
   select {
     padding: 0px 16.2426px;
     gap: 10.15px;
-    color: #868e96;
+    color: var(--color-grey-3);
     /* width: 90%; */
     height: 35px;
 
-    background: #343b41;
+    background: var(--color-grey-5);
 
-    border: 1.2182px solid #343b41;
-    border-radius: 4px;
+    border: 1.2182px solid var(--color-grey-5);
+    border-radius: 8px;
     width: 275px;
   }
   button {
-    background-color: #fffe57;
+    background-color: var(--color-primary);
     color: black;
-    border: 1.2182px solid #59323f;
+    border: 1.2182px solid var(--color-negative);
     border-radius: 4px;
     height: 40px;
     width: 240px;
     margin-top: 20px;
-    border-radius: 16px;
+    border-radius: 8px;
   }
   select {
     padding: 0px 16.2426px;
@@ -62,11 +62,11 @@ export const ContainerLogin = styled.div`
     margin-top: 20px;
     width: 90%;
     height: 35px;
-    color: #868e96;
+    color: var(--color-grey-3);
     background: white;
 
-    border: 1.2182px solid #343b41;
-    border-radius: 16px;
+    border: 1.2182px solid var(--color-grey-5);
+    border-radius: 8px;
   }
 
   .p-login {
@@ -97,7 +97,8 @@ export const ContainerLogin = styled.div`
       font-weight: bold;
       margin-top: 10px;
       margin-right: 26px;
-      text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+      text-shadow: 1px 0 0 var(--color-black), 0 -1px 0 var(--color-black),
+        0 1px 0 var(--color-black), -1px 0 0 var(--color-black);
     }
   }
   @media (min-width: 767px) {
@@ -111,11 +112,11 @@ export const ContainerLogin = styled.div`
       margin-top: 10px;
 
       height: 35px;
-      color: #868e96;
+      color: var(--color-grey-3);
       background: white;
 
-      border: 1.2182px solid #343b41;
-      border-radius: 16px;
+      border: 1.2182px solid var(--color-grey-5);
+      border-radius: 8px;
     }
     button {
       margin-top: 15px;
@@ -133,8 +134,8 @@ export const ContainerLogin = styled.div`
       color: black;
       font-size: 30px;
       font-weight: bold;
-      text-shadow: 1px 0 0 #fffe57, 0 -1px 0 #fffe57, 0 1px 0 #fffe57,
-        -1px 0 0 #fffe57;
+      text-shadow: 1px 0 0 var(--color-primary), 0 -1px 0 var(--color-primary),
+        0 1px 0 var(--color-primary), -1px 0 0 var(--color-primary);
     }
   }
 `;

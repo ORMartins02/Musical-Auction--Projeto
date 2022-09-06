@@ -1,27 +1,31 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 export default createGlobalStyle`
 
+
 :root{
   /* Primary Palette */
-  --color-primary:rgba(255, 87, 127, 1) ;
-  --color-primary-focus:rgba(255, 66, 127, 1) ;
-  --color-primary-negative:rgba(89, 50, 63, 1);
+  --color-primary:rgba(215, 84, 19, 1) ;
+  --color-negative:rgba(89, 50, 63, 1);
+  --color-secondary:rgba(255, 254, 87, 1);
 
   
   /* Grey Scale Palette */
-  --color-grey-4:rgba(18, 18, 20, 1);
-  --color-grey-3:rgba(33, 37, 41, 1) ;
-  --color-grey-2:rgba(52, 59, 65, 1);
-  --color-grey-1:rgba(134, 142, 150, 1);
+  --color-black:rgba(0, 0, 0, 1);
+  --color-grey-8:rgba(18, 18, 20, 1);
+  --color-grey-7:rgba(33, 37, 41, 1) ;
+  --color-grey-6:rgba(33, 41, 46, 1) ;
+  --color-grey-5:rgba(52, 59, 65, 1);
+  --color-grey-4:rgba(61, 61, 61, 1);
+  --color-grey-3:rgba(134, 142, 150, 1);
+  --color-grey-2:rgba(224, 224, 224, 1);
+  --color-grey-1:rgba(245, 245, 245, 1);
   --color-grey-0:rgba(248, 249, 250, 1);
+  --color-white:rgba(255, 255, 255, 1);
 
   /* Feedback Palette */
   --color-sucess:rgba(63, 232, 100, 1); 
   --color-negative:rgba(232, 63, 91, 1); 
-
-  /* Font */
-  --font-inter:'Inter', sans-serif;
 
   /* Examples */
   /* var(--color-blue) */
@@ -35,7 +39,9 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 html,
-body,
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 div,
 span,
 applet,

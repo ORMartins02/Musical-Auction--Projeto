@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SubmitHandler } from "react-hook-form";
 import {
   createContext,
@@ -9,6 +11,15 @@ import {
 } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
+import {
+  toastFailBidRegister,
+  toastSuccesBid,
+  toastSuccesLogin,
+  toastSuccesRegister,
+  toastSuccesInstrumentRegister,
+  toastFail,
+  toastFailLogin,
+} from "../components/toasts/toasts";
 
 export interface User {
   id: string;
@@ -27,15 +38,20 @@ export interface UserLogin {
   password: string;
 }
 
+interface currentBid {
+  currentBid: number;
+}
+
 export interface Instrument {
   title: string;
   description: string;
   category: string;
   minPrice: number;
   img: string;
-  currentBid?: number;
-  bidUserId?: null;
-  userId?: number;
+  minBid: number;
+  currentBid: number;
+  bidUserId: null;
+  userId: number;
   id: number;
 }
 
@@ -47,16 +63,19 @@ export interface UserProviderData {
     bids: Instrument[];
   };
 
-  instrument: Instrument;
   isModalEditOpen: boolean;
   isModalAddOpen: boolean;
   loading: boolean;
+  modalBid: boolean;
+  setModalBid: React.Dispatch<React.SetStateAction<boolean>>;
+  instrument: Instrument;
   instruments: Instrument[];
   setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
   handleLogin: (data: UserLogin) => Promise<void>;
   handlePostInstrument: (data: Instrument) => void;
-  handleGetInstruments: () => void;
+  handleGetInstrument: (data: number) => void;
+  handleBidInstrument: (data: currentBid) => void;
   handleEditInstrument: (data: Instrument) => void;
   userFilt: string;
   setUserFilt: React.Dispatch<React.SetStateAction<string>>;
@@ -79,28 +98,10 @@ export const UserContext = createContext<UserProviderData>(
   {} as UserProviderData
 );
 
-// interface bids {
-//   id: string;
-//   title: string;
-//   status: string;
-//   created_at: Date;
-//   updated_at: Date;
-// }
-
-// interface IUser {
-//   email: string;
-//   name: string;
-//   ageOfBirth: string;
-//   contact: string;
-//   address: string;
-//   userImg: string;
-//   bids: bids[];
-//   id: number;
-// }
-
 export const UserProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [modalBid, setModalBid] = useState(false);
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [isModalEditOpen, setModalEdit] = useState(false);
@@ -125,9 +126,8 @@ export const UserProvider = ({ children }: IChildrenProps) => {
 
   useEffect(() => {
     setLoading(true);
-
-    setLoading(false);
     loadInstruments();
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -172,35 +172,51 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         if (response.status === 201) {
           return navigate("/");
         }
+        toastSuccesRegister();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toastSuccesRegister();
+      });
   };
 
   const handleLogin: SubmitHandler<UserLogin> = async (data) => {
     await api
       .post("login", data)
       .then((response) => {
-        window.localStorage.setItem("@token", response.data.accessToken);
-        window.localStorage.setItem("@userId", response.data.user.id);
-        setLogin(response.data.user);
-        navigate(`/dashboard/:${response.data.user.id}`, { replace: true });
+        if (response.status === 200) {
+          setLogin(response.data.user);
+          window.localStorage.setItem("@token", response.data.accessToken);
+          window.localStorage.setItem("@userId", response.data.user.id);
+          navigate(`/dashboard/:${response.data.user.id}`, { replace: true });
+          toastSuccesLogin();
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toastFailLogin();
+      });
   };
 
   const handlePostInstrument = (data: Instrument) => {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     api
-      .post("userInstrument", data)
+      .post("userInstrument", { ...data, currentBid: 0, userId: userId })
       .then((response) => {
         console.log("instrumento criado");
+        loadInstruments();
+        setModalAdd(false);
       })
-      .catch((err) => console.warn(err));
+      .catch((err) => {
+        console.warn(err);
+        toastFail();
+      });
   };
 
-  const handleGetInstruments = () => {
-    api.get("userInstrument").then((response) => {
-      setInstruments(response.data);
+  const handleGetInstrument = (data: number) => {
+    api.get(`userInstrument/${data}`).then((response) => {
+      setInstrument(response.data);
+      setModalBid(true);
     });
   };
 
@@ -233,6 +249,44 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     navigate("/login", { replace: true });
   };
 
+  // Função de dar lance
+
+  const handleBidInstrument = (data: currentBid) => {
+    console.log(data);
+
+    const { title, description, category, minPrice, img, minBid, currentBid } =
+      instrument;
+
+    const newData = {
+      title: title,
+      description: description,
+      category: category,
+      minPrice: minPrice,
+      currentBid: data.currentBid,
+      bidUserId: userId,
+      img: img,
+    };
+
+    if (newData.currentBid <= currentBid + minBid) {
+      toastFailBidRegister();
+    } else {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      api
+        .patch(`userInstrument/${instrument.id}`, newData)
+
+        .then((response) => {
+          toastSuccesBid();
+          setModalBid(false);
+          loadInstruments();
+        })
+        .catch((response) => {
+          console.log(response);
+          toastFail();
+        })
+        .finally();
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -244,10 +298,10 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         setInstruments,
         login,
         loading,
-        handleRegister,
+        modalBid,
         handleLogin,
         handlePostInstrument,
-        handleGetInstruments,
+
         handleDeleteInstrument,
         handleEditInstrument,
         userFilt,
@@ -259,6 +313,10 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         token,
         userId,
         userInst,
+        setModalBid,
+        handleRegister,
+        handleBidInstrument,
+        handleGetInstrument,
       }}
     >
       {children}

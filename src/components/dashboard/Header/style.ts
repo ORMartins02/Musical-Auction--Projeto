@@ -13,7 +13,7 @@ export const Container = styled.header`
   background-repeat: no-repeat;
 
   max-width: 100vw;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding-bottom: 15px;
   padding-top: 15px;
   box-shadow: 0px -9px 15px 10px rgba(0, 0, 0, 0.3);
@@ -33,7 +33,7 @@ export const Container = styled.header`
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
-      border: 2px solid rgba(215, 84, 19, 1);
+      border: 2px solid var(--color-primary);
     }
   }
   .infUser {
@@ -44,11 +44,11 @@ export const Container = styled.header`
   .userName {
     font-weight: 700;
     font-size: 20px;
-    color: rgba(33, 41, 46, 1);
+    color: var(--color-grey-6);
   }
   .userLoc {
     font-size: 14px;
-    color: rgba(215, 84, 19, 1);
+    color: var(--color-primary);
     text-shadow: rgba(0, 0, 0, 0.75) 0.1em 0.1em 0.2em;
   }
   .svg {

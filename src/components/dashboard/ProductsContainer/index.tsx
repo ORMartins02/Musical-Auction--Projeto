@@ -1,36 +1,38 @@
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/ApiContext";
+import { ModalBid } from "../../modals/ModalBid";
 import { Product } from "./Product";
 import { ListProducts, StyledProductsContainer } from "./style";
-import { v4 as uuid } from "uuid";
 
 export const ProductsContainer = () => {
-  const { loading, instruments } = useContext(UserContext);
+  const { loading, modalBid, instruments } = useContext(UserContext);
+
   return (
     <StyledProductsContainer>
       {loading ? (
         <p id="loading">Carregando os melhores instrumentos...</p>
-      ) : instruments.length === 0 ? (
-        <>
-          <h2>Produtos não encontrados</h2>
-        </>
       ) : (
         <ListProducts>
           {instruments.map((elem) => {
             return (
               <Product
-                key={uuid()}
+                key={elem.id}
                 id={elem.id}
                 title={elem.title}
                 description={elem.description}
                 category={elem.category}
                 minPrice={elem.minPrice}
                 img={elem.img}
+                currentBid={elem.currentBid}
+                bidUserId={elem.bidUserId}
+                userId={elem.userId}
+                minBid={elem.minBid}
               />
             );
           })}
         </ListProducts>
       )}
+      {modalBid ? <ModalBid /> : <></>}
     </StyledProductsContainer>
   );
 };

@@ -38,7 +38,7 @@ export const Container = styled.div`
       }
       .crossButton {
         background-color: transparent;
-        color: var(--color-grey-1);
+        color: var(--color-black);
       }
     }
   }
@@ -85,7 +85,7 @@ export const Form = styled.form`
     min-height: 1.5rem;
     padding-left: 1rem;
 
-    color: var(--color-grey-1);
+    color: var(--color-black);
     background-color: var(--color-grey-0);
     border: 1.2182px solid #343b41;
     border-radius: 4px;
