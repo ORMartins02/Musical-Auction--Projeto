@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_IFWqMU
 ## Padrões de código
 
 **Código será em ingles.**
@@ -32,8 +31,6 @@ React icons
 
 
 
-=======
->>>>>>> .merge_file_VDlMQk
 base_URL: https://musical-auction.herokuapp.com/ 
 
 
