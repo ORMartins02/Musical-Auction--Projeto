@@ -132,6 +132,28 @@ export const toastFail = () =>
     },
   });
 
+export const toastFailLogin = () =>
+  toast.error("Ops! Login ou senha errada", {
+    duration: 4000,
+    position: "top-center",
+
+    // Styling
+    style: {},
+    className: "",
+
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: "#ff2922",
+      secondary: "#fff",
+    },
+
+    // Aria
+    ariaProps: {
+      role: "status",
+      "aria-live": "polite",
+    },
+  });
+
 export const toastFailBidRegister = () =>
   toast.error("Seu lance é muito baixo.", {
     duration: 4000,
