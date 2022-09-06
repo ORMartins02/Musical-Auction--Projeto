@@ -1,4 +1,3 @@
-
 ## Padrões de código
 
 **Código será em ingles.**
@@ -28,6 +27,7 @@ git commit -m "feat:login-page"
 ## Bibliotecas 
 
 React icons
+
 
 
 
@@ -150,4 +150,3 @@ Response:
 "id": 3
 }]
 }
-
