@@ -5,8 +5,14 @@ import { useForm } from "react-hook-form";
 import { ImCross } from "react-icons/im";
 import { schemaModal } from "../../../schema/modalEdit";
 import { UserContext, Instrument } from "../../../contexts/ApiContext";
-
-export const ModalEditInstrument = () => {
+interface PropsModalEdit {
+  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  instrument: Instrument;
+}
+export const ModalEditInstrument = ({
+  instrument,
+  setModalEdit,
+}: PropsModalEdit) => {
   const {
     register,
     handleSubmit,
@@ -14,8 +20,7 @@ export const ModalEditInstrument = () => {
   } = useForm<Instrument>({
     resolver: yupResolver(schemaModal),
   });
-
-  const { handleEditInstrument, setModalEdit } = useContext(UserContext);
+  const { handleEditInstrument } = useContext(UserContext);
   return (
     <Container>
       <div>
@@ -50,14 +55,6 @@ export const ModalEditInstrument = () => {
             {...register("img")}
           />
           <span>{errors.img?.message}</span>
-          <label htmlFor="minPrice">Valor mínimo do lance</label>
-          <input
-            placeholder="Insira o valor mínimo"
-            id="minPrice"
-            type="number"
-            {...register("minPrice")}
-          />
-          <span>{errors.minPrice?.message}</span>
           <label htmlFor="category">Categoria do instrumento</label>
           <select {...register("category")} id="category">
             <option value="Teclas">Teclas</option>
@@ -67,7 +64,9 @@ export const ModalEditInstrument = () => {
           </select>
 
           <div>
-            <button className="buttonSave">Salvar</button>
+            <button type="submit" className="buttonSave">
+              Salvar
+            </button>
           </div>
         </Form>
       </div>

@@ -16,6 +16,7 @@ export const ProductsContainer = () => {
           {instruments.map((elem) => {
             return (
               <Product
+                isAuction={elem.isAuction}
                 key={elem.id}
                 id={elem.id}
                 title={elem.title}

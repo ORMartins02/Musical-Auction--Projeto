@@ -54,6 +54,7 @@ export interface Instrument {
   description: string;
   category: string;
   minPrice: number;
+  isAuction: boolean;
   img: string;
   minBid: number;
   currentBid: number;
@@ -99,6 +100,8 @@ export interface UserProviderData {
   userId: string | null;
   userInst: Instrument[] | undefined;
   handleDeleteInstrument: (id: number) => void;
+  intrumentId: number | undefined;
+  setInstrumentId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 export interface IChildrenProps {
@@ -117,6 +120,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [isModalEditOpen, setModalEdit] = useState(false);
   const [isModalEditUser, setModalEditUser] = useState(false);
+  const [instrumentId, setInstrumentId] = useState<number>();
   const [isModalAddOpen, setModalAdd] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
@@ -229,7 +233,12 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const handlePostInstrument = (data: Instrument) => {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     api
-      .post("userInstrument", { ...data, currentBid: 0, userId: userId })
+      .post("userInstrument", {
+        ...data,
+        currentBid: 0,
+        userId: userId,
+        isAuction: true,
+      })
       .then((response) => {
         console.log("instrumento criado");
         handleGetUserInstruments();
@@ -242,7 +251,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       });
   };
 
-  const handleGetInstrument = (data: number) => {
+  const handleGetInstrument = (data: number | undefined) => {
     api.get(`userInstrument/${data}`).then((response) => {
       if (response.data.userId === userId) {
         toastFailBidUserID();
@@ -269,13 +278,24 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     api.delete(`userInstrument/${id}`).then((response) => {
       console.log(response);
     });
+    loadInstruments();
+    handleGetUserInstruments();
   };
+
   const handleEditInstrument = (data: Instrument) => {
+    console.log(data);
     api
-      .patch(`userInstrument/${instrument.id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+      .patch(`userInstrument/${instrumentId}`, data)
+      .then((response) => {
+        console.log(response);
+        setModalEdit(!isModalEditOpen);
+        loadInstruments();
+        handleGetUserInstruments();
       })
-      .then((response) => {});
+      .catch((response) => {
+        console.log(response);
+        toastFail();
+      });
   };
 
   const handleEditUser = async (data: UserEdit) => {
@@ -320,6 +340,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       currentBid,
       userId,
       id,
+      isAuction,
     } = instrument;
 
     const { id: idUser } = userData;
@@ -327,8 +348,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     if (userId === idUser) {
       console.log("idUser:", idUser);
       console.log("userId:", userId);
-
-      // return toastFailBidUserID();
     } else {
       const newData = {
         title: title,
@@ -341,6 +360,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         bidUserId: userId,
         userId: userId,
         id: id,
+        isAuction: isAuction,
       };
 
       if (newData.currentBid <= currentBid + minBid) {
@@ -399,6 +419,8 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleRegister,
         handleBidInstrument,
         handleGetInstrument,
+        intrumentId: instrumentId,
+        setInstrumentId,
       }}
     >
       {children}
