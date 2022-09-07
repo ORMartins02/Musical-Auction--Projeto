@@ -13,6 +13,7 @@ export const UlProducts = () => {
     isModalEditOpen,
     setInstrumentId,
     isModalEditUser,
+    closeAuction
   } = useContext(UserContext);
   return (
     <>
@@ -28,7 +29,9 @@ export const UlProducts = () => {
               <p>R$: {elem.minPrice},00</p>
               <div className="btnUsProd">
                 <span id="spanButtons">
-                  <button>Encerrar</button>
+                  <button onClick={()=>{
+                    closeAuction(elem)
+                  }}>Encerrar</button>
                   <span>
                     <button
                       className="icon del"
