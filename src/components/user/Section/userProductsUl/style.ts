@@ -39,24 +39,21 @@ export const StUlProd = styled.ul`
           background-color: rgba(144, 13, 9, 1);
         }
       }
-
+      
       .icon {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 20px;
-        width: 20px;
+        width: 44px;
         padding: 0.2rem;
       }
       .edit {
+        margin-top: 0.1rem;
         background-color: rgba(215, 84, 19, 1);
-        width: 45%;
+ 
         &:hover {
           background-color: rgba(215, 84, 19, 0.8);
         }
-      }
-      .del {
-        width: 45%;
       }
     }
     img {
