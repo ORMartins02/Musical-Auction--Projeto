@@ -14,24 +14,30 @@ export const UlBids = () => {
         <p id="loading">Você não fez lances ainda!</p>
       ) : (
         <StUlBids>
-          {userBids.map((elem) => (
-            <Li key={elem.id}>
-              <figure>
-                <img src={elem.img} alt={`Imagem do(a) ${elem.title}`} />
-              </figure>
-              <div className="cardText">
-                <h2>{elem.title}</h2>
-                <p className="description">{elem.description}</p>
-                <div className="divCurrentBid">
-                  <span className="spanCurrentBid spanBid">Seu Lance</span>
-                  <p className="currentBid pBid"> R$ {elem.currentBid},00</p>
-                </div>
-                <Button onClick={() => handleGetInstrument(elem.id)}>
-                  Aumentar Lance
-                </Button>
-              </div>
-            </Li>
-          ))}
+          {userBids.map(
+            (elem) =>
+              elem.isAuction && (
+                <Li key={elem.id}>
+                  <figure>
+                    <img src={elem.img} alt={`Imagem do(a) ${elem.title}`} />
+                  </figure>
+                  <div className="cardText">
+                    <h2>{elem.title}</h2>
+                    <p className="description">{elem.description}</p>
+                    <div className="divCurrentBid">
+                      <span className="spanCurrentBid spanBid">Seu Lance</span>
+                      <p className="currentBid pBid">
+                        {" "}
+                        R$ {elem.currentBid},00
+                      </p>
+                    </div>
+                    <Button onClick={() => handleGetInstrument(elem.id)}>
+                      Aumentar Lance
+                    </Button>
+                  </div>
+                </Li>
+              )
+          )}
         </StUlBids>
       )}
       {modalBid ? <ModalBid /> : <></>}
