@@ -9,10 +9,10 @@ export const UserSection = () => {
   return (
     <StSect>
       <div className="filter">
-        <button onClick={() => setUserFilt("products")}>Meus lances</button>
-        <button onClick={() => setUserFilt("bids")}>Meus produtos</button>
+        <button onClick={() => setUserFilt("products")}>Meus produtos</button>
+        <button onClick={() => setUserFilt("bids")}>Meus lances</button>
       </div>
-      {userFilt === "products" ? <UlProducts /> : <UlBids />}
+      {userFilt === "products" ? <UlProducts /> : userFilt === "bids" ? <UlBids /> : ""}
     </StSect>
   );
 };
