@@ -28,21 +28,24 @@ export const UlProducts = () => {
               <p>R$: {elem.minPrice},00</p>
               <div className="btnUsProd">
                 <span id="spanButtons">
-                  <button
-                    className="icon del"
-                    onClick={() => handleDeleteInstrument(elem.id)}
-                  >
-                    <IoTrashSharp />
-                  </button>
-                  <button
-                    className="icon edit"
-                    onClick={() => {
-                      setInstrumentId(elem.id);
-                      setModalEdit(!isModalEditOpen);
-                    }}
-                  >
-                    <AiFillEdit />
-                  </button>
+                  <button>Encerrar</button>
+                  <span>
+                    <button
+                      className="icon del"
+                      onClick={() => handleDeleteInstrument(elem.id)}
+                    >
+                      <IoTrashSharp />
+                    </button>
+                    <button
+                      className="icon edit"
+                      onClick={() => {
+                        setInstrumentId(elem.id);
+                        setModalEdit(!isModalEditOpen);
+                      }}
+                    >
+                      <AiFillEdit />
+                    </button>
+                  </span>
                 </span>
               </div>
             </div>
