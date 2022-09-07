@@ -2,25 +2,47 @@ import styled from "styled-components";
 import musicalImg from "../../../img/Component6.svg";
 export const ContainerLoginHeader = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   background-image: url(${musicalImg});
   background-repeat: no-repeat;
   height: 40vh;
   width: 100%;
   background-color: white;
-  position: relative;
   text-align: center;
 
-  #divText {
-    width: 250px;
-    height: 200px;
-    margin-bottom: 130px;
-    margin-left: 10px;
+  figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-img1 {
+    width: 100%;
+    margin-top: 100px;
+  }
+
+  #under-logo {
+    margin-top: -20px;
+    margin-left: -20px;
+  }
+
+  #div-text {
+    width: 60%;
+    height: 40vh;
     border: 3px solid var(--color-primary);
     border-radius: 8px;
     box-shadow: 3px 4px 5px 0px rgba(117, 109, 109, 0.75);
+    margin-top: 35px;
+    margin-left: -30px;
+  }
+
+  .login-box-description {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
   }
 
   p {
@@ -28,18 +50,12 @@ export const ContainerLoginHeader = styled.div`
   }
 
   @media (min-width: 767px) {
-    width: 30vw;
-    height: 100vh;
-    justify-content: space-between;
-    .login-box-description {
-      margin-top: 20px;
-      font-size: 18px;
-    }
+    width: 50%;
     .header-img1 {
-      margin-top: 110px;
-      margin-left: 15px;
-      width: 32vw;
-      height: 26vh;
+      width: 50%;
+      margin-top: 100px;
     }
+
+    #div-text
   }
 `;

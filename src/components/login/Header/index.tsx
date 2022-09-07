@@ -1,5 +1,4 @@
 import { ContainerLoginHeader } from "./style";
-import musicalAmarel from "../../../img/Amarel1.svg";
 
 export const HeaderLogin = () => {
   return (
@@ -10,9 +9,9 @@ export const HeaderLogin = () => {
           src="https://i.imgur.com/YGTi4l7.png"
           alt=""
         />
-        <p>De músico para músico</p>
+        <p id="under-logo">De músico para músico</p>
       </figure>
-      <div id="divText">
+      <div id="div-text">
         <p className="login-box-description">
           Nós da Musical Auction acreditamos ter a solução na medida exata para
           quem quer comprar ou vender incríveis instrumentos a preços justos

@@ -34,21 +34,31 @@ export const ModalBid = () => {
         <p className="title">Descrição</p>
         <p className="descriptionItemModal">{instrument.description}</p>
         <p className="title">Valor inicial</p>
-        <p className="priceItemModal">{`R$ ${instrument.minPrice},00`}</p>
+        <p className="priceItemModal">{`R$ ${instrument.minPrice.toFixed(
+          2
+        )}`}</p>
         <div className="divBidModal">
           <div className="bid">
             <p className="title">Lance mínimo</p>
-            <p className="priceItemModal">{`R$ ${instrument.minBid},00`}</p>
+            <p className="priceItemModal">{`R$ ${instrument.minBid.toFixed(
+              2
+            )}`}</p>
           </div>
           <div className="bid">
             <p className="title">Lance atual</p>
-            <p className="bidItemModal priceItemModal">{`R$ ${instrument.currentBid},00`}</p>
+            <p className="bidItemModal priceItemModal">{`R$ ${instrument.currentBid.toFixed(
+              2
+            )}`}</p>
           </div>
         </div>
         <Form onSubmit={handleSubmit(handleBidInstrument)}>
           <label htmlFor="currentBid">Meu lance</label>
           <input
-            placeholder={`R$ ${instrument.currentBid + instrument.minBid},00`}
+            placeholder={`R$ ${
+              instrument.currentBid > 0
+                ? instrument.currentBid + instrument.minBid
+                : instrument.minPrice + instrument.minBid
+            },00`}
             id="currentBid"
             type="number"
             {...register("currentBid")}

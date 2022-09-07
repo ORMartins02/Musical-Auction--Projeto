@@ -10,7 +10,7 @@ export const schemaModalAddProduct = yup.object({
     .url("precisa ser uma URL válida")
     .required("Insira um link de uma imagem"),
   minPrice: yup
-    .string()
+    .number()
     .required("Insira um valor mínimo para o lance inicial"),
   category: yup.string().required("Categoria obrigatória"),
 });

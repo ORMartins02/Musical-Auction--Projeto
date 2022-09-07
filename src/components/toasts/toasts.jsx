@@ -154,6 +154,28 @@ export const toastFailLogin = () =>
     },
   });
 
+export const toastFailBidUserID = () =>
+  toast.error("Ops! Você não pode dar lance no seu leilão.", {
+    duration: 4000,
+    position: "top-center",
+
+    // Styling
+    style: {},
+    className: "",
+
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: "#ff2922",
+      secondary: "#fff",
+    },
+
+    // Aria
+    ariaProps: {
+      role: "status",
+      "aria-live": "polite",
+    },
+  });
+
 export const toastFailBidRegister = () =>
   toast.error("Seu lance é muito baixo.", {
     duration: 4000,
