@@ -21,7 +21,7 @@ export const ModalBid = () => {
     <Container>
       <div className="divModal">
         <div className="containerTitleButton">
-          <h1 className="titleBid">Editar Instrumento</h1>
+          <h1 className="titleBid">Dar Lance</h1>
           <button onClick={() => setModalBid(false)} className="crossButton">
             <ImCross />
           </button>

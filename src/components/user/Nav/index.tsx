@@ -5,24 +5,30 @@ export const UserNav = () => {
   const {
     setUserFilt,
     navigate,
-    isModalEditOpen,
-    setModalEdit,
+    setModalEditUser,
     isModalAddOpen,
     setModalAdd,
-    instrument,
-    setInstrument,
-    userId
+    loadBids,
+    userId,
   } = useContext(UserContext);
 
   return (
     <StNav>
       <button onClick={() => navigate(`/dashboard/:${userId}`)}>Home</button>
-      <button onClick={() => setModalEdit(!isModalEditOpen)}>Editar Perfil</button>
-      <button onClick={() => setModalAdd(!isModalAddOpen)} >Cadastrar produto</button>
+      <button onClick={() => setModalEditUser(true)}>Editar Perfil</button>
+      <button onClick={() => setModalAdd(!isModalAddOpen)}>
+        Cadastrar produto
+      </button>
       <button className="filter" onClick={() => setUserFilt("products")}>
         Meus produtos
       </button>
-      <button className="filter" onClick={() => setUserFilt("bids")}>
+      <button
+        className="filter"
+        onClick={() => {
+          loadBids();
+          setUserFilt("bids");
+        }}
+      >
         Meus lances
       </button>
     </StNav>

@@ -12,8 +12,6 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
-
-
   div {
     min-width: 300px;
     width: 20%;
@@ -66,6 +64,7 @@ export const Form = styled.form`
     min-height: 1.5rem;
     padding-left: 1rem;
     color: black;
+    margin-top: -13px;
 
     background-color: var(--color-grey-0);
     border: 1.2182px solid #343b41;
@@ -101,6 +100,9 @@ export const Form = styled.form`
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.625rem;
+    /* option {
+      color: red;
+    } */
   }
 
   span {

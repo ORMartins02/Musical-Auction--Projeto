@@ -47,7 +47,7 @@ export const ContainerLogin = styled.div`
   }
   button {
     background-color: var(--color-primary);
-    color: black;
+    color: white;
     border: 1.2182px solid var(--color-negative);
     border-radius: 4px;
     height: 40px;
@@ -80,12 +80,10 @@ export const ContainerLogin = styled.div`
     align-items: center;
     a {
       font-size: 16px;
-      color: yellow;
+      color: var(--color-primary);
       font-weight: bold;
       margin-top: 10px;
       margin-right: 26px;
-      text-shadow: 1px 0 0 var(--color-black), 0 -1px 0 var(--color-black),
-        0 1px 0 var(--color-black), -1px 0 0 var(--color-black);
     }
   }
   @media (min-width: 767px) {

@@ -42,6 +42,12 @@ interface currentBid {
   currentBid: number;
 }
 
+interface UserEdit {
+  img?: string;
+  password?: string;
+  name?: string;
+}
+
 export interface Instrument {
   title: string;
   description: string;
@@ -51,23 +57,24 @@ export interface Instrument {
   img: string;
   minBid: number;
   currentBid: number;
-  bidUserId: null;
+  bidUserId: number;
   userId: number;
   id: number;
 }
 
 export interface UserProviderData {
   login: {
-    userImg: string | undefined;
+    userImg: string;
     name: string;
     age: number;
     bids: Instrument[];
   };
-
   isModalEditOpen: boolean;
   isModalAddOpen: boolean;
   loading: boolean;
   modalBid: boolean;
+  isModalEditUser: boolean;
+  setModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   setModalBid: React.Dispatch<React.SetStateAction<boolean>>;
   instrument: Instrument;
   instruments: Instrument[];
@@ -78,7 +85,10 @@ export interface UserProviderData {
   handleGetInstrument: (data: number) => void;
   handleBidInstrument: (data: currentBid) => void;
   handleEditInstrument: (data: Instrument) => void;
+  handleEditUser: (data: UserEdit) => void;
   userFilt: string;
+  userBids: Instrument[];
+  loadBids: () => void;
   setUserFilt: React.Dispatch<React.SetStateAction<string>>;
   navigate: NavigateFunction;
   setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -106,12 +116,14 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [isModalEditOpen, setModalEdit] = useState(false);
+  const [isModalEditUser, setModalEditUser] = useState(false);
   const [isModalAddOpen, setModalAdd] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
   );
+  const [userBids, setUserBids] = useState<Instrument[]>([]);
   const [userFilt, setUserFilt] = useState<string>("products");
-  const [userInst, setUserInst] = useState<Instrument[]>();
+  const [userInst, setUserInst] = useState<Instrument[]>([]);
   const token = localStorage.getItem("@token");
   const userId = localStorage.getItem("@userId");
 
@@ -125,26 +137,39 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       .finally();
   };
 
+  const loadBids = async () => {
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    await api
+      .get(`/users/${userId}`)
+      .then((response) => {
+        setUserBids(response.data.bids);
+      })
+      .catch((error) => console.log(error))
+      .finally();
+  };
+
   useEffect(() => {
     setLoading(true);
     loadInstruments();
+    loadBids();
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    const checkToken = async () => {
-      if (token) {
-        api.defaults.headers.common.authorization = `Bearer ${token}`;
-        const data = await api.get(`users/${userId}`);
-        if (data.status === 200) {
-          setLogin(data.data);
-        } else {
-          navigate("/login");
-        }
+  const checkToken = async () => {
+    if (token) {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const data = await api.get(`users/${userId}`);
+      if (data.status === 200) {
+        setLogin(data.data);
       } else {
         navigate("/login");
       }
-    };
+    } else {
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
     checkToken();
   }, []);
 
@@ -250,27 +275,66 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       })
       .then((response) => {});
   };
+
+  const handleEditUser = async (data: UserEdit) => {
+    console.log(data);
+
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    await api.patch(`users/${userId}`, data).then(() => {});
+  };
+
   const logoutBtn = () => {
     localStorage.clear();
     navigate("/login", { replace: true });
   };
 
+  const filteredData = (data: Instrument) => {
+    const newData = userBids.filter((elem) => elem.id !== data.id);
+    handleAddUserInstrumentBid(data, newData);
+  };
+
+  const handleAddUserInstrumentBid = async (
+    data: Instrument,
+    array: Instrument[]
+  ) => {
+    const newData = { bids: [...array, data] };
+
+    console.log(newData);
+
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    await api.patch(`users/${userId}`, newData).then(() => {
+      loadBids();
+    });
+  };
+
   // Função de dar lance
 
   const handleBidInstrument = (data: currentBid) => {
-    console.log(data);
-
-    const { title, description, category, minPrice, img, minBid, currentBid } =
-      instrument;
+    const {
+      title,
+      description,
+      category,
+      minPrice,
+      img,
+      minBid,
+      currentBid,
+      userId,
+      id,
+      isAuction,
+    } = instrument;
 
     const newData = {
       title: title,
       description: description,
       category: category,
       minPrice: minPrice,
+      img: img,
+      minBid: minBid,
       currentBid: data.currentBid,
       bidUserId: userId,
-      img: img,
+      userId: userId,
+      id: id,
+      isAuction: isAuction,
     };
 
     if (newData.currentBid <= currentBid + minBid) {
@@ -280,9 +344,10 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       api
         .patch(`userInstrument/${instrument.id}`, newData)
 
-        .then((response) => {
+        .then(() => {
           toastSuccesBid();
           setModalBid(false);
+          filteredData(newData);
           loadInstruments();
         })
         .catch((response) => {
@@ -302,12 +367,14 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         setInstrument,
         instruments,
         setInstruments,
+        isModalEditUser,
+        setModalEditUser,
         login,
+        handleEditUser,
         loading,
         modalBid,
         handleLogin,
         handlePostInstrument,
-
         handleDeleteInstrument,
         handleEditInstrument,
         userFilt,
@@ -319,6 +386,8 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         token,
         userId,
         userInst,
+        userBids,
+        loadBids,
         setModalBid,
         handleRegister,
         handleBidInstrument,
