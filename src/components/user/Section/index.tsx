@@ -6,7 +6,6 @@ import { UlProducts } from "./userProductsUl";
 export const UserSection = () => {
   const { userFilt, setUserFilt } = useContext(UserContext);
 
-
   return (
     <StSect>
       <div className="filter">

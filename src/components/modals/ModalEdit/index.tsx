@@ -6,14 +6,7 @@ import { ImCross } from "react-icons/im";
 import { schemaModal } from "../../../schema/modalEdit";
 import { UserContext, Instrument } from "../../../contexts/ApiContext";
 
-interface PropsModalEdit {
-  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
-  instrument: Instrument;
-}
-export const ModalEditInstrument = ({
-  instrument,
-  setModalEdit,
-}: PropsModalEdit) => {
+export const ModalEditInstrument = () => {
   const {
     register,
     handleSubmit,
@@ -22,7 +15,7 @@ export const ModalEditInstrument = ({
     resolver: yupResolver(schemaModal),
   });
 
-  const { handleEditInstrument } = useContext(UserContext);
+  const { handleEditInstrument, setModalEdit } = useContext(UserContext);
   return (
     <Container>
       <div>

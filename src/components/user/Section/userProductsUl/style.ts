@@ -28,7 +28,7 @@ export const StUlProd = styled.ul`
         align-items: center;
         justify-content: center;
         background-color: rgba(144, 13, 9, 0.7);
-        border-radius: 25px;
+        border-radius: 12px;
         font-weight: 700;
         color: #fff;
         max-width: 12rem;
@@ -48,10 +48,14 @@ export const StUlProd = styled.ul`
         padding: 0.2rem;
       }
       .edit {
-        background-color: rgb(78, 100, 36, 0.8);
+        background-color: rgba(215, 84, 19, 1);
+        width: 45%;
         &:hover {
-          background-color: rgb(78, 100, 36, 1);
+          background-color: rgba(215, 84, 19, 0.8);
         }
+      }
+      .del {
+        width: 45%;
       }
     }
     img {
@@ -59,6 +63,7 @@ export const StUlProd = styled.ul`
       height: 150px;
       border-radius: 12px;
     }
+
     div {
       display: flex;
       flex-direction: column;
@@ -70,9 +75,12 @@ export const StUlProd = styled.ul`
         font-weight: 600;
         font-size: 13px;
       }
-      span {
+      #spanButtons {
+        width: 95%;
         font-weight: 500;
         font-size: 10px;
+        display: flex;
+        justify-content: space-around;
       }
       p {
         font-weight: 700;
