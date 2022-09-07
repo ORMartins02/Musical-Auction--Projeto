@@ -88,6 +88,8 @@ export interface UserProviderData {
   userId: string | null;
   userInst: Instrument[] | undefined;
   handleDeleteInstrument: (id: number) => void;
+  intrumentId: number | undefined;
+  setInstrumentId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 export interface IChildrenProps {
@@ -105,6 +107,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   const [instrument, setInstrument] = useState<Instrument>({} as Instrument);
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [isModalEditOpen, setModalEdit] = useState(false);
+  const [instrumentId, setInstrumentId] = useState<number>();
   const [isModalAddOpen, setModalAdd] = useState(false);
   const [login, setLogin] = useState<UserProviderData["login"]>(
     {} as UserProviderData["login"]
@@ -213,20 +216,21 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       });
   };
 
-  const handleGetInstrument = (data: number) => {
+  const handleGetInstrument = (data: number | undefined) => {
     api.get(`userInstrument/${data}`).then((response) => {
       setInstrument(response.data);
       setModalBid(true);
     });
   };
 
+  const handleGetUserInstruments = () => {
+    const userId = localStorage.getItem("@userId");
+    api.get(`userInstrument?userId=${userId}`).then((response) => {
+      setUserInst(response.data);
+    });
+  };
+
   useEffect(() => {
-    const handleGetUserInstruments = () => {
-      const userId = localStorage.getItem("@userId");
-      api.get(`userInstrument?userId=${userId}`).then((response) => {
-        setUserInst(response.data);
-      });
-    };
     handleGetUserInstruments();
   }, []);
 
@@ -237,12 +241,14 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       console.log(response);
     });
   };
-  const handleEditInstrument = (data: Instrument) => {
-    api
-      .patch(`userInstrument/${instrument.id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {});
+
+  const handleEditInstrument =  (data: Instrument) => {
+    api.patch(`userInstrument/${instrumentId}`, data).then((response) => {
+      console.log(response);
+    });
+    setModalEdit(!isModalEditOpen)
+    loadInstruments()
+    handleGetUserInstruments()
   };
   const logoutBtn = () => {
     localStorage.clear();
@@ -317,6 +323,8 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleRegister,
         handleBidInstrument,
         handleGetInstrument,
+        intrumentId: instrumentId,
+        setInstrumentId,
       }}
     >
       {children}

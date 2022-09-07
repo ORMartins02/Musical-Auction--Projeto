@@ -58,12 +58,6 @@ export const ModalEditInstrument = ({
           />
           <span>{errors.img?.message}</span>
           <label htmlFor="minPrice">Valor mínimo do lance</label>
-          <input
-            placeholder="Insira o valor mínimo"
-            id="minPrice"
-            type="number"
-            {...register("minPrice")}
-          />
           <span>{errors.minPrice?.message}</span>
           <label htmlFor="category">Categoria do instrumento</label>
           <select {...register("category")} id="category">

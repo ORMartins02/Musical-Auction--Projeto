@@ -17,8 +17,8 @@ export const UserNav = () => {
   return (
     <StNav>
       <button onClick={() => navigate(`/dashboard/:${userId}`)}>Home</button>
-      <button onClick={() => setModalEdit(!isModalEditOpen)}>Editar Perfil</button>
-      <button onClick={() => setModalAdd(!isModalAddOpen)} >Cadastrar produto</button>
+      <button onClick={() => setModalEdit(!isModalEditOpen)}>Editar Instrumento</button>
+      <button>Cadastrar produto</button>
       <button className="filter" onClick={() => setUserFilt("products")}>
         Meus produtos
       </button>

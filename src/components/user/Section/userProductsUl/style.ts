@@ -23,6 +23,7 @@ export const StUlProd = styled.ul`
       display: flex;
       flex-direction: row;
       width: 100%;
+      justify-content: center;
       button {
         display: flex;
         align-items: center;
