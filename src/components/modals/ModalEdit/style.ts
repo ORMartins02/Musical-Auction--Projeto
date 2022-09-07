@@ -99,9 +99,6 @@ export const Form = styled.form`
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.625rem;
-    /* option {
-      color: red;
-    } */
   }
 
   span {
