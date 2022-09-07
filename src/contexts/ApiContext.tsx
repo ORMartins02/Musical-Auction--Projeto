@@ -346,8 +346,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     const { id: idUser } = userData;
 
     if (userId === idUser) {
-      console.log("idUser:", idUser);
-      console.log("userId:", userId);
+      toastFailBidUserID();
     } else {
       const newData = {
         title: title,
