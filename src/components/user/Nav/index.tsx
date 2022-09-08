@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/ApiContext";
 import { StNav } from "./style";
+
 export const UserNav = () => {
   const {
     setUserFilt,
