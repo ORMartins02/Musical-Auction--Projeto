@@ -2,9 +2,10 @@ import styled from "styled-components";
 import Musical from "../../img/musical.svg";
 
 export const DivCont = styled.div`
-  background-color: white;
+  height: 100vh;
+  background-color: var(--);
   @media (min-width: 47.9375rem) {
-    background-color: var(--color-grey-3);
+    
   }
 `;
 

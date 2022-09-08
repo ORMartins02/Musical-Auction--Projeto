@@ -8,10 +8,12 @@ export const ContainerLogin = styled.div`
   color: white;
   padding: 0rem 1.0152rem;
   gap: .6344rem;
-  background-color: var(--color-grey-2);
+  padding-bottom: 1.25rem;
+
   form{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   span {  
     color: red;
@@ -51,13 +53,18 @@ export const ContainerLogin = styled.div`
   }
   button {
     background-color: var(--color-primary);
-    color: black;
+    color: white;
     border: .0761rem solid var(--color-negative);
     border-radius: .25rem;
     height: 2.5rem;
     width: 15rem;
     margin-top: 1.25rem;
     border-radius: .5rem;
+    font-weight: 600;
+    &:hover{
+      transition: 150ms;
+      font-size: 20px;
+    }
   }
   select {
     padding: 0rem 1.0152rem;
@@ -94,17 +101,21 @@ export const ContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 1.25rem;
     a {
       font-size: 1rem;
       color: var(--color-primary);
       font-weight: bold;
-      margin-top: .625rem;
+      margin-top: 0.625rem;
       margin-right: 1.625rem;
-      text-shadow: .0625rem 0 0 var(--color-black), 0 -.0625rem 0 var(--color-black),
-        0 .0625rem 0 var(--color-black), -.0625rem 0 0 var(--color-black);
+      &:hover{
+        transition: 150ms;
+        font-size: 20px;
+      }
     }
   }
   @media (min-width: 47.9375rem) {
+    background-color: var(--color-grey-2);
     justify-content: center;
     align-items: center;
     width: 40%;

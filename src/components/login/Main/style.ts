@@ -9,6 +9,7 @@ export const ContainerLogin = styled.div`
   color: white;
   padding: 0rem 1.0152rem;
   gap: 0.6344rem;
+  
   span {
     color: red;
     font-size: 0.625rem;
@@ -37,7 +38,6 @@ export const ContainerLogin = styled.div`
     padding: 0rem 1.0152rem;
     gap: 0.6344rem;
     color: var(--color-grey-3);
-    /* width: 90%; */
     height: 2.1875rem;
 
     background: var(--color-grey-5);
@@ -55,6 +55,11 @@ export const ContainerLogin = styled.div`
     width: 15rem;
     margin-top: 1.25rem;
     border-radius: 0.5rem;
+    font-weight: 600;
+    &:hover{
+      transition: 150ms;
+      font-size: 20px;
+    }
   }
 
   .p-login {
@@ -79,12 +84,18 @@ export const ContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 1.25rem;
+
     a {
       font-size: 1rem;
       color: var(--color-primary);
       font-weight: bold;
       margin-top: 0.625rem;
       margin-right: 1.625rem;
+      &:hover{
+        transition: 150ms;
+        font-size: 1.25rem;
+      }
     }
   }
   @media (min-width: 47.9375rem) {
@@ -93,8 +104,14 @@ export const ContainerLogin = styled.div`
     width: 50%;
     max-width: 1000px;
     background-color: var(--color-grey-2);
-
     margin: 0;
+    .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
     input {
       margin-top: 2.5rem;
 
@@ -107,6 +124,7 @@ export const ContainerLogin = styled.div`
     }
     button {
       margin-top: 2.5rem;
+      max-width: 20rem;
       width: 90%;
     }
     .p-login {

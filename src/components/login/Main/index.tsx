@@ -19,7 +19,7 @@ export const MainLogin = () => {
       <div className="p-login">
         <p>Faça seu login</p>
       </div>
-      <form onSubmit={handleSubmit(handleLogin)}>
+      <form className="form" onSubmit={handleSubmit(handleLogin)}>
         <input
           type="text"
           id="email"
