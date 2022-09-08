@@ -74,7 +74,6 @@ export const ContainerLogin = styled.div`
     height: 2.1875rem;
     color: var(--color-grey-3);
     background: white;
-
     border: .0761rem solid var(--color-grey-5);
     border-radius: .5rem;
   }
@@ -86,6 +85,8 @@ export const ContainerLogin = styled.div`
     margin-top: .9375rem;
     color: black;
     font-weight: bold;
+    width: 100%;
+    text-align: center;
   }
   .span-register {
     display: flex;
