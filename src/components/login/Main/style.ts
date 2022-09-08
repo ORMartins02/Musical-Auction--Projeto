@@ -2,7 +2,8 @@ import styled from "styled-components";
 export const ContainerLogin = styled.div`
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 100%;
+
   max-width: 300px;
   margin: auto;
   color: white;
@@ -89,10 +90,12 @@ export const ContainerLogin = styled.div`
   @media (min-width: 767px) {
     justify-content: center;
     align-items: center;
-    width: 29vw;
-    height: 100vh;
+    width: 50%;
+    max-width: 1000px;
+    background-color: var(--color-grey-2);
+
     margin: 0;
-    margin-left: 40px;
+
     input {
       margin-top: 40px;
 
