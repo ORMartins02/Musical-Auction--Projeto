@@ -20,6 +20,7 @@ import {
   toastFail,
   toastFailLogin,
   toastFailBidUserID,
+  toastSuccesFinishOff,
 } from "../components/toasts/toasts";
 
 export interface User {
@@ -78,6 +79,7 @@ export interface UserProviderData {
   setModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;
   setModalBid: React.Dispatch<React.SetStateAction<boolean>>;
   instrument: Instrument;
+  userFinishOff: Instrument[];
   instruments: Instrument[];
   setInstruments: Dispatch<SetStateAction<Instrument[]>>;
   handleRegister: (data: Omit<User, "id">) => void;
@@ -87,6 +89,7 @@ export interface UserProviderData {
   handleBidInstrument: (data: currentBid) => void;
   handleEditInstrument: (data: Instrument) => void;
   handleEditUser: (data: UserEdit) => void;
+  handleFinishAuction: (data: number) => void;
   userFilt: string;
   userBids: Instrument[];
   loadBids: () => void;
@@ -127,16 +130,21 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   );
   const [userData, setUserData] = useState<User>({} as User);
   const [userBids, setUserBids] = useState<Instrument[]>([]);
+  const [userFinishOff, setUserFinishOff] = useState<Instrument[]>([]);
   const [userFilt, setUserFilt] = useState<string>("products");
   const [userInst, setUserInst] = useState<Instrument[]>([]);
   const token = localStorage.getItem("@token");
   const userId = localStorage.getItem("@userId");
 
-  const loadInstruments = async () => {
-    await api
+  const loadInstruments = () => {
+    api
       .get("/userInstrument")
       .then((response) => {
-        setInstruments(response.data);
+        const isAuctionInstruments = response.data.filter(
+          (elem: Instrument) => elem.isAuction === true
+        );
+
+        setInstruments(isAuctionInstruments);
       })
       .catch((error) => console.log(error))
       .finally();
@@ -154,10 +162,26 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       .finally();
   };
 
+  const loadFinishOff = async () => {
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    await api
+      .get(`/finishOffBids`)
+      .then((response) => {
+        // eslint-disable-next-line array-callback-return
+        const instrumentsFinishOff = response.data.filter(
+          (elem: Instrument) => elem.bidUserId.toString() === userId
+        );
+        setUserFinishOff(instrumentsFinishOff);
+      })
+      .catch((error) => console.log(error))
+      .finally();
+  };
+
   useEffect(() => {
     setLoading(true);
     loadInstruments();
     loadBids();
+    loadFinishOff();
     setLoading(false);
   }, []);
 
@@ -236,11 +260,11 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       .post("userInstrument", {
         ...data,
         currentBid: 0,
+        bidUserId: 0,
         userId: userId,
         isAuction: true,
       })
-      .then((response) => {
-        console.log("instrumento criado");
+      .then(() => {
         handleGetUserInstruments();
         loadInstruments();
         setModalAdd(false);
@@ -251,7 +275,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       });
   };
 
-  const handleGetInstrument = (data: number | undefined) => {
+  const handleGetInstrument = (data: number) => {
     api.get(`userInstrument/${data}`).then((response) => {
       if (response.data.userId === userId) {
         toastFailBidUserID();
@@ -263,11 +287,14 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   };
 
   const handleGetUserInstruments = () => {
-    const userId = localStorage.getItem("@userId");
     api.get(`userInstrument?userId=${userId}`).then((response) => {
-      setUserInst(response.data);
+      const isAuctionInstruments = response.data.filter(
+        (elem: Instrument) => elem.isAuction === true
+      );
+      setUserInst(isAuctionInstruments);
     });
   };
+
   useEffect(() => {
     handleGetUserInstruments();
   }, []);
@@ -283,7 +310,6 @@ export const UserProvider = ({ children }: IChildrenProps) => {
   };
 
   const handleEditInstrument = (data: Instrument) => {
-    console.log(data);
     api
       .patch(`userInstrument/${instrumentId}`, data)
       .then((response) => {
@@ -298,16 +324,43 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       });
   };
 
-  const handleEditUser = async (data: UserEdit) => {
-    console.log(data);
+  const handlePostInstrumentFinishOff = (data: number) => {
+    const instrumentFinishedOff = instruments.find((elem) => elem.id === data);
+
+    console.log("instrumentFinishedOff:", instrumentFinishedOff);
 
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-    await api.patch(`users/${userId}`, data).then(() => {});
+    api
+      .post("/finishOffBids", instrumentFinishedOff)
+      .then(() => {
+        toastSuccesFinishOff();
+      })
+      .catch((response) => {
+        console.log(response);
+        toastFail();
+      })
+      .finally();
   };
 
-  const logoutBtn = () => {
-    localStorage.clear();
-    navigate("/login", { replace: true });
+  const handleFinishAuction = async (data: number) => {
+    const newData = { isAuction: false };
+
+    await api
+      .patch(`userInstrument/${data}`, newData)
+      .then((response) => {
+        handlePostInstrumentFinishOff(data);
+        loadInstruments();
+        handleGetUserInstruments();
+      })
+      .catch((response) => {
+        console.log(response);
+        toastFail();
+      });
+  };
+
+  const handleEditUser = (data: UserEdit) => {
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    api.patch(`users/${userId}`, data).then(() => {});
   };
 
   const filteredData = (data: Instrument) => {
@@ -315,21 +368,20 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     handleAddUserInstrumentBid(data, newData);
   };
 
-  const handleAddUserInstrumentBid = async (
+  const handleAddUserInstrumentBid = (
     data: Instrument,
     array: Instrument[]
   ) => {
     const newData = { bids: [...array, data] };
-
-    console.log(newData);
-
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-    await api.patch(`users/${userId}`, newData).then(() => {
+    api.patch(`users/${userId}`, newData).then(() => {
       loadBids();
     });
   };
 
   const handleBidInstrument = (data: currentBid) => {
+    const userLogedId = Number(localStorage.getItem("@userId"));
+
     const {
       title,
       description,
@@ -343,46 +395,44 @@ export const UserProvider = ({ children }: IChildrenProps) => {
       isAuction,
     } = instrument;
 
-    const { id: idUser } = userData;
+    const newData = {
+      title: title,
+      description: description,
+      category: category,
+      minPrice: minPrice,
+      img: img,
+      minBid: minBid,
+      currentBid: data.currentBid,
+      bidUserId: userLogedId,
+      userId: userId,
+      id: id,
+      isAuction: isAuction,
+    };
 
-    if (userId === idUser) {
-      console.log("idUser:", idUser);
-      console.log("userId:", userId);
+    if (newData.currentBid <= currentBid + minBid) {
+      toastFailBidRegister();
     } else {
-      const newData = {
-        title: title,
-        description: description,
-        category: category,
-        minPrice: minPrice,
-        img: img,
-        minBid: minBid,
-        currentBid: data.currentBid,
-        bidUserId: userId,
-        userId: userId,
-        id: id,
-        isAuction: isAuction,
-      };
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      api
+        .patch(`userInstrument/${instrument.id}`, newData)
 
-      if (newData.currentBid <= currentBid + minBid) {
-        toastFailBidRegister();
-      } else {
-        api.defaults.headers.common.authorization = `Bearer ${token}`;
-        api
-          .patch(`userInstrument/${instrument.id}`, newData)
-
-          .then(() => {
-            toastSuccesBid();
-            setModalBid(false);
-            filteredData(newData);
-            loadInstruments();
-          })
-          .catch((response) => {
-            console.log(response);
-            toastFail();
-          })
-          .finally();
-      }
+        .then(() => {
+          toastSuccesBid();
+          setModalBid(false);
+          filteredData(newData);
+          loadInstruments();
+        })
+        .catch((response) => {
+          console.log(response);
+          toastFail();
+        })
+        .finally();
     }
+  };
+
+  const logoutBtn = () => {
+    localStorage.clear();
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -396,8 +446,10 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         setInstruments,
         isModalEditUser,
         setModalEditUser,
+        handleFinishAuction,
         login,
         handleEditUser,
+        userFinishOff,
         loading,
         modalBid,
         handleLogin,

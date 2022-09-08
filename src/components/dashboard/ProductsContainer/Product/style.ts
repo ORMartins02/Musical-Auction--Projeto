@@ -29,7 +29,7 @@ export const Li = styled.li`
   img {
     width: 100%;
     height: 250px;
-    object-fit: scale-down;
+    object-fit: cover;
     display: flex;
     align-items: center;
     background-color: var(--color-grey-1);
@@ -72,7 +72,7 @@ export const Li = styled.li`
   .description {
     text-align: left;
     width: 100%;
-    height: 28px;
+    height: 18px;
     overflow-y: hidden;
     font-weight: 400;
     font-size: 12px;

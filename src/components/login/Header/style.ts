@@ -55,7 +55,5 @@ export const ContainerLoginHeader = styled.div`
       width: 50%;
       margin-top: 100px;
     }
-
-    #div-text
   }
 `;

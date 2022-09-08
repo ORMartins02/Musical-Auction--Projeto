@@ -88,6 +88,28 @@ export const toastSuccesInstrumentRmv = () =>
     },
   });
 
+  export const toastSuccesFinishOff = () =>
+  toast.success("Leilão encerrado com sucesso!", {
+    duration: 4000,
+    position: "top-center",
+
+    // Styling
+    style: {},
+    className: "",
+
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: "#6fe600",
+      secondary: "#fff",
+    },
+
+    // Aria
+    ariaProps: {
+      role: "status",
+      "aria-live": "polite",
+    },
+  });
+
 export const toastSuccesBid = () =>
   toast.success("Seu lance foi feito com sucesso!", {
     duration: 4000,

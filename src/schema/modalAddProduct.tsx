@@ -11,6 +11,7 @@ export const schemaModalAddProduct = yup.object({
     .required("Insira um link de uma imagem"),
   minPrice: yup
     .number()
-    .required("Insira um valor mínimo para o lance inicial"),
+    .required("Insira um valor mínimo para seu instrumento"),
+  minBid: yup.number().required("Insira um valor mínimo para cada lance"),
   category: yup.string().required("Categoria obrigatória"),
 });

@@ -31,6 +31,7 @@ export const UserNav = () => {
       >
         Meus lances
       </button>
+      <button onClick={() => setUserFilt("finishOff")}>Meus Arremates</button>
     </StNav>
   );
 };

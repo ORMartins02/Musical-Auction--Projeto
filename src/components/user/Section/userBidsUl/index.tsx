@@ -26,10 +26,7 @@ export const UlBids = () => {
                     <p className="description">{elem.description}</p>
                     <div className="divCurrentBid">
                       <span className="spanCurrentBid spanBid">Seu Lance</span>
-                      <p className="currentBid pBid">
-                        {" "}
-                        R$ {elem.currentBid},00
-                      </p>
+                      <p className="currentBid pBid">R$ {elem.currentBid},00</p>
                     </div>
                     <Button onClick={() => handleGetInstrument(elem.id)}>
                       Aumentar Lance
