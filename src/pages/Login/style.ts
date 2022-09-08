@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import musicalImg from "../../img/Component6.svg";
+
 export const ContainerLoginMain = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  background-image: url(${musicalImg});
+
   background-repeat: no-repeat;
   .container-header-main {
     display: flex;

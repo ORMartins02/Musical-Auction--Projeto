@@ -130,13 +130,10 @@ export const ContainerLogin = styled.div`
       justify-content: center;
       align-items: center;
       margin-top: 0.9375rem;
-      margin-right: 1.75rem;
+
       color: black;
       font-size: 1.875rem;
       font-weight: bold;
-      text-shadow: 0.0625rem 0 0 var(--color-primary),
-        0 -0.0625rem 0 var(--color-primary), 0 0.0625rem 0 var(--color-primary),
-        -0.0625rem 0 0 var(--color-primary);
     }
   }
 `;

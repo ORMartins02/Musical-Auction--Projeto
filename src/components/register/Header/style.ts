@@ -5,8 +5,7 @@ export const ContainerLoginHeader = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(${musicalImg});
-  background-repeat: no-repeat;
+
   width: 100%;
   position: relative;
   text-align: center;
@@ -27,6 +26,8 @@ export const ContainerLoginHeader = styled.div`
     background-color: white;
     width: 40%;
     height: 90%;
+    background-image: url(${musicalImg});
+    background-repeat: no-repeat;
     justify-content: space-around;
     .login-box-description {
       display: flex;

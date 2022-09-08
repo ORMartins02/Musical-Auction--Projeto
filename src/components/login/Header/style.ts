@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import musicalImg from "../../../img/Component6.svg";
 export const ContainerLoginHeader = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,6 +48,8 @@ export const ContainerLoginHeader = styled.div`
     flex-direction: column;
     padding-bottom: 50px;
     height: 100%;
+    background-image: url(${musicalImg});
+    background-repeat: no-repeat;
     .violinImg {
       /* width: 70%;
       min-width: 350px; */
