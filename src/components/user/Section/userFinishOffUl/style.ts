@@ -73,6 +73,7 @@ export const StUlFinish = styled.ul`
         font-weight: 600;
         font-size: 13px;
       }
+      
       #spanButtons {
         width: 95%;
         font-weight: 500;

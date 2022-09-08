@@ -268,6 +268,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleGetUserInstruments();
         loadInstruments();
         setModalAdd(false);
+        toastSuccesInstrumentRegister();
       })
       .catch((err) => {
         console.warn(err);
