@@ -29,5 +29,4 @@ export const ListProducts = styled.ul`
   justify-content: center;
   margin-top: 1.5625rem;
   margin-bottom: 1.25rem;
-
 `;
