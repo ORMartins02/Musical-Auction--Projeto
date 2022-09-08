@@ -32,10 +32,7 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 html,
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-}
+body, 
 div,
 span,
 applet,
@@ -134,6 +131,7 @@ a {
 }
 html{
   background-color: rgba(237, 237, 237, 1);
+  
 }
 article,
 aside,
@@ -152,6 +150,9 @@ body {
   font-family: var(--font-inter);
   line-height: 1;
   background-color: rgba(237, 237, 237, 1);
+  margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
 }
 ol,
 ul {

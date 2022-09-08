@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StSect = styled.section`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
 
@@ -13,12 +13,12 @@ export const StSect = styled.section`
     justify-content: space-between;
     button {
       height: 2.1875rem;
-      padding: .3rem;
-      border-radius: 0 0 .75rem .75rem;
+      padding: 0.3rem;
+      border-radius: 0 0 0.75rem 0.75rem;
       font-weight: 600;
       color: #fff;
       background-color: rgba(215, 84, 19, 0.8);
-      font-size: .875rem;
+      font-size: 0.875rem;
       &:hover {
         transition: 150ms;
         background-color: rgba(215, 84, 19, 1);
@@ -43,36 +43,35 @@ export const Li = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: .125rem solid var(--color-grey-0);
-  border-radius: .75rem;
+  border: 0.125rem solid var(--color-grey-0);
+  border-radius: 0.75rem;
   margin-left: 1.25rem;
   margin-bottom: 1.5625rem;
-  box-shadow: .3125rem .3125rem .3125rem -0.0625rem rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: .3125rem .3125rem .3125rem -0.0625rem rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: .3125rem .3125rem .3125rem -0.0625rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0.3125rem 0.3125rem 0.3125rem -0.0625rem rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0.3125rem 0.3125rem 0.3125rem -0.0625rem rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0.3125rem 0.3125rem 0.3125rem -0.0625rem rgba(0, 0, 0, 0.5);
 
   figure {
     width: 95%;
     height: 15.9375rem;
-    border: .3125rem solid var(--color-primary);
+    border: 0.3125rem solid var(--color-primary);
     overflow: hidden;
-    border-radius: .75rem;
-    margin-top: .5rem;
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
   }
 
   img {
     width: 100%;
-    object-fit: scale-down;
+    object-fit: cover;
     display: flex;
-    align-items: center;
     background-color: var(--color-grey-1);
   }
 
   div {
     width: 90%;
     height: 45%;
-    margin-left: .3125rem;
-    margin-top: .5rem;
+    margin-left: 0.3125rem;
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -99,23 +98,23 @@ export const Li = styled.li`
   .description {
     text-align: left;
     width: 100%;
-    height: 1.75rem;
+    height: 1.25rem;
     overflow-y: hidden;
     font-weight: 400;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
   span {
     font-weight: 400;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
   p {
     width: 90%;
     color: black;
     font-weight: 800;
-    font-size: .875rem;
-    margin: .3125rem 0rem;
+    font-size: 0.875rem;
+    margin: 0.3125rem 0rem;
     text-align: left;
   }
 
@@ -126,15 +125,15 @@ export const Li = styled.li`
 `;
 
 export const Button = styled.button`
-  margin-left: .625rem;
-  margin-bottom: .375rem;
-  font-size: .875rem;
+  margin-left: 0.625rem;
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
   width: 90%;
-  height: 2.7rem;
+  height: 43.2px;
   cursor: pointer;
   font-family: "Inter", sans-serif;
   background-color: var(--color-primary);
   color: var(--color-white);
-  border: .0625rem solid var(--color-grey-4);
-  border-radius: .5rem;
+  border: 0.0625rem solid var(--color-grey-4);
+  border-radius: 0.5rem;
 `;

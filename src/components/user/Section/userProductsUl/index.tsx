@@ -12,49 +12,53 @@ export const UlProducts = () => {
     setModalEdit,
     isModalEditOpen,
     setInstrumentId,
+    handleFinishAuction,
     isModalEditUser,
-    closeAuction
   } = useContext(UserContext);
   return (
     <>
-      <StUlProd>
-        {userInst?.map((elem) => (
-          <Li className="product" key={elem.id}>
-            <figure>
-              <img src={elem.img} alt={elem.title} />
-            </figure>
-            <div>
-              <h3>{elem.title}</h3>
-              <span>Valor do produto:</span>
-              <p>R$: {elem.minPrice},00</p>
-              <div className="btnUsProd">
-                <span id="spanButtons">
-                  <button onClick={()=>{
-                    closeAuction(elem)
-                  }}>Encerrar</button>
-                  <span>
-                    <button
-                      className="icon del"
-                      onClick={() => handleDeleteInstrument(elem.id)}
-                    >
-                      <IoTrashSharp />
+      {userInst?.length === 0 ? (
+        <p id="loading">Você não possui leilões cadastrados!</p>
+      ) : (
+        <StUlProd>
+          {userInst?.map((elem) => (
+            <Li className="product" key={elem.id}>
+              <figure>
+                <img src={elem.img} alt={elem.title} />
+              </figure>
+              <div>
+                <h3>{elem.title}</h3>
+                <span>Valor do produto:</span>
+                <p>R$: {elem.minPrice},00</p>
+                <div className="btnUsProd">
+                  <span id="spanButtons">
+                    <button onClick={() => handleFinishAuction(elem.id)}>
+                      Encerrar
                     </button>
-                    <button
-                      className="icon edit"
-                      onClick={() => {
-                        setInstrumentId(elem.id);
-                        setModalEdit(!isModalEditOpen);
-                      }}
-                    >
-                      <AiFillEdit />
-                    </button>
+                    <span>
+                      <button
+                        className="icon del"
+                        onClick={() => handleDeleteInstrument(elem.id)}
+                      >
+                        <IoTrashSharp />
+                      </button>
+                      <button
+                        className="icon edit"
+                        onClick={() => {
+                          setInstrumentId(elem.id);
+                          setModalEdit(!isModalEditOpen);
+                        }}
+                      >
+                        <AiFillEdit />
+                      </button>
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
-          </Li>
-        ))}
-      </StUlProd>
+            </Li>
+          ))}
+        </StUlProd>
+      )}
 
       {isModalEditUser ? <ModalEditUser /> : <></>}
     </>

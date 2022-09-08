@@ -28,8 +28,13 @@ export const Li = styled.li`
 
   img {
     width: 100%;
+<<<<<<< HEAD
     height: 15.625rem;
     object-fit: scale-down;
+=======
+    height: 250px;
+    object-fit: cover;
+>>>>>>> fab00137b2f7343c0482df845efd85fb92da4bc3
     display: flex;
     align-items: center;
     background-color: var(--color-grey-1);
@@ -72,7 +77,11 @@ export const Li = styled.li`
   .description {
     text-align: left;
     width: 100%;
+<<<<<<< HEAD
     height: 1.75rem;
+=======
+    height: 18px;
+>>>>>>> fab00137b2f7343c0482df845efd85fb92da4bc3
     overflow-y: hidden;
     font-weight: 400;
     font-size: .75rem;
