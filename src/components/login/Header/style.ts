@@ -17,10 +17,11 @@ export const ContainerLoginHeader = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 450px;
   }
 
   .header-img1 {
-    width: 100%;
+    height: 100%;
     margin-top: 100px;
   }
 
@@ -52,7 +53,7 @@ export const ContainerLoginHeader = styled.div`
   @media (min-width: 767px) {
     width: 50%;
     .header-img1 {
-      width: 50%;
+      height: 50%;
       margin-top: 100px;
     }
 

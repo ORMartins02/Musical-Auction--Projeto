@@ -31,7 +31,7 @@ export const Container = styled.div`
       .titleBid {
         font-style: normal;
         font-weight: 700;
-        font-size: 0.875rem;
+        font-size: .875rem;
         line-height: 1.5rem;
 
         color: var(--color-grey-4);
@@ -63,14 +63,14 @@ export const Container = styled.div`
   }
 
   .title {
-    font-size: 12px;
+    font-size: .75rem;
     text-align: left;
     margin: 14px 0px 4px 15px;
     color: rgb(215, 84, 19);
   }
 
   .nameItemModal {
-    font-size: 22px;
+    font-size: 1.375rem;
 
     text-align: left;
     margin-left: 15px;
@@ -79,13 +79,13 @@ export const Container = styled.div`
   .descriptionItemModal {
     width: 90%;
     height: 35px;
-    font-size: 16px;
+    font-size: 1rem;
     text-align: left;
     margin-left: 15px;
   }
 
   .priceItemModal {
-    font-size: 16px;
+    font-size: 1rem;
     text-align: left;
     margin-left: 15px;
     font-weight: 700;

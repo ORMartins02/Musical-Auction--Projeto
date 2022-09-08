@@ -66,7 +66,7 @@ export const Li = styled.li`
 
   h2 {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .description {
@@ -75,7 +75,7 @@ export const Li = styled.li`
     height: 28px;
     overflow-y: hidden;
     font-weight: 400;
-    font-size: 12px;
+    font-size: .75rem;
   }
 
   .pBid {
@@ -84,14 +84,14 @@ export const Li = styled.li`
 
   span {
     font-weight: 400;
-    font-size: 12px;
+    font-size: .75rem;
   }
 
   p {
     width: 90%;
     color: black;
     font-weight: 800;
-    font-size: 14px;
+    font-size: .875rem;
     margin: 5px 0px;
     text-align: left;
   }
@@ -105,7 +105,7 @@ export const Li = styled.li`
 export const Button = styled.button`
   margin-left: 10px;
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: .875rem;
   width: 90%;
   height: 2.7rem;
   cursor: pointer;

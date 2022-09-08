@@ -10,13 +10,13 @@ export const ContainerLogin = styled.div`
   gap: 10.15px;
   span {
     color: red;
-    font-size: 10px;
+    font-size: .625rem;
   }
   label {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    font-size: 12.182px;
+    font-size: .7614rem;
     line-height: 0px;
     color: var(--color-grey-0);
   }
@@ -68,7 +68,7 @@ export const ContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: .875rem;
     color: black;
     font-weight: bold;
     margin-top: 10px;
@@ -79,7 +79,7 @@ export const ContainerLogin = styled.div`
     justify-content: center;
     align-items: center;
     a {
-      font-size: 16px;
+      font-size: 1rem;
       color: var(--color-primary);
       font-weight: bold;
       margin-top: 10px;
@@ -114,7 +114,7 @@ export const ContainerLogin = styled.div`
       margin-top: 15px;
       margin-right: 28px;
       color: black;
-      font-size: 30px;
+      font-size: 1.875rem;
       font-weight: bold;
       text-shadow: 1px 0 0 var(--color-primary), 0 -1px 0 var(--color-primary),
         0 1px 0 var(--color-primary), -1px 0 0 var(--color-primary);

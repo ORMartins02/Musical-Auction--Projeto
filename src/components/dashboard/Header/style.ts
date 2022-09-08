@@ -43,11 +43,11 @@ export const Container = styled.header`
   }
   .userName {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--color-grey-6);
   }
   .userLoc {
-    font-size: 14px;
+    font-size: .875rem;
     color: var(--color-primary);
     text-shadow: rgba(0, 0, 0, 0.75) 0.1em 0.1em 0.2em;
   }
@@ -57,7 +57,7 @@ export const Container = styled.header`
 
   .logout {
     background-color: transparent;
-    font-size: 25px;
+    font-size: 1.5625rem;
     height: 25px;
     width: 25px;
   }

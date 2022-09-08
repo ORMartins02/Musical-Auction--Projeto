@@ -71,18 +71,18 @@ export const StUlProd = styled.ul`
 
       h3 {
         font-weight: 600;
-        font-size: 13px;
+        font-size: .8125rem;
       }
       #spanButtons {
         width: 95%;
         font-weight: 500;
-        font-size: 10px;
+        font-size: .625rem;
         display: flex;
         justify-content: space-around;
       }
       p {
         font-weight: 700;
-        font-size: 15;
+        font-size: .9375rem;
       }
     }
   }
@@ -102,7 +102,7 @@ export const StUlProd = styled.ul`
       }
       div {
         button {
-          font-size: 15px;
+          font-size: .9375rem;
         }
       }
     }

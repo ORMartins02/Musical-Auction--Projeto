@@ -16,7 +16,7 @@ export const StyledProductsContainer = styled.section`
   @media (max-width: 1110px) {
     #loading {
       margin-top: 100px;
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
 `;

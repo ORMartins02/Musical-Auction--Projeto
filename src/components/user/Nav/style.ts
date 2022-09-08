@@ -13,7 +13,7 @@ export const StNav = styled.nav`
   }
 
   button {
-    font-size: 15px;
+    font-size: .9375rem;
     background-color: transparent;
     font-weight: 700;
     color: #fff;

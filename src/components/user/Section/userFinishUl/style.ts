@@ -69,15 +69,15 @@ export const StUlFinish = styled.ul`
 
       h3 {
         font-weight: 600;
-        font-size: 13px;
+        font-size: .8125rem;
       }
       span {
         font-weight: 500;
-        font-size: 10px;
+        font-size: .625rem;
       }
       p {
         font-weight: 700;
-        font-size: 15;
+        font-size: .9375rem;
       }
     }
   }
@@ -97,7 +97,7 @@ export const StUlFinish = styled.ul`
       }
       div {
         button {
-          font-size: 15px;
+          font-size: .9375rem;
         }
       }
     }
