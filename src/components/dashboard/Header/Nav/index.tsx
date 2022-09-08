@@ -6,7 +6,7 @@ import { ImSearch } from "react-icons/im";
 import { StNav } from "./style";
 import { api } from "../../../../services/api";
 
-interface IsearchInstruments {
+interface SearchInstruments {
   preventDefault: () => void;
 }
 
@@ -31,7 +31,7 @@ export const Nav = () => {
       .finally();
   };
 
-  const searchInstruments = (event: IsearchInstruments) => {
+  const searchInstruments = (event: SearchInstruments) => {
     event.preventDefault();
 
     api
