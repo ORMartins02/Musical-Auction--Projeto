@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import musicalImg from "../../../img/Component6.svg";
 export const ContainerLoginHeader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(${musicalImg});
-  background-repeat: no-repeat;
 
   width: 100%;
   height: 100%;
@@ -20,6 +17,7 @@ export const ContainerLoginHeader = styled.div`
   }
 
   .header-img1 {
+    max-width: 30rem;
     width: 100%;
   }
 
@@ -50,13 +48,16 @@ export const ContainerLoginHeader = styled.div`
     padding-bottom: 50px;
     height: 100%;
     .violinImg {
-      width: 70%;
-      min-width: 350px;
+      /* width: 70%;
+      min-width: 350px; */
+      width: 30rem;
       display: flex;
     }
     .header-img1 {
       width: 50%;
-      min-width: 280px;
+      /* min-width: 280px; */
+      max-width: 40rem;
+      min-width: 25rem;
     }
   }
 `;

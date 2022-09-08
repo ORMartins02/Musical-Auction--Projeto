@@ -2,7 +2,6 @@ import { FaGuitar, FaDrum, FaBoxOpen } from "react-icons/fa";
 import { GiSaxophone, GiPianoKeys } from "react-icons/gi";
 import { Instrument, UserContext } from "../../../../contexts/ApiContext";
 import { useContext, useState } from "react";
-import { ImSearch } from "react-icons/im";
 import { StNav } from "./style";
 import { api } from "../../../../services/api";
 
@@ -61,9 +60,6 @@ export const Nav = () => {
           className="input"
           onChange={(event) => setValueInput(event.currentTarget.value)}
         />
-        <button type="submit" className="search">
-          <ImSearch />
-        </button>
       </form>
       <div className="filter">
         <button>
