@@ -1,119 +1,29 @@
-base_URL: https://musical-auction.herokuapp.com/ 
+## Padrões de código
 
+**Código será em ingles.**
 
-### Cadastro
+**Gerenciador de pacotes => -npm**
 
-POST /register <br/>
-POST /signup <br/>
-POST /users
+**Linguagem do projeto => React.ts**
 
-Qualquer um desses 3 endpoints irá cadastrar o usuário na lista de "Users", sendo que os campos obrigatórios são os de email e password.
-Você pode ficar a vontade para adicionar qualquer outra propriedade no corpo do cadastro dos usuários.
+**Função => arrow function**
 
-Request:
-{
-"email": "joaozin@mail.com",
-"password": "123456",
-"name": "John",
-"age": 24,
-"id": 10
-}
+**Aspas duplas ""**
 
-Response:
-{
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW96aW5AbWFpbC5jb20iLCJpYXQiOjE2NjE4MDY2MzUsImV4cCI6MTY2MTgxMDIzNSwic3ViIjoiMTAifQ.NgclJfaYtpaeum6qVRolbjbA4_K23y0uKOLKYyLEaYo",
-"user": {
-"email": "joaozin@mail.com",
-"name": "John",
-"age": 24,
-"id": 10
-}
-}
+**export simples**
 
-### Login
+## Branches
 
-POST /login <br/>
-POST /signin
+Main() => Ninguém usa!!!
 
-Qualquer um desses 2 endpoints pode ser usado para realizar login com um dos usuários cadastrados na lista de "Users"
+Developer() => só tech leader usa.
 
-Request:
-{
-"email": "joaozin@mail.com",
-"password": "123456"
-}
+git checkout -b "feat/nome-da-feature"
 
-Response:
-{
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW96aW5AbWFpbC5jb20iLCJpYXQiOjE2NjE4MDY2NzQsImV4cCI6MTY2MTgxMDI3NCwic3ViIjoiMTAifQ.SI-3zgn0kdIca0KKeGZTismb9bTE1G-0yKQvu8msenQ",
-"user": {
-"email": "joaozin@mail.com",
-"name": "John",
-"age": 24,
-"id": 10
-}
-}
+git commit -m "feat:login-page"
 
-### Registrar novo instrumento
+**commits em português**
 
-POST /userInstrument
+## Bibliotecas
 
-Endpoint para realizar cadastro de um novo instrumento.
-
-Request:
-{
-"title" : "Guitarra",
-"description" : "instrumento de corda",
-"userId" : "10"
-}
-
-Response:
-{
-"title": "Guitarra",
-"description": "instrumento de corda",
-"userId": "10",
-"id": 4
-}
-
-### Pegar um usuário pelo id
-
-GET /users/userid
-
-Endpoint para pegar os dados de um usuário.
-
-Response:
-{
-"email": "joaozin@mail.com",
-"password": "$2a$10$KJ8T9hJXe9fevWTkOJzsVeO4AaVMlGIrg2vXbRSktQimnh2lnt9rW",
-"name": "John",
-"age": 24,
-"id": 10
-}
-
-### Listagem de todos os instrumentos
-
-GET /userInstrument
-
-Endpoint para listar todos os intrumentos dos usuários cadastrados.
-
-Response:
-{
-[{
-"title": "flute",
-"description": "instrumento de sopro",
-"userId": "3",
-"id": 1
-},
-{
-"title": "violin",
-"description": "instrumento de corda",
-"userId": "3",
-"id": 2
-}
-{
-"title": "Guitarra",
-"description": "instrumento de corda",
-"userId": "1",
-"id": 3
-}]
-}
+React icons
