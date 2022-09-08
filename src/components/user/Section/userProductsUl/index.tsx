@@ -17,6 +17,7 @@ export const UlProducts = () => {
   } = useContext(UserContext);
   return (
     <>
+      <h1 className="titleComponent"> Meus Produtos </h1>
       {userInst?.length === 0 ? (
         <p id="loading">Você não possui leilões cadastrados!</p>
       ) : (

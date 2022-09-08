@@ -10,6 +10,7 @@ export const UlBids = () => {
     useContext(UserContext);
   return (
     <>
+      <h1 className="titleComponent"> Meus Lances </h1>
       {userBids.length === 0 ? (
         <p id="loading">Você não fez lances ainda!</p>
       ) : (

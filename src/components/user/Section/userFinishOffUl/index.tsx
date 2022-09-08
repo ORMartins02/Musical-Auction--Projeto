@@ -7,6 +7,7 @@ export const UlFinishOff = () => {
   const { userFinishOff, isModalEditUser } = useContext(UserContext);
   return (
     <>
+      <h1 className="titleComponent"> Meus Arremates </h1>
       {userFinishOff?.length === 0 ? (
         <p id="loading">Você não possui arremates ainda!</p>
       ) : (

@@ -8,6 +8,7 @@ export const StUlFinish = styled.ul`
   gap: 1.5rem;
   padding: 1rem;
   justify-content: center;
+  margin-top: 50px;
 
   .product {
     display: flex;

@@ -62,20 +62,32 @@ export const Nav = () => {
         />
       </form>
       <div className="filter">
-        <button>
-          <FaBoxOpen onClick={() => loadInstruments("All")} />
+        <button title="Todos os Instrumentos">
+          <FaBoxOpen
+            className="iconButton"
+            onClick={() => loadInstruments("All")}
+          />
         </button>
-        <button>
-          <FaGuitar onClick={() => loadInstruments("Corda")} />
+        <button title="Instrumentos de Cordas">
+          <FaGuitar
+            className="iconButton"
+            onClick={() => loadInstruments("Corda")}
+          />
         </button>
-        <button>
-          <GiSaxophone onClick={() => loadInstruments("Sopro")} />
+        <button title="Instrumentos de Sopro">
+          <GiSaxophone
+            className="iconButton"
+            onClick={() => loadInstruments("Sopro")}
+          />
         </button>
-        <button>
-          <GiPianoKeys onClick={() => loadInstruments("Teclas")} />
+        <button title="Instrumentos de Teclas">
+          <GiPianoKeys
+            className="iconButton"
+            onClick={() => loadInstruments("Teclas")}
+          />
         </button>
-        <button>
-          <FaDrum onClick={() => loadInstruments("Percussão")} />
+        <button title="Instrumentos de Percussão">
+          <FaDrum className="iconButton" onClick={() => loadInstruments("Percussão")} />
         </button>
       </div>
     </StNav>

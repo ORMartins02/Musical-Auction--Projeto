@@ -3,20 +3,20 @@ import styled from "styled-components";
 export const StNav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: .625rem;
+  gap: 0.625rem;
   width: 80%;
   .form {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 2.5rem;
-    border: .125rem solid var(--color-primary);
+    border: 0.125rem solid var(--color-primary);
 
     background-color: var(--color-white);
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
   .input {
-    padding-left: .9375rem;
+    padding-left: 0.9375rem;
     background-color: transparent;
     border-radius: 1.5625rem;
     outline: none;
@@ -27,7 +27,7 @@ export const StNav = styled.nav`
     background-color: transparent;
     border-radius: 1.5625rem;
     color: var(--color-primary);
-    padding-right: .625rem;
+    padding-right: 0.625rem;
   }
   .filter {
     display: flex;
@@ -38,12 +38,16 @@ export const StNav = styled.nav`
       background-color: var(--color-primary);
       border-radius: 50%;
       font-weight: 700;
-      padding: .9375rem;
+      padding: 0.9375rem;
       font-size: 1.25rem;
       color: white;
       box-shadow: var(--color-grey-4) 0.2em 0.2em 0.3em;
     }
+    button:hover {
+      background-color: rgb(210, 58, 0);
+    }
   }
+
   @media (min-width: 48rem) {
     flex-direction: row;
     justify-content: space-between;

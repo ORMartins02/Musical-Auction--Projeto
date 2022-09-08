@@ -72,7 +72,7 @@ export const Li = styled.li`
   .description {
     text-align: left;
     width: 100%;
-    height: 1.75rem;
+    height: 36px;
     overflow-y: hidden;
     font-weight: 400;
     font-size: 0.75rem;
@@ -83,8 +83,9 @@ export const Li = styled.li`
   }
 
   span {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 0.75rem;
+    color: var(--color-primary);
   }
 
   p {
@@ -114,4 +115,8 @@ export const Button = styled.button`
   color: var(--color-white);
   border: 0.0625rem solid var(--color-grey-4);
   border-radius: 0.5rem;
+
+  :hover {
+    background-color: rgba(186,62,0,1);
+  }
 `;

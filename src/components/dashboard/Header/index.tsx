@@ -13,7 +13,7 @@ export const Header = () => {
         <div className="infUser">
           <button className="btnHeader" onClick={() => navigate("/user")}>
             <figure className="figure">
-              <img src={login?.userImg} alt="" />
+              <img src={login?.userImg} alt="" title="Página do usuário"/>
             </figure>
           </button>
           <div>

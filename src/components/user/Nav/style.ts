@@ -8,12 +8,16 @@ export const StNav = styled.nav`
   width: 100%;
   background-color: rgba(215, 84, 19, 1);
   padding: 2rem 1.5rem;
+  box-shadow: 7px 6px 17px -3px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: 7px 6px 17px -3px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 7px 6px 17px -3px rgba(0, 0, 0, 0.63);
+
   .filter {
     display: none;
   }
 
   button {
-    font-size: .9375rem;
+    font-size: 0.9375rem;
     background-color: transparent;
     font-weight: 700;
     color: #fff;

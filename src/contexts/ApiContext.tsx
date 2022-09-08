@@ -156,8 +156,12 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     await api
       .get(`/users/${userId}`)
       .then((response) => {
+        const isAuctionInstruments = response.data.bids.filter(
+          (elem: Instrument) => elem.isAuction === true
+        );
+
         setUserData(response.data);
-        setUserBids(response.data.bids);
+        setUserBids(isAuctionInstruments);
       })
       .catch((error) => console.log(error))
       .finally();

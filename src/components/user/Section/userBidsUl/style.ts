@@ -8,16 +8,17 @@ export const StUlBids = styled.ul`
   gap: 1.5rem;
   padding: 1rem;
   justify-content: center;
+  margin-top: 50px;
 
   .product {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: .75rem;
+    border-radius: 0.75rem;
     padding: 0.2rem 0.2rem;
     gap: 0.5rem;
     &:hover {
-      box-shadow: 0rem 0rem .3125rem .3125rem rgba(0, 0, 0, 0.5);
+      box-shadow: 0rem 0rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
     }
     .btnUsProd {
       display: flex;
@@ -58,7 +59,7 @@ export const StUlBids = styled.ul`
     img {
       width: 9.375rem;
       height: 9.375rem;
-      border-radius: .75rem;
+      border-radius: 0.75rem;
     }
     div {
       display: flex;
@@ -69,11 +70,11 @@ export const StUlBids = styled.ul`
 
       h3 {
         font-weight: 600;
-        font-size: .8125rem;
+        font-size: 0.8125rem;
       }
       span {
         font-weight: 500;
-        font-size: .625rem;
+        font-size: 0.625rem;
       }
       p {
         font-weight: 700;
@@ -93,11 +94,11 @@ export const StUlBids = styled.ul`
       img {
         width: 9.375rem;
         height: 9.375rem;
-        border-radius: .75rem;
+        border-radius: 0.75rem;
       }
       div {
         button {
-          font-size: .9375rem;
+          font-size: 0.9375rem;
         }
       }
     }

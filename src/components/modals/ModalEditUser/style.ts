@@ -17,14 +17,13 @@ export const Container = styled.div`
     width: 20%;
 
     background: var(--color-grey-0);
-    box-shadow: 0rem .25rem 2.5rem -.625rem rgba(0, 0, 0, 0.25);
-    border-radius: .25rem;
+    box-shadow: 0rem 0.25rem 2.5rem -0.625rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.25rem;
     .containerTitleButton {
       width: 100%;
-
       display: flex;
       justify-content: space-between;
-      padding: .75rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       align-items: center;
       height: 3.125rem;
       background-color: var(--color-grey-0);
@@ -33,8 +32,6 @@ export const Container = styled.div`
         font-weight: 700;
         font-size: 0.875rem;
         line-height: 1.5rem;
-
-        color: var(--color-grey-4);
       }
       .crossButton {
         background-color: transparent;
@@ -64,11 +61,11 @@ export const Form = styled.form`
     min-height: 1.5rem;
     padding-left: 1rem;
     color: black;
-    margin-top: -.8125rem;
+    margin-top: -0.8125rem;
 
     background-color: var(--color-grey-0);
-    border: .0761rem solid #343b41;
-    border-radius: .25rem;
+    border: 0.0761rem solid #343b41;
+    border-radius: 0.25rem;
 
     font-style: normal;
     font-weight: 400;
@@ -93,8 +90,8 @@ export const Form = styled.form`
 
     color: var(--color-black);
     background-color: var(--color-grey-0);
-    border: .0761rem solid #343b41;
-    border-radius: .25rem;
+    border: 0.0761rem solid #343b41;
+    border-radius: 0.25rem;
 
     font-style: normal;
     font-weight: 400;
@@ -121,8 +118,8 @@ export const Form = styled.form`
 
       background: rgba(215, 84, 19, 1);
       color: var(--color-grey-0);
-      border: .0761rem solid #59323f;
-      border-radius: .25rem;
+      border: 0.0761rem solid #59323f;
+      border-radius: 0.25rem;
       &:hover {
         background-color: rgba(215, 84, 19, 0.7);
         transition: 0.8s;

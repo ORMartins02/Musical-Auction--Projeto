@@ -27,10 +27,33 @@ export const StSect = styled.section`
     }
   }
 
+  .titleComponent {
+    font-size: 1.625rem;
+    font-weight: 900;
+    color: rgba(215, 84, 19, 1);
+    margin-top: 1.875rem;
+    text-shadow: 0.1em 0.1em 0.3em rgba(40, 40, 40, 0.8);
+    position: fixed;
+    top: 15.625rem;
+  }
+
+  #loading {
+    position: fixed;
+    top: 21.875rem;
+  }
+
   @media (min-width: 48rem) {
     width: 85%;
     .filter {
       display: none;
+    }
+
+    .titleComponent {
+      top: 6.25rem;
+    }
+
+    #loading {
+      top: 15.625rem;
     }
   }
 `;
@@ -136,4 +159,7 @@ export const Button = styled.button`
   color: var(--color-white);
   border: 0.0625rem solid var(--color-grey-4);
   border-radius: 0.5rem;
+  :hover {
+    background-color: rgba(186, 62, 0, 1);
+  }
 `;

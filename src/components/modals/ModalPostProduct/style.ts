@@ -17,14 +17,14 @@ export const Container = styled.div`
     width: 20%;
 
     background: var(--color-grey-0);
-    box-shadow: 0rem .25rem 2.5rem -.625rem rgba(0, 0, 0, 0.25);
-    border-radius: .25rem;
+    box-shadow: 0rem 0.25rem 2.5rem -0.625rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.25rem;
     .containerTitleButton {
       width: 100%;
 
       display: flex;
       justify-content: space-between;
-      padding: .75rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       align-items: center;
       height: 50px;
       background-color: var(--color-grey-0);
