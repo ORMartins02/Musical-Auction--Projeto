@@ -15,20 +15,20 @@ export const Container = styled.div`
 
 
   div {
-    min-width: 300px;
+    min-width: 18.75rem;
     width: 20%;
 
     background: var(--color-grey-0);
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
+    box-shadow: 0rem .25rem 2.5rem -.625rem rgba(0, 0, 0, 0.25);
+    border-radius: .25rem;
     .containerTitleButton {
       width: 100%;
 
       display: flex;
       justify-content: space-between;
-      padding: 12px 20px;
+      padding: .75rem 1.25rem;
       align-items: center;
-      height: 50px;
+      height: 3.125rem;
       background-color: var(--color-grey-0);
       .titleTecnology {
         font-style: normal;
@@ -48,10 +48,10 @@ export const Container = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px;
+  padding: 1.25rem 0rem;
   label {
     width: 90%;
 
@@ -68,8 +68,8 @@ export const Form = styled.form`
     color: black;
 
     background-color: var(--color-grey-0);
-    border: 1.2182px solid #343b41;
-    border-radius: 4px;
+    border: .0761rem solid #343b41;
+    border-radius: .25rem;
 
     font-style: normal;
     font-weight: 400;
@@ -94,8 +94,8 @@ export const Form = styled.form`
 
     color: var(--color-black);
     background-color: var(--color-grey-0);
-    border: 1.2182px solid #343b41;
-    border-radius: 4px;
+    border: .0761rem solid #343b41;
+    border-radius: .25rem;
 
     font-style: normal;
     font-weight: 400;
@@ -119,8 +119,8 @@ export const Form = styled.form`
 
       background: rgba(215, 84, 19, 1);
       color: var(--color-grey-0);
-      border: 1.2182px solid #59323f;
-      border-radius: 4px;
+      border: .0761rem solid #59323f;
+      border-radius: .25rem;
       &:hover {
         background-color: rgba(215, 84, 19, 0.7);
         transition: 0.8s;

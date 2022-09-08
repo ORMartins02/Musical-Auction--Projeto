@@ -21,41 +21,39 @@ export const ContainerLoginHeader = styled.div`
 
   .header-img1 {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
 
   #under-logo {
-    margin-top: -20px;
-    margin-left: -20px;
+    margin-top: -1.25rem;
+    margin-left: -1.25rem;
   }
 
   #div-text {
     width: 60%;
     height: 40vh;
-    border: 3px solid var(--color-primary);
-    border-radius: 8px;
-    box-shadow: 3px 4px 5px 0px rgba(117, 109, 109, 0.75);
-    margin-top: 35px;
-    margin-left: -30px;
+    border: .1875rem solid var(--color-primary);
+    border-radius: .5rem;
+    box-shadow: .1875rem .25rem .3125rem 0rem rgba(117, 109, 109, 0.75);
+    margin-top: 2.1875rem;
+    margin-left: -1.875rem;
   }
 
   .login-box-description {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 10px;
+    margin-top: .9375rem;
+    margin-bottom: .9375rem;
+    margin-left: .625rem;
   }
 
   p {
     font-weight: 500;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     width: 50%;
     .header-img1 {
       width: 50%;
-      margin-top: 100px;
+      margin-top: 6.25rem;
     }
-
-    #div-text
   }
-`;
+`

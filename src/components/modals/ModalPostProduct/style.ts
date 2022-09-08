@@ -13,18 +13,18 @@ export const Container = styled.div`
   position: fixed;
 
   div {
-    min-width: 300px;
+    min-width: 18.75rem;
     width: 20%;
 
     background: var(--color-grey-0);
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
+    box-shadow: 0rem .25rem 2.5rem -.625rem rgba(0, 0, 0, 0.25);
+    border-radius: .25rem;
     .containerTitleButton {
       width: 100%;
 
       display: flex;
       justify-content: space-between;
-      padding: 12px 20px;
+      padding: .75rem 1.25rem;
       align-items: center;
       height: 50px;
       background-color: var(--color-grey-0);

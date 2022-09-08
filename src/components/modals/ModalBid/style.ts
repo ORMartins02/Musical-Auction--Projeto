@@ -13,20 +13,20 @@ export const Container = styled.div`
   left: 0;
 
   .divModal {
-    min-width: 300px;
+    min-width: 18.75rem;
     width: 20%;
     background: var(--color-grey-0);
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
+    box-shadow: 0rem .25rem 2.5rem -.625rem rgba(0, 0, 0, 0.25);
+    border-radius: .75rem;
     .containerTitleButton {
       width: 100%;
 
       display: flex;
       justify-content: space-between;
-      border-radius: 12px 12px 0 0px;
-      padding: 12px 20px;
+      border-radius: .75rem .75rem 0 0rem;
+      padding: .75rem 1.25rem;
       align-items: center;
-      height: 50px;
+      height: 3.125rem;
       background-color: var(--color-grey-0);
       .titleBid {
         font-style: normal;
@@ -46,16 +46,16 @@ export const Container = styled.div`
 
   figure {
     width: 95%;
-    height: 255px;
-    border: 5px solid rgba(215, 84, 19, 1);
+    height: 15.9375rem;
+    border: .3125rem solid rgba(215, 84, 19, 1);
     overflow: hidden;
-    border-radius: 12px;
-    margin: 8px;
+    border-radius: .75rem;
+    margin: .5rem;
   }
 
   img {
     width: 100%;
-    height: 250px;
+    height: 15.625rem;
     object-fit: scale-down;
     display: flex;
     align-items: center;
@@ -63,31 +63,31 @@ export const Container = styled.div`
   }
 
   .title {
-    font-size: 12px;
+    font-size: .75rem;
     text-align: left;
-    margin: 14px 0px 4px 15px;
+    margin: .875rem 0rem .25rem .9375rem;
     color: rgb(215, 84, 19);
   }
 
   .nameItemModal {
-    font-size: 22px;
+    font-size: 1.375rem;
 
     text-align: left;
-    margin-left: 15px;
+    margin-left: .9375rem;
   }
 
   .descriptionItemModal {
     width: 90%;
-    height: 35px;
-    font-size: 16px;
+    height: 2.1875rem;
+    font-size: 1rem;
     text-align: left;
-    margin-left: 15px;
+    margin-left: .9375rem;
   }
 
   .priceItemModal {
-    font-size: 16px;
+    font-size: 1rem;
     text-align: left;
-    margin-left: 15px;
+    margin-left: .9375rem;
     font-weight: 700;
   }
 
@@ -107,10 +107,10 @@ export const Container = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px;
+  padding: 1.25rem 0rem;
   label {
     width: 90%;
     font-style: normal;
@@ -118,7 +118,7 @@ export const Form = styled.form`
     font-size: 0.75rem;
     color: black;
     text-align: left;
-    margin-bottom: -15px;
+    margin-bottom: -.9375rem;
   }
   input {
     width: 90%;
@@ -128,8 +128,8 @@ export const Form = styled.form`
     color: black;
 
     background-color: var(--color-grey-0);
-    border: 1.2182px solid #343b41;
-    border-radius: 4px;
+    border: .0761rem solid #343b41;
+    border-radius: .25rem;
 
     font-style: normal;
     font-weight: 400;
@@ -160,12 +160,12 @@ export const Form = styled.form`
       width: 80%;
       height: 2.8rem;
       min-height: 1.5rem;
-      margin-top: -15px;
+      margin-top: -.9375rem;
       font-size: medium;
       background: rgba(215, 84, 19, 1);
       color: var(--color-grey-0);
-      border: 1.2182px solid #59323f;
-      border-radius: 4px;
+      border: .0761rem solid #59323f;
+      border-radius: .25rem;
       &:hover {
         background-color: rgba(215, 84, 19, 0.7);
         transition: 0.8s;

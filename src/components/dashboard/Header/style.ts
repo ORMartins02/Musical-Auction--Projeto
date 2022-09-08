@@ -6,7 +6,7 @@ export const Container = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: .9375rem;
 
   background-image: url(${musicalImg});
 
@@ -14,9 +14,9 @@ export const Container = styled.header`
 
   max-width: 100vw;
   background-color: var(--color-white);
-  padding-bottom: 15px;
-  padding-top: 15px;
-  box-shadow: 0px -9px 15px 10px rgba(0, 0, 0, 0.3);
+  padding-bottom: .9375rem;
+  padding-top: .9375rem;
+  box-shadow: 0rem -.5625rem .9375rem .625rem rgba(0, 0, 0, 0.3);
 
   .infHeader {
     display: flex;
@@ -33,21 +33,21 @@ export const Container = styled.header`
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
-      border: 2px solid var(--color-primary);
+      border: .125rem solid var(--color-primary);
     }
   }
   .infUser {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: .4375rem;
   }
   .userName {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--color-grey-6);
   }
   .userLoc {
-    font-size: 14px;
+    font-size: .875rem;
     color: var(--color-primary);
     text-shadow: rgba(0, 0, 0, 0.75) 0.1em 0.1em 0.2em;
   }
@@ -57,8 +57,8 @@ export const Container = styled.header`
 
   .logout {
     background-color: transparent;
-    font-size: 25px;
-    height: 25px;
-    width: 25px;
+    font-size: 1.5625rem;
+    height: 1.5625rem;
+    width: 1.5625rem;
   }
 `;

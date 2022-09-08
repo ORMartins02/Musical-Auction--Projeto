@@ -17,13 +17,13 @@ export const ContainerLoginHeader = styled.div`
     height: 40vh;
   }
   p {
-    margin-top: -40px;
-    bottom: 10px;
+    margin-top: -2.5rem;
+    bottom: .625rem;
   }
   .login-box-description {
     display: none;
   }
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     width: 30vw;
     height: 100vh;
     justify-content: space-between;
@@ -34,15 +34,15 @@ export const ContainerLoginHeader = styled.div`
       width: 75%;
       height: 25%;
       display: inherit;
-      margin-bottom: 160px;
-      border-width: 2px;
+      margin-bottom: 10rem;
+      border-width: .125rem;
       border-style: solid;
       border-color: yellow;
       text-align: center;
-      font-size: 14px;
-      line-height: 18px;
-      border-radius: 12px;
-      box-shadow: 3px 4px 5px 0px rgba(117, 109, 109, 0.75);
+      font-size: .875rem;
+      line-height: 1.125rem;
+      border-radius: .75rem;
+      box-shadow: .1875rem .25rem .3125rem 0rem rgba(117, 109, 109, 0.75);
     }
     .header-img1 {
       width: 32vw;

@@ -4,7 +4,7 @@ export const StNav = styled.nav`
   display: flex;
   gap: 1rem;
   justify-content: space-around;
-  margin-top: -22px;
+  margin-top: -1.375rem;
   width: 100%;
   background-color: rgba(215, 84, 19, 1);
   padding: 0.2rem 1rem;
@@ -13,7 +13,7 @@ export const StNav = styled.nav`
   }
 
   button {
-    font-size: 15px;
+    font-size: .9375rem;
     background-color: transparent;
     font-weight: 700;
     color: #fff;
@@ -21,7 +21,7 @@ export const StNav = styled.nav`
       text-decoration: underline;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 48rem) {
     margin-top: 0;
     width: 15%;
     flex-direction: column;

@@ -11,7 +11,7 @@ export const ContainerLoginMain = styled.div`
     display: flex;
     flex-direction: column;
   }
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -20,7 +20,7 @@ export const ContainerLoginMain = styled.div`
     .container-header-main {
       display: flex;
       flex-direction: row;
-      border-width: 2px;
+      border-width: .125rem;
       border-style: solid;
       border-color: black;
     }

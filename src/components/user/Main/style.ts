@@ -5,7 +5,7 @@ export const StMain = styled.main`
   flex-direction: column;
  
   background-color: rgba(237, 237, 237, 1);
-  @media (min-width: 768px) {
+  @media (min-width: 48rem) {
     width: 100vw;
     height: 100vh;
     flex-direction: row;

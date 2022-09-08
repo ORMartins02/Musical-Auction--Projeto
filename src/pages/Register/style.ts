@@ -10,7 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: rgb(248 249 250 / 91%);
 
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -36,10 +36,10 @@ export const ContainerHeader = styled.div`
     height: 40vh;
   }
   p {
-    margin-top: -40px;
-    bottom: 10px;
+    margin-top: -2.5rem;
+    bottom: .625rem;
   }
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     width: 30vw;
     height: 100vh;
     justify-content: space-between;
@@ -54,64 +54,64 @@ export const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   height: fit-content;
-  max-width: 300px;
+  max-width: 18.75rem;
   margin: auto;
   color: white;
-  padding: 0px 16.2426px;
-  gap: 10.15px;
+  padding: 0rem 1.0152rem;
+  gap: .6344rem;
   span {
     color: red;
-    font-size: 10px;
+    font-size: .625rem;
   }
   label {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    font-size: 12.182px;
-    line-height: 0px;
+    font-size: .7614rem;
+    line-height: 0rem;
     color: var(--color-grey-0);
   }
   input {
-    padding: 0px 16.2426px;
-    gap: 10.15px;
-    margin-top: 20px;
+    padding: 0rem 1.0152rem;
+    gap: .6344rem;
+    margin-top: 1.25rem;
     width: 90%;
-    height: 35px;
+    height: 2.1875rem;
     color: var(--color-grey-3);
     background: white;
 
-    border: 1.2182px solid var(--color-grey-5);
-    border-radius: 16px;
+    border: .0761rem solid var(--color-grey-5);
+    border-radius: 1rem;
   }
   select {
-    padding: 0px 16.2426px;
-    gap: 10.15px;
+    padding: 0rem 1.0152rem;
+    gap: .6344rem;
     color: var(--color-grey-3);
     /* width: 90%; */
-    height: 35px;
+    height: 2.1875rem;
 
     background: var(--color-grey-5);
 
-    border: 1.2182px solid var(--color-grey-5);
-    border-radius: 4px;
-    width: 275px;
+    border: .0761rem solid var(--color-grey-5);
+    border-radius: .25rem;
+    width: 17.1875rem;
   }
   button {
     background-color: var(--color-primary);
     color: black;
-    border: 1.2182px solid var(--color-negative);
-    border-radius: 4px;
-    height: 40px;
-    width: 240px;
-    margin-top: 20px;
-    border-radius: 16px;
+    border: .0761rem solid var(--color-negative);
+    border-radius: .25rem;
+    height: 2.5rem;
+    width: 15rem;
+    margin-top: 1.25rem;
+    border-radius: 1rem;
   }
 
   .p-login {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: .9375rem;
     color: black;
     font-weight: bold;
   }
@@ -119,56 +119,56 @@ export const ContainerForm = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: .875rem;
     color: black;
     font-weight: bold;
-    margin-top: 10px;
-    margin-right: 26px;
+    margin-top: .625rem;
+    margin-right: 1.625rem;
   }
   .div-register {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 1rem;
     color: yellow;
     font-weight: bold;
-    margin-top: 10px;
-    margin-right: 26px;
-    text-shadow: 1px 0 0 var(--color-black), 0 -1px 0 var(--color-black),
-      0 1px 0 var(--color-black), -1px 0 0 var(--color-black);
+    margin-top: .625rem;
+    margin-right: 1.625rem;
+    text-shadow: .0625rem 0 0 var(--color-black), 0 -0.0625rem 0 var(--color-black),
+      0 .0625rem 0 var(--color-black), -0.0625rem 0 0 var(--color-black);
   }
-  @media (min-width: 767px) {
+  @media (min-width: 47.9375rem) {
     justify-content: center;
     align-items: center;
     width: 29vw;
     height: 100vh;
     margin: 0;
-    margin-left: 40px;
+    margin-left: 2.5rem;
     input {
-      margin-top: 40px;
+      margin-top: 2.5rem;
 
-      height: 35px;
+      height: 2.1875rem;
       color: var(--color-grey-3);
       background: white;
 
-      border: 1.2182px solid var(--color-grey-5);
-      border-radius: 16px;
+      border: .0761rem solid var(--color-grey-5);
+      border-radius: 1rem;
     }
     button {
-      margin-top: 40px;
-      width: 180px;
+      margin-top: 2.5rem;
+      width: 11.25rem;
     }
     .p-login {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 15px;
-      margin-right: 28px;
+      margin-top: .9375rem;
+      margin-right: 1.75rem;
       color: black;
-      font-size: 30px;
+      font-size: 1.875rem;
       font-weight: bold;
-      text-shadow: 1px 0 0 var(--color-primary), 0 -1px 0 var(--color-primary),
-        0 1px 0 var(--color-primary), -1px 0 0 var(--color-primary);
+      text-shadow: .0625rem 0 0 var(--color-primary), 0 -0.0625rem 0 var(--color-primary),
+        0 .0625rem 0 var(--color-primary), -0.0625rem 0 0 var(--color-primary);
     }
   }
 `;

@@ -13,11 +13,11 @@ export const StUlProd = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
-    padding: 0.2rem 0.2rem;
-    gap: 0.5rem;
+    border-radius: .75rem;
+    padding: .2rem .2rem;
+    gap: .5rem;
     &:hover {
-      box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0rem 0rem .3125rem .3125rem rgba(0, 0, 0, 0.5);
     }
     .btnUsProd {
       display: flex;
@@ -29,12 +29,12 @@ export const StUlProd = styled.ul`
         align-items: center;
         justify-content: center;
         background-color: rgba(144, 13, 9, 0.7);
-        border-radius: 12px;
+        border-radius: .75rem;
         font-weight: 700;
         color: #fff;
         max-width: 12rem;
         width: 70%;
-        padding: 0.5rem;
+        padding: .5rem;
         &:hover {
           background-color: rgba(144, 13, 9, 1);
         }
@@ -44,11 +44,11 @@ export const StUlProd = styled.ul`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 44px;
-        padding: 0.2rem;
+        width: 2.75rem;
+        padding: .2rem;
       }
       .edit {
-        margin-top: 0.1rem;
+        margin-top: .1rem;
         background-color: rgba(215, 84, 19, 1);
  
         &:hover {
@@ -57,26 +57,26 @@ export const StUlProd = styled.ul`
       }
     }
     img {
-      width: 150px;
-      height: 150px;
-      border-radius: 12px;
+      width: 9.375rem;
+      height: 9.375rem;
+      border-radius: .75rem;
     }
 
     div {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: .2rem;
       justify-content: space-between;
       width: 100%;
 
       h3 {
         font-weight: 600;
-        font-size: 13px;
+        font-size: .8125rem;
       }
       #spanButtons {
         width: 95%;
         font-weight: 500;
-        font-size: 10px;
+        font-size: .625rem;
         display: flex;
         justify-content: space-around;
       }
@@ -86,23 +86,23 @@ export const StUlProd = styled.ul`
       }
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 48rem) {
     overflow: auto;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     height: 100%;
     .product {
-      height: 280px;
+      height: 17.5rem;
       flex-direction: column;
       img {
-        width: 150px;
-        height: 150px;
-        border-radius: 12px;
+        width: 9.375rem;
+        height: 9.375rem;
+        border-radius: .75rem;
       }
       div {
         button {
-          font-size: 15px;
+          font-size: .9375rem;
         }
       }
     }
