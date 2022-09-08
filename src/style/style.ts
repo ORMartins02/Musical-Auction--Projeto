@@ -1,16 +1,14 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 
 
 :root{
-  /* Primary Palette */
   --color-primary:rgba(215, 84, 19, 1) ;
   --color-negative:rgba(89, 50, 63, 1);
   --color-secondary:rgba(255, 254, 87, 1);
 
   
-  /* Grey Scale Palette */
   --color-black:rgba(0, 0, 0, 1);
   --color-grey-8:rgba(18, 18, 20, 1);
   --color-grey-7:rgba(33, 37, 41, 1) ;
@@ -23,13 +21,8 @@ export default createGlobalStyle`
   --color-grey-0:rgba(248, 249, 250, 1);
   --color-white:rgba(255, 255, 255, 1);
 
-  /* Feedback Palette */
   --color-sucess:rgba(63, 232, 100, 1); 
   --color-negative:rgba(232, 63, 91, 1); 
-
-  /* Examples */
-  /* var(--color-blue) */
-  /* var(--font-bangers) */
 
 }
 
@@ -40,6 +33,7 @@ export default createGlobalStyle`
 }
 html,
 body {
+  margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
 div,
@@ -141,7 +135,6 @@ a {
 html{
   background-color: rgba(237, 237, 237, 1);
 }
-/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,

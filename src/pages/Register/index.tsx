@@ -1,14 +1,14 @@
 import { Form } from "../../components/register/Form";
-import { Container } from "./style";
+import { Container, DivCont } from "./style";
 import { HeaderRegister } from "../../components/register/Header";
 
 export const Register = () => {
   return (
-    <Container>
-      <HeaderRegister />
-      <main>
+    <DivCont>
+      <Container>
+        <HeaderRegister />
         <Form />
-      </main>
-    </Container>
+      </Container>
+    </DivCont>
   );
 };

@@ -17,7 +17,7 @@ export const Form = () => {
   return (
     <ContainerLogin>
       <div className="p-login">
-        <p>Faça seu login</p>
+        <p>Faça seu cadastro</p>
       </div>
       <form onSubmit={handleSubmit(handleRegister)}>
         <input
@@ -51,9 +51,6 @@ export const Form = () => {
         />
 
         <select {...register("ageOfBirth")}>
-          {/* <option value="asd" disabled selected>
-            Sua idade
-          </option> */}
           <option value="1940">1940</option>
           <option value="1941">1941</option>
           <option value="1942">1942</option>

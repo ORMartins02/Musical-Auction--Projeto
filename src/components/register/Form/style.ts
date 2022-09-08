@@ -1,15 +1,19 @@
 import styled from "styled-components";
 export const ContainerLogin = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  height: 60vh;
-  max-width: 18.75rem;
   margin: auto;
   color: white;
   padding: 0rem 1.0152rem;
   gap: .6344rem;
-
-  span {
+  background-color: var(--color-grey-2);
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+  span {  
     color: red;
     font-size: .625rem;
   }
@@ -37,7 +41,6 @@ export const ContainerLogin = styled.div`
     padding: 0rem 1.0152rem;
     gap: .6344rem;
     color: var(--color-grey-3);
-    /* width: 90%; */
     height: 2.1875rem;
 
     background: var(--color-grey-5);
@@ -93,7 +96,7 @@ export const ContainerLogin = styled.div`
     align-items: center;
     a {
       font-size: 1rem;
-      color: yellow;
+      color: var(--color-primary);
       font-weight: bold;
       margin-top: .625rem;
       margin-right: 1.625rem;
@@ -104,10 +107,9 @@ export const ContainerLogin = styled.div`
   @media (min-width: 47.9375rem) {
     justify-content: center;
     align-items: center;
-    width: 29vw;
-    height: 100vh;
+    width: 40%;
+    height: 90%;
     margin: 0;
-    margin-left: 2.5rem;
     input {
       margin-top: .625rem;
 

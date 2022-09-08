@@ -1,21 +1,28 @@
 import styled from "styled-components";
 import Musical from "../../img/musical.svg";
 
+export const DivCont = styled.div`
+  background-color: white;
+  @media (min-width: 47.9375rem) {
+    background-color: var(--color-grey-3);
+  }
+`;
+
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(248 249 250 / 91%);
 
   @media (min-width: 47.9375rem) {
+    height: 100vh;
+    width: 100vw;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    height: 100vh;
-    width: 100vw;
+    .registerMain {
+      background-color: white;
+    }
   }
 `;
 
@@ -37,7 +44,7 @@ export const ContainerHeader = styled.div`
   }
   p {
     margin-top: -2.5rem;
-    bottom: .625rem;
+    bottom: 0.625rem;
   }
   @media (min-width: 47.9375rem) {
     width: 30vw;
@@ -58,49 +65,48 @@ export const ContainerForm = styled.form`
   margin: auto;
   color: white;
   padding: 0rem 1.0152rem;
-  gap: .6344rem;
+  gap: 0.6344rem;
   span {
     color: red;
-    font-size: .625rem;
+    font-size: 0.625rem;
   }
   label {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    font-size: .7614rem;
+    font-size: 0.7614rem;
     line-height: 0rem;
     color: var(--color-grey-0);
   }
   input {
     padding: 0rem 1.0152rem;
-    gap: .6344rem;
+    gap: 0.6344rem;
     margin-top: 1.25rem;
     width: 90%;
     height: 2.1875rem;
     color: var(--color-grey-3);
     background: white;
 
-    border: .0761rem solid var(--color-grey-5);
+    border: 0.0761rem solid var(--color-grey-5);
     border-radius: 1rem;
   }
   select {
     padding: 0rem 1.0152rem;
-    gap: .6344rem;
+    gap: 0.6344rem;
     color: var(--color-grey-3);
-    /* width: 90%; */
     height: 2.1875rem;
 
     background: var(--color-grey-5);
 
-    border: .0761rem solid var(--color-grey-5);
-    border-radius: .25rem;
+    border: 0.0761rem solid var(--color-grey-5);
+    border-radius: 0.25rem;
     width: 17.1875rem;
   }
   button {
     background-color: var(--color-primary);
     color: black;
-    border: .0761rem solid var(--color-negative);
-    border-radius: .25rem;
+    border: 0.0761rem solid var(--color-negative);
+    border-radius: 0.25rem;
     height: 2.5rem;
     width: 15rem;
     margin-top: 1.25rem;
@@ -111,7 +117,7 @@ export const ContainerForm = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: .9375rem;
+    margin-top: 0.9375rem;
     color: black;
     font-weight: bold;
   }
@@ -119,10 +125,10 @@ export const ContainerForm = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: .875rem;
+    font-size: 0.875rem;
     color: black;
     font-weight: bold;
-    margin-top: .625rem;
+    margin-top: 0.625rem;
     margin-right: 1.625rem;
   }
   .div-register {
@@ -132,10 +138,11 @@ export const ContainerForm = styled.form`
     font-size: 1rem;
     color: yellow;
     font-weight: bold;
-    margin-top: .625rem;
+    margin-top: 0.625rem;
     margin-right: 1.625rem;
-    text-shadow: .0625rem 0 0 var(--color-black), 0 -0.0625rem 0 var(--color-black),
-      0 .0625rem 0 var(--color-black), -0.0625rem 0 0 var(--color-black);
+    text-shadow: 0.0625rem 0 0 var(--color-black),
+      0 -0.0625rem 0 var(--color-black), 0 0.0625rem 0 var(--color-black),
+      -0.0625rem 0 0 var(--color-black);
   }
   @media (min-width: 47.9375rem) {
     justify-content: center;
@@ -151,7 +158,7 @@ export const ContainerForm = styled.form`
       color: var(--color-grey-3);
       background: white;
 
-      border: .0761rem solid var(--color-grey-5);
+      border: 0.0761rem solid var(--color-grey-5);
       border-radius: 1rem;
     }
     button {
@@ -162,13 +169,14 @@ export const ContainerForm = styled.form`
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: .9375rem;
+      margin-top: 0.9375rem;
       margin-right: 1.75rem;
       color: black;
       font-size: 1.875rem;
       font-weight: bold;
-      text-shadow: .0625rem 0 0 var(--color-primary), 0 -0.0625rem 0 var(--color-primary),
-        0 .0625rem 0 var(--color-primary), -0.0625rem 0 0 var(--color-primary);
+      text-shadow: 0.0625rem 0 0 var(--color-primary),
+        0 -0.0625rem 0 var(--color-primary), 0 0.0625rem 0 var(--color-primary),
+        -0.0625rem 0 0 var(--color-primary);
     }
   }
 `;

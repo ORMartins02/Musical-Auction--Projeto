@@ -102,7 +102,7 @@ export interface UserProviderData {
   handleDeleteInstrument: (id: number) => void;
   intrumentId: number | undefined;
   setInstrumentId: Dispatch<SetStateAction<number | undefined>>;
-  closeAuction: (data: Instrument) => void
+  closeAuction: (data: Instrument) => void;
 }
 
 export interface IChildrenProps {
@@ -384,10 +384,9 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-
-  const closeAuction = (data : Instrument) => {
-    console.log(data)
-  }
+  const closeAuction = (data: Instrument) => {
+    console.log(data);
+  };
 
   return (
     <UserContext.Provider
@@ -425,7 +424,7 @@ export const UserProvider = ({ children }: IChildrenProps) => {
         handleGetInstrument,
         intrumentId: instrumentId,
         setInstrumentId,
-        closeAuction
+        closeAuction,
       }}
     >
       {children}

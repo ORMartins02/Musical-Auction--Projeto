@@ -7,14 +7,15 @@ export const ContainerLoginHeader = styled.div`
   flex-direction: column;
   background-image: url(${musicalImg});
   background-repeat: no-repeat;
-  height: 40vh;
   width: 100%;
   background-color: white;
   position: relative;
   text-align: center;
   .header-img1 {
-    width: 100vw;
-    height: 40vh;
+      width: 50%;
+    }
+  .header-img2 {
+    display: none;
   }
   p {
     margin-top: -2.5rem;
@@ -24,20 +25,19 @@ export const ContainerLoginHeader = styled.div`
     display: none;
   }
   @media (min-width: 47.9375rem) {
-    width: 30vw;
-    height: 100vh;
-    justify-content: space-between;
+    width: 40%;
+    height: 90%;
+    justify-content: space-around;
     .login-box-description {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 75%;
-      height: 25%;
       display: inherit;
-      margin-bottom: 10rem;
       border-width: .125rem;
+      width: 80%;
+      height: 30%;
       border-style: solid;
-      border-color: yellow;
+      border-color: var(--color-primary);
       text-align: center;
       font-size: .875rem;
       line-height: 1.125rem;
@@ -45,8 +45,11 @@ export const ContainerLoginHeader = styled.div`
       box-shadow: .1875rem .25rem .3125rem 0rem rgba(117, 109, 109, 0.75);
     }
     .header-img1 {
-      width: 32vw;
-      height: 42vh;
+      width: 50%;
+    }
+    .header-img2{
+      display: inherit;
+      width: 70%;
     }
   }
 `;
