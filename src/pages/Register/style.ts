@@ -5,7 +5,6 @@ export const DivCont = styled.div`
   height: 100vh;
   background-color: var(--);
   @media (min-width: 47.9375rem) {
-    
   }
 `;
 
@@ -21,6 +20,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    background-color: var(--color-grey-3);
     .registerMain {
       background-color: white;
     }
