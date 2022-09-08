@@ -7,9 +7,9 @@ export const ContainerLoginHeader = styled.div`
   align-items: center;
   background-image: url(${musicalImg});
   background-repeat: no-repeat;
-  height: 40vh;
+
   width: 100%;
-  background-color: white;
+  height: 100%;
   text-align: center;
 
   figure {
@@ -21,7 +21,6 @@ export const ContainerLoginHeader = styled.div`
 
   .header-img1 {
     width: 100%;
-    margin-top: 100px;
   }
 
   #under-logo {
@@ -29,14 +28,9 @@ export const ContainerLoginHeader = styled.div`
     margin-left: -20px;
   }
 
-  #div-text {
+  .violinImg {
+    display: none;
     width: 60%;
-    height: 40vh;
-    border: 3px solid var(--color-primary);
-    border-radius: 8px;
-    box-shadow: 3px 4px 5px 0px rgba(117, 109, 109, 0.75);
-    margin-top: 35px;
-    margin-left: -30px;
   }
 
   .login-box-description {
@@ -51,9 +45,17 @@ export const ContainerLoginHeader = styled.div`
 
   @media (min-width: 767px) {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    height: 100%;
+    .violinImg {
+      width: 70%;
+
+      display: flex;
+    }
     .header-img1 {
       width: 50%;
-      margin-top: 100px;
     }
   }
 `;
