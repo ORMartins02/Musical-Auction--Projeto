@@ -13,6 +13,13 @@ export const ContainerLogin = styled.div`
     color: red;
     font-size: 0.625rem;
   }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   label {
     font-family: "Inter";
     font-style: normal;
@@ -25,27 +32,14 @@ export const ContainerLogin = styled.div`
     padding: 0rem 1.0152rem;
     gap: 0.6344rem;
     margin-top: 1.25rem;
-    width: 90%;
+    width: 100%;
     height: 2.1875rem;
     color: var(--color-grey-3);
     background: white;
-
     border: 0.0761rem solid var(--color-grey-5);
     border-radius: 0.5rem;
   }
-  select {
-    padding: 0rem 1.0152rem;
-    gap: 0.6344rem;
-    color: var(--color-grey-3);
-    /* width: 90%; */
-    height: 2.1875rem;
 
-    background: var(--color-grey-5);
-
-    border: 0.0761rem solid var(--color-grey-5);
-    border-radius: 0.5rem;
-    width: 17.1875rem;
-  }
   button {
     background-color: var(--color-primary);
     color: white;
@@ -55,6 +49,7 @@ export const ContainerLogin = styled.div`
     width: 15rem;
     margin-top: 1.25rem;
     border-radius: 0.5rem;
+    width: 100%;
   }
 
   .p-login {
@@ -73,7 +68,7 @@ export const ContainerLogin = styled.div`
     color: black;
     font-weight: bold;
     margin-top: 0.625rem;
-    margin-right: 1.625rem;
+    width: 100%;
   }
   .div-register {
     display: flex;
@@ -95,6 +90,15 @@ export const ContainerLogin = styled.div`
     background-color: var(--color-grey-2);
 
     margin: 0;
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
     input {
       margin-top: 2.5rem;
 
@@ -104,10 +108,11 @@ export const ContainerLogin = styled.div`
 
       border: 0.0761rem solid var(--color-grey-5);
       border-radius: 0.5rem;
+      width: 70%;
     }
     button {
       margin-top: 2.5rem;
-      width: 90%;
+      width: 70%;
     }
     .p-login {
       display: flex;

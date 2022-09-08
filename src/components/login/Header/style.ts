@@ -51,11 +51,12 @@ export const ContainerLoginHeader = styled.div`
     height: 100%;
     .violinImg {
       width: 70%;
-
+      min-width: 350px;
       display: flex;
     }
     .header-img1 {
       width: 50%;
+      min-width: 280px;
     }
   }
 `;

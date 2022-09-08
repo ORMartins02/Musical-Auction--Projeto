@@ -21,6 +21,7 @@ export const MainLogin = () => {
       </div>
       <form onSubmit={handleSubmit(handleLogin)}>
         <input
+          className="alo"
           type="text"
           id="email"
           placeholder="Digite o email"
@@ -29,6 +30,7 @@ export const MainLogin = () => {
         <span>{errors.email?.message}</span>
 
         <input
+          className="alo"
           type="password"
           id="password"
           placeholder="Digite a senha"

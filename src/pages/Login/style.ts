@@ -15,6 +15,7 @@ export const ContainerLoginMain = styled.div`
     background-color: var(--color-grey-3);
     flex-direction: row;
     height: 100vh;
+
     .container-header-main {
       width: 90%;
       height: 80%;
